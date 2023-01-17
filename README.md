@@ -7,7 +7,6 @@ Syftet med denna laboration var att skapa en enkel e-handelswebbplats genom att 
 ## Innehållsförteckning
 
 * [Introduktion](#introduktion)
-* [Projekt presentation](#projektpresentation)
 * [Utveckling samt övriga verktyg](#utvecklingsamtövrigaverktyg)
 * [Deltagare](#deltagare)
 
