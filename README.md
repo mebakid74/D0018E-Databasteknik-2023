@@ -7,12 +7,26 @@ Syftet med denna laboration var att skapa en enkel e-handelswebbplats $\textcolo
 ## Innehållsförteckning
 
 * [Introduktion](#introduktion)
-* [Programmeringsspårk samt övriga verktyg](#programmeringsspråksamtövrigaverktyg)
+* [Projekt presentation](#projektpresentation)
+* [Utveckling samt övriga verktyg](#utvecklingsamtövrigaverktyg)
 * [Deltagare](#deltagare)
 
 
 ## Introduktion
 
+I denna projekt....
+
+
+
+## Projekt Presentation
+
+Detta projekt består av att...
+
+
+
+## Utveckling samt övriga verktyg
+
+Projektet skapades med hjälp av....
 
 
 ## Deltagare
