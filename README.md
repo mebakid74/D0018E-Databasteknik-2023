@@ -14,13 +14,7 @@ Syftet med denna laboration var att skapa en enkel e-handelswebbplats genom att 
 
 ## Introduktion
 
-I denna projekt....
-
-
-
-## Projekt Presentation
-
-Detta projekt består av att...
+Målet med denna laboration är att skapa en grundläggande e-handelswebbplats som kommer vara tillgänglig för vanliga webbläsarklienter genoma att skapa en enkel webb-frontend samt administrera sververn databas med hjälp av SQL-databas struktur för att senare ladda upp det i ett valfritt målplattform. 
 
 
 
