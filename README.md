@@ -1,28 +1,27 @@
-# D0018E-Databasteknik-2023
+# D0018E-Database technology-2023
 
-### Labbprojektet i kursen D0018E Lp3, V23
+### The Lab project in the course D0018E Lp3, V23
 
-Syftet med denna laboration var att skapa en enkel e-handelswebbplats genom att använda en SQL-databas $\textcolor{blue}{\text{Luleå Tekniska Universitet}}$ under handledning av $\textcolor{black}{\text{Olov Schelén}}$.
+The purpose of this laboratory session was to create a simple e-commerce website by using a SQL database $\textcolor{blue}{\text{Luleå University of Technology}}$ under the supervision of $\textcolor{black}{\text{Olov Schelén}}$.
 
-## Innehållsförteckning
+## Table of contents
 
-* [Introduktion](#introduktion)
-* [Utveckling samt övriga verktyg](#utvecklingsamtövrigaverktyg)
-* [Deltagare](#deltagare)
-
-
-## Introduktion
-
-Målet med denna laboration är att skapa en grundläggande e-handelswebbplats som kommer vara tillgänglig för vanliga webbläsarklienter genoma att skapa en enkel webb-frontend samt administrera sververn databas med hjälp av SQL-databas struktur för att senare ladda upp det i ett valfritt målplattform. 
+* [Introduction](#introduction)
+* [Development and other tools](#dev)
+* [Participant](#participant)
 
 
+## Introduction
 
-## Utveckling samt övriga verktyg
-
-Projektet skapades med hjälp av....
+The goal of this laboratory session is to create a basic e-commerce website that will be accessible to regular browser clients by creating a simple web frontend as well as administering the sververn database using SQL database structure to later upload it in a cloud platform of any choice.
 
 
-## Deltagare
+## Development and other tools
+
+This project uses the following development tools.
+
+
+## Participant
 
 **Hannes Furhoff** <br>
 **Mebaselassie Kidane Kebede** <br/>
