@@ -1,32 +1,31 @@
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .information {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
 }
 
-.information input{
-  width: 300px;
-  height: 50px;
-  margin: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  padding-left: 10px;
+.information input {
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin: 5px;
 }
 
-.information button{
-  width: 200px;
-  height: 50px;
-  margin-top: 45px;
+.information button {
+    width: 320px;
+    height: 50px;
+    margin-top: 15px;
 }
 
 .information button:hover{
-  cursor: pointer;
+    cursor: pointer;
 }
