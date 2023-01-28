@@ -7,71 +7,69 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema backend
--- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema backend
+-- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `backend` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `backend` ;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema mysqldata
+-- -----------------------------------------------------
+USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `backend`.`Customer`
+-- Table `mydb`.`Customer`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`Customer` (
+CREATE TABLE IF NOT EXISTS `mydb`.`Customer` (
   `ID` INT NOT NULL,
-  `FName` VARCHAR(50) NOT NULL,
-  `LName` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `backend`.`ContactDetails`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`ContactDetails` (
-  `ID` INT NOT NULL,
-  `PhoneNumber` VARCHAR(50) NOT NULL,
-  `Email` VARCHAR(50) NOT NULL,
-  `Address` VARCHAR(50) NOT NULL,
+  `FName` VARCHAR(45) NOT NULL,
+  `LName` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `backend`.`Products`
+-- Table `mydb`.`ContactDetails`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`Products` (
+CREATE TABLE IF NOT EXISTS `mydb`.`ContactDetails` (
   `ID` INT NOT NULL,
-  `Quantity` VARCHAR(50) NOT NULL,
+  `PhoneNumber` VARCHAR(45) NOT NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `Address` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `backend`.`ProductDetails`
+-- Table `mydb`.`Products`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`ProductDetails` (
+CREATE TABLE IF NOT EXISTS `mydb`.`Products` (
+  `ID` INT NOT NULL,
+  `Quantity` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`ProductDetails`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`ProductDetails` (
   `ID` INT NOT NULL,
   `Price` DECIMAL(8,3) NOT NULL,
-  `Color` VARCHAR(50) NOT NULL,
-  `Size` VARCHAR(50) NOT NULL,
+  `Color` VARCHAR(45) NOT NULL,
+  `Size` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE INDEX `ProductsDetailsID_UNIQUE` (`ID` ASC) VISIBLE)
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `backend`.`OrderDetails`
+-- Table `mydb`.`OrderDetails`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`OrderDetails` (
+CREATE TABLE IF NOT EXISTS `mydb`.`OrderDetails` (
   `ID` INT NOT NULL,
   `Amount` INT NOT NULL,
   PRIMARY KEY (`ID`),
@@ -80,75 +78,73 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `backend`.`Order`
+-- Table `mydb`.`Order`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`Order` (
+CREATE TABLE IF NOT EXISTS `mydb`.`Order` (
   `ID` INT NOT NULL,
   `Cost` DECIMAL(8,3) NOT NULL,
   `OrderDate` DATE NOT NULL,
-  `OrderStatus` VARCHAR(50) NOT NULL,
+  `OrderStatus` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE INDEX `Order id_UNIQUE` (`ID` ASC) VISIBLE)
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `backend`.`CartList`
+-- Table `mydb`.`CartList`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`CartList` (
+CREATE TABLE IF NOT EXISTS `mydb`.`CartList` (
   `ID` INT NOT NULL,
   `Amount` INT NOT NULL,
   `Cost` DECIMAL(8,3) NOT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE INDEX `Cart id_UNIQUE` (`ID` ASC) VISIBLE)
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `backend`.`Category`
+-- Table `mydb`.`Category`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`Category` (
+CREATE TABLE IF NOT EXISTS `mydb`.`Category` (
   `ID` INT NOT NULL,
-  `Name` VARCHAR(50) NOT NULL,
+  `Name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `backend`.`Payment`
+-- Table `mydb`.`Payment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`Payment` (
+CREATE TABLE IF NOT EXISTS `mydb`.`Payment` (
   `ID` INT NOT NULL,
-  `Account` VARCHAR(50) NOT NULL,
-  `CVV` INT NOT NULL,
+  `Account` VARCHAR(45) NOT NULL,
   `Expiry` DATE NOT NULL,
+  `CVV` INT NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `backend`.`UserLogin`
+-- Table `mydb`.`UserLogin`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`UserLogin` (
+CREATE TABLE IF NOT EXISTS `mydb`.`UserLogin` (
   `ID` INT NOT NULL,
-  `Email` VARCHAR(50) NOT NULL,
-  `Password` VARCHAR(50) NOT NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE,
-  UNIQUE INDEX `Email_UNIQUE` (`Email` ASC) VISIBLE,
-  UNIQUE INDEX `Password_UNIQUE` (`Password` ASC) VISIBLE)
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `backend`.`Reviews`
+-- Table `mydb`.`Reviews`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `backend`.`Reviews` (
+CREATE TABLE IF NOT EXISTS `mydb`.`Reviews` (
   `ID` INT NOT NULL,
-  `Text` VARCHAR(50) NOT NULL,
   `Rating` VARCHAR(1) NOT NULL,
+  `Text` VARCHAR(45) NOT NULL,
   `Date` DATE NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC) VISIBLE)
