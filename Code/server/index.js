@@ -8,7 +8,7 @@ app.use(express.json());
 
 const db =mysql.createConnection({
     user:"root",
-    host:"localhost 3001",
+    host:"localhost",
     password:"6%guUk!4muBk^B",
     database: "employeesystem",
 });
@@ -23,14 +23,14 @@ app.post("/create", (req, res) => {
     db.query(
         "INSERT INTO employees (name, age, country, position, wage) VALUES (?,?,?,?,?)",
         [name, age, country, position, wage],
-        (err, result) => {
+        (err, res) => {
             if (err) {
                 console.log(err);
             } else {
                 res.send("Values are correctly inserted");
             }
         }
-        );
+    );
 });
 app.listen(3001, () => {
     console.log("Server is running on port 3001");
