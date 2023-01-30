@@ -1,8 +1,16 @@
+////////////////////////////////////////////////////////
+// MOVE TO MODULE FILE LATER
+function getProduct() {
+    console.warn("getProduct not implemented");
+}
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+// setup
 const express = require ("express");
 const app = express ();
 const mysql =require("mysql");
 const cors = require("cors");
-
 app.use(cors());
 app.use(express.json());
 
@@ -13,6 +21,7 @@ const db =mysql.createConnection({
     database: "employeesystem",
 });
 
+// test (OLD)
 app.post("/create", (req, res) => {
     const name = req.body.name;
     const age = req.body.age;
@@ -32,7 +41,11 @@ app.post("/create", (req, res) => {
         }
     );
 });
-app.listen(3001, () => {
-    console.log("Server is running on port 3001");
+
+// start
+const port = 3001;
+app.listen(port, () => {
+    getProduct();
+    console.log(`Server is running on port ${port}`);
 });
 
