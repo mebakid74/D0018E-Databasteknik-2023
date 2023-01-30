@@ -1,10 +1,12 @@
 import React from "react";
+import "./pages.css";
 
 const Home = () => {
 return (
-    <h1>
-        Home page
-    </h1>
+    <div>
+        <h1 className='home'>Home</h1>
+    </div>
+
 );};
 
 export default Home;

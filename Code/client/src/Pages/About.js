@@ -1,10 +1,12 @@
 import React from "react";
+import "./pages.css";
 
 const About = () => {
 return (
-    <h1> 
-        About page 
-    </h1>
+    <div>
+        <h1 className='about'>About</h1>
+    </div>
+
 );};
 
 export default About;
