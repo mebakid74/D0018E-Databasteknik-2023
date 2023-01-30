@@ -42,10 +42,16 @@ app.post("/create", (req, res) => {
     );
 });
 
+// js disabled fix (doesnt seem to work rn)
+// https://www.upbeatcode.com/react/solved-you-need-to-enable-javascript-to-run-this-app/
+app.use(express.static(__dirname));
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
 // start
 const port = 3001;
 app.listen(port, () => {
-    getProduct();
     console.log(`Server is running on port ${port}`);
 });
 
