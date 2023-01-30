@@ -7,13 +7,18 @@ return (
 <>
     <nav className="nav">
         <ul>
-             <Link to="/">Home</Link>
-             <Link to="/about">About</Link>
-             <Link to="/product">Shop</Link>
+            <Link to="/product">SHOP</Link>
+            <Link to="/about">ABOUT</Link>
+            <Link to="/collection">COLLECTION</Link>
+            <div>
+                <h1 className='title'>EVERYTHING'S ATTRIE</h1>
+            </div>
+            <Link to="/">SEARCH PRODUCT</Link>
+            <Link to="/account">ACCOUNT</Link>
 
-            <Link to="/cart"><ShoppingCart size={30}/></Link>
-
+            <Link to="/cart"><ShoppingCart size={22}/></Link>
         </ul>
+
     </nav>
     
     <Outlet/>

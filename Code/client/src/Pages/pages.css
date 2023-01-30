@@ -1,33 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
 *{
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: #DDEEE8;
+    box-sizing: content-box;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #DDEEE8;
 }
 
 .nav ul{
     display: flex;
     justify-content: space-around;
-    font-size: 22px;
+    align-items: center;
+    font-size: 15px;
     margin: 5px;
     width: 100%;
     overflow: auto;
 }
 
-
+.title{
+    font-size: 23px;
+    color: #326755;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
 .productlist{
-    font-size: 17px;
+    font-size: 18px;
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
     align-items: center;
     height: 50px;
-    color: white;
-    background-color: midnightblue;
+    color: black;
+    margin-top: 25px;
 }
