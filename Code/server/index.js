@@ -49,6 +49,21 @@ app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
+// POST request to handle product page
+// in (req): pID, string productID
+// out: product name
+app.post("/getproduct", (req, res) => {
+    const pid = req.body.pid;
+    // db stuff
+    // temporary replace for debugging
+    console.log(`got product info for ${pid}`);
+    var name = "PRODUCT #" + pid;
+
+    // return name
+    res.end(name.toString()
+    );
+});
+
 // start
 const port = 3001;
 app.listen(port, () => {
