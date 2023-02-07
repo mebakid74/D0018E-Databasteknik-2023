@@ -94,7 +94,10 @@ app.post("/getproduct", (req, res) => {
         img:`img/prods/${pid}`,
         desc: "temporary test description",
         quantity: 123,
-        reviews: [[1, "not good"], [4, "pretty good"]]
+        reviews: [
+            {score:1, text:"not a good product"},
+            {score:5, text: "very good product"}
+        ]
     });
 });
 

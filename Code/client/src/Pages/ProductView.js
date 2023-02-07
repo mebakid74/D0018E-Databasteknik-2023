@@ -19,11 +19,18 @@ const ProductView = () => {
         axios.post("http://localhost:3001/getproduct", {
             pid: pid
         }).then((res) => {
-            console.log(res.data["reviews"]);
             setName(res.data["name"]);
             setImg(res.data["img"]);
             setDesc(res.data["desc"]);
             setQuantity(res.data["quantity"]);
+            let parent = document.getElementById("itemlist");
+            let list = document.createElement("ul");
+            res.data["reviews"].forEach(e => {
+                let el = document.createElement("li");
+                el.innerHTML = e["score"] + "/5  :  "  + e["text"];
+                list.append(el);
+            });
+            parent.appendChild(list);
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
@@ -42,6 +49,8 @@ const ProductView = () => {
                 <p>img src: {img}</p>
                 <p>description: {desc}</p>
                 <p>quantity: {quantity}</p>
+            <hr/>
+            <div id="itemlist"/>
         </div>
 
     );};
