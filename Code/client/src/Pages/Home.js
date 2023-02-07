@@ -1,6 +1,10 @@
 import React from "react";
 import "./pages.css";
 
+/////////////////////////////// Route info for debugging:
+// nothing atm; static page
+/////////////////////////////////////////////////////////
+
 const Home = () => {
 return (
     <div>

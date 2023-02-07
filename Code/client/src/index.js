@@ -6,10 +6,9 @@ import Home from './Pages/Home';
 import Layout from './Pages/Layout';
 import About from './Pages/About';
 import ProductView from "./Pages/ProductView";
-
-import account from "./Pages/user/account";
-import collection from "./Pages/collection";
-import cart from "./Pages/cart/cart";
+import Account from "./Pages/account";
+import Collection from "./Pages/collection";
+import Cart from "./Pages/cart";
 
 export default function App() {
     return (
@@ -20,10 +19,9 @@ export default function App() {
           <Route index element={<Home/>} />
           <Route path="about" element={<About/>}/>
           <Route path="product" element={<ProductView/>} />
-
-          <Route path="account" element={<account/>}/>
-          <Route path="collection" element={<collection/>}/>
-          <Route path="/cart" element={<cart/>}/>
+          <Route path="account" element={<Account/>}/>
+          <Route path="collection" element={<Collection/>}/>
+          <Route path="/cart" element={<Cart/>}/>
 
         </Route>
       </Routes>

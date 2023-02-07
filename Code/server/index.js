@@ -1,11 +1,3 @@
-////////////////////////////////////////////////////////
-// MOVE TO MODULE FILE LATER
-function getProduct() {
-    console.warn("getProduct not implemented");
-}
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-
 // setup
 const express = require ("express");
 const app = express ();
@@ -21,7 +13,7 @@ const db =mysql.createConnection({
     database: "employeesystem",
 });
 
-// test (OLD)
+// test (OLD); remove when queries to db are fully working
 app.post("/create", (req, res) => {
     const name = req.body.name;
     const age = req.body.age;
@@ -49,22 +41,65 @@ app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// POST request to handle product page
-// in (req): pID, string productID
-// out: product name
-app.post("/getproduct", (req, res) => {
-    const pid = req.body.pid;
-    // db stuff
-    // temporary replace for debugging
-    console.log(`got product info for ${pid}`);
-    var name = "PRODUCT #" + pid;
-
-    // return name
-    res.end(name.toString()
-    );
+// POST request to handle personal account
+app.post("/getaccount", (req, res) => {
+    const uid = req.body.uid;
+    res.json({
+        uid: uid,
+        fname: "John",
+        lname: "Doe",
+        email: "johndoe213@somedomain.xyz",
+        addr: "Somestreet 26",
+        phone: "+46xxxxxxxxx",
+    });
 });
 
-// start
+// POST request to handle collections
+app.post("/getcoll", (req, res) => {
+    const cid = req.body.cid;
+    res.json({
+        prodIds: [
+            24,
+            225,
+            189
+        ] 
+    });
+});
+
+// POST request to handle cart details
+app.post("/getcart", (req, res) => {
+    const uid = req.body.uid;
+    res.json({
+        cart: [
+            {"pid": 22, "ammount": 2},
+            {"pid": 445, "ammount": 1}
+        ]
+    });
+});
+
+// POST request to confirm an order
+app.post("/setorder", (req, res) => {
+    const uid = req.body.uid;
+    res.json({
+        confirmed: true,
+        error: "No error"
+    });
+});
+
+// POST request to handle product pages
+app.post("/getproduct", (req, res) => {
+    const pid = req.body.pid;
+    res.json({
+        name: `prod-with-id ${pid}`,
+        img:`img/prods/${pid}`,
+        desc: "temporary test description",
+        quantity: 123,
+        reviews: [[1, "not good"], [4, "pretty good"]]
+    });
+});
+
+
+// start listening
 const port = 3001;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
