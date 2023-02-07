@@ -1,6 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
 import "./pages.css";
-//import { ShoppingCart } from "phosphor-react";
 
 const Layout = () => {
 return (
@@ -14,6 +13,7 @@ return (
                 <h1 className='title'>EVERYTHING'S ATTRIE</h1>
             </div>
             <Link to="/">SEARCH PRODUCT</Link>
+            <Link to="/cart">CART</Link>
             <Link to="/account">ACCOUNT</Link>
         </ul>
 

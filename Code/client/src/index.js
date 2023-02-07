@@ -21,7 +21,7 @@ export default function App() {
           <Route path="product" element={<ProductView/>} />
           <Route path="account" element={<Account/>}/>
           <Route path="collection" element={<Collection/>}/>
-          <Route path="/cart" element={<Cart/>}/>
+          <Route path="cart" element={<Cart/>}/>
 
         </Route>
       </Routes>

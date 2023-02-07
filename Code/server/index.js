@@ -71,8 +71,8 @@ app.post("/getcart", (req, res) => {
     const uid = req.body.uid;
     res.json({
         cart: [
-            {"pid": 22, "ammount": 2},
-            {"pid": 445, "ammount": 1}
+            {"pid": 22, "amount": 2},
+            {"pid": 445, "amount": 1}
         ]
     });
 });
