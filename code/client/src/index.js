@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import './pages/pages.css';
+import './structure/pages.css';
 import Home from './pages/home';
-import Layout from './pages/layout';
+import Layout from './structure/layout';
 import About from './pages/about';
 import ProductView from "./pages/productview";
 import Account from "./pages/account";

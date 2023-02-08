@@ -1,5 +1,5 @@
 import React from "react";
-import "./pages.css";
+import "../structure/pages.css";
 
 /////////////////////////////// Route info for debugging:
 // nothing atm; static page

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-import "./pages.css";
+import "../structure/pages.css"
 
 /////////////////////////////// Route info for debugging:
 // POST path: /getproduct
