@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-
 import './Pages/pages.css';
 import Home from './Pages/Home';
 import Layout from './Pages/Layout';
@@ -10,8 +9,6 @@ import ProductView from "./Pages/ProductView";
 import Account from "./Pages/account";
 import Collection from "./Pages/collection";
 import Cart from "./Pages/cart";
-import Login from "./Pages/login";
-import Admin from "./Pages/admin";
 
 export default function App() {
     return (
@@ -25,8 +22,6 @@ export default function App() {
           <Route path="account" element={<Account/>}/>
           <Route path="collection" element={<Collection/>}/>
           <Route path="cart" element={<Cart/>}/>
-          <Route path="login" element={<Login/>}/>
-          <Route path="admin" element={<Admin/>}/>
 
         </Route>
       </Routes>

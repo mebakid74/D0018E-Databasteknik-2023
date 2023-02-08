@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { getUserValidation } from "../tools/validationTools"
 
 /////////////////////////////// Route info for debugging:
 // POST path: /getaccount
@@ -17,15 +16,7 @@ const Account = () => {
     const [addr, setAddr] = useState("");
     const [phone, setPhone] = useState("");
 
-    // used exclusively for login
-    const [password, setPassword] = useState(""); 
-
     const getDisplayInfo = () => {
-        valid = getUserValidation(email, password);
-        if (!valid) {
-            console.error("not a validated user");
-            return;
-        }
         axios.post("http://localhost:3001/getaccount", {
             uid: uid
         }).then((res) => {
@@ -40,13 +31,10 @@ const Account = () => {
         })
     };
 
-    
-
     return (
         <div>
             <h1 className='account'>ACCOUNT</h1>
-            <input type="text" onChange={(e) => {setEmail(e.target.value);}}></input>
-            <input type="text" onChange={(e) => {setPassword(e.target.value);}}></input>
+            <input type="text" onChange={(e) => {setUid(e.target.value);}}></input>
             <button onClick={getDisplayInfo}>Get account info</button>
             <hr/>
             <p>name: {fname} {lname}</p>
