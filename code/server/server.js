@@ -1,3 +1,4 @@
+const sqlconfig = require("./sqlconfig.json");
 const express = require ("express");
 const app = express ();
 const mysql =require("mysql");
@@ -5,24 +6,31 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
-    user:"root",
-    host:"localhost",
-    password:"6%guUk!4muBk^B",
-    database: "d0018e",
-});
+const db = mysql.createConnection(sqlconfig);
 
 // POST request to handle personal account
 app.post("/getaccount", (req, res) => {
-    const uid = req.body.uid;
-    res.json({
-        uid: uid,
+    db.query(
+        "SELECT c.fname, c.lname, c.email, c.phonenumber, c.address FROM Customer as c WHERE c.id = ?;",
+        [req.body.uid],
+        (err, sqlres) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.setHeader('Content-Type', 'application/json');
+                console.log(sqlres);
+                res.json(sqlres[0]);
+            }
+        }
+    );
+
+    /*res.json({
         fname: "John",
         lname: "Doe",
         email: "johndoe213@somedomain.xyz",
         addr: "Somestreet 26",
         phone: "+46xxxxxxxxx",
-    });
+    });*/
 });
 
 // POST request to handle collections

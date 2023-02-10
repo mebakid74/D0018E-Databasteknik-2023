@@ -6,7 +6,7 @@ import React, { useState } from "react";
 /////////////////////////////// Route info for debugging:
 // POST path: /getaccount
 // To backend: user validation (userID until login/validation done)
-// Return: uid, fname, lname, email, addr, phone
+// Return: fname, lname, email, address, phonenumber
 /////////////////////////////////////////////////////////
 
 
@@ -16,14 +16,15 @@ const Account = () => {
         fname: "",
         lname: "",
         email: "",
-        addr: "",
-        phone: "",
+        address: "",
+        phonenumber: "",
     }); 
 
     const getDisplayInfo = () => {
         axios.post("http://localhost:3001/getaccount", {
             uid: uid
         }).then((res) => {
+            console.log(res.data);
             setUserdata(res.data);
         }).catch((err) => {
             console.error(err);
@@ -39,8 +40,8 @@ const Account = () => {
             <hr/>
             <p>name: {userdata.fname} {userdata.lname}</p>
             <p>email: {userdata.email}</p>
-            <p>address: {userdata.addr}</p>
-            <p>phone number: {userdata.phone}</p>
+            <p>address: {userdata.address}</p>
+            <p>phone number: {userdata.phonenumber}</p>
         </div>
 
     );};
