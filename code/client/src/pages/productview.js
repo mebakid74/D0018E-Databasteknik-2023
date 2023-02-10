@@ -8,9 +8,9 @@ import Contentlist from "../components/contentlist";
 // To backend: product id
 // Return: product name, img, desc, quantity, reviews (list)
 
-// POST path: /orderproduct
+// POST path: /addproduct
 // To backend: product id, ammount, user validation
-// Return: success, error
+// Return: confirmed, error
 /////////////////////////////////////////////////////////
 
 const ProductView = () => {
@@ -42,7 +42,7 @@ const ProductView = () => {
     }
 
     const requestProductOrder = () => {
-        axios.post("http://localhost:3001/orderproduct", {
+        axios.post("http://localhost:3001/addproduct", {
             pid: pid,
             amount: amount,
             uid: uid

@@ -35,7 +35,7 @@ const Account = () => {
     return (
         <div>
             <h1 className='account'>ACCOUNT</h1>
-            <input type="text" onChange={(e) => {setUid(e.target.value);}}></input>
+            <input type="text" defaultValue={0} onChange={(e) => {setUid(e.target.value);}}></input>
             <button onClick={getDisplayInfo}>Get account info</button>
             <hr/>
             <p>name: {userdata.fname} {userdata.lname}</p>
