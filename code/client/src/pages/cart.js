@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Contentlist from "../components/contentlist";
 
 /////////////////////////////// Route info for debugging:
 // POST path: /getcart
@@ -13,19 +14,17 @@ import axios from "axios";
 
 const Cart = () => {
     const [uid, setUid] = useState(0);
+    const [els, setEls] = useState([]);
 
     const getCartInfo = () => {
         axios.post("http://localhost:3001/getcart", {
             uid: uid
         }).then((res) => {
-            let parent = document.getElementById("itemlist");
-            let list = document.createElement("ul");
-            res.data["cart"].forEach(e => {
-                let el = document.createElement("li");
-                el.innerHTML = "#" + e["pid"] + "  :  " + e["amount"]+"st";
-                list.append(el);
+            let l = []
+            res.data["cart"].forEach(el => {
+                l = l.concat(["#" + el["pid"] + " " + el["amount"] + "st"]);
             });
-            parent.appendChild(list);
+            setEls(l);
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
@@ -52,7 +51,7 @@ const Cart = () => {
                 <button onClick={getCartInfo}>Get cart info</button>
                 <button onClick={setOrder}>Confirm order</button>
                 <hr/>
-                <div id="itemlist"/>
+                <Contentlist elements={els}></Contentlist>
             </div>
         </div>
 
