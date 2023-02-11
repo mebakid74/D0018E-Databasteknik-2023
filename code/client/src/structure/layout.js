@@ -12,7 +12,7 @@ return (
             <div>
                 <h1 className='title'>EVERYTHING'S ATTRIE</h1>
             </div>
-            <Link to="/">SEARCH PRODUCT</Link>
+            <Link to="/">HOME</Link>
             <Link to="/cart">CART</Link>
             <Link to="/account">ACCOUNT</Link>
         </ul>
