@@ -111,7 +111,6 @@ body {
 .login h3{
     margin-top: 23px;
     font-weight: 500;
-    font-weight: normal;
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
 }
@@ -131,7 +130,6 @@ body {
 .login form input{
     width: 100%;
     height: 60px;
-    padding: 0;
     outline: none;
     font-size: 16px;
     border-radius: 8px;
@@ -195,7 +193,10 @@ body {
     justify-content: left;
 }
 
-.reg h3{
+.reg h3,
+.reg h4,
+.reg h5,
+.reg h6{
     text-align: left;
     justify-content: left;
     margin-top: 23px;
@@ -204,7 +205,8 @@ body {
     font-size: 18px;
 }
 
-.reg h4{
+.reg h7{
+    top: 20px;
     text-align: left;
     justify-content: left;
     margin-top: 23px;
@@ -212,14 +214,7 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
 }
-.reg h5{
-    text-align: left;
-    justify-content: left;
-    margin-top: 23px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-}
+
 .reg form{
     font-size: 16px;
     display: flex;
@@ -235,7 +230,6 @@ body {
 .reg form input{
     width: 100%;
     height: 60px;
-    padding: 0;
     outline: none;
     font-size: 16px;
     border-radius: 8px;
@@ -266,4 +260,35 @@ body {
 
 /* Account End */
 
+.App{
+    display: flex;
+    font-size: 23px;
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
+}
 
+.information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.information input {
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin: 5px;
+}
+
+.information button {
+    width: 320px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+.information button:hover{
+    cursor: pointer;
+}

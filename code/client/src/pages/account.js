@@ -1,7 +1,7 @@
-import axios from "axios";
+import Axios from "axios";
 import React, { useState } from "react";
 
-
+import "../structure/pages.css";
 
 /////////////////////////////// Route info for debugging:
 // POST path: /getaccount
@@ -48,70 +48,97 @@ import React, { useState } from "react";
 
 export default Account;*/
 
-const Account = () => {
+
+function Account() {
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState(0);
+    const [address, setAddress] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const addUser = () => {
+        getDisplayInfo();
+
+        console.log(name);
+        console.log(phone);
+        console.log(address);
+        console.log(email);
+        console.log(password);
+
+        Axios.post("http://localhost:3001/getaccount", {
+            name: name,
+            phone: phone,
+            address: address,
+            email: email,
+            password: password,
+        }).then(() => {
+            console.log("Account creation sucessfully added to database");
+        });
+    };
+
+    const getDisplayInfo = () => {
+        console.log()
+    };
+
     return (
-        <section>
-            <div className="col">
-                <h1>Login</h1>
-                <div className="login">
-                    <h2>E-mail address*</h2>
-                    <form className="login-form">
-                        <div className="text-box">
-                            <input type="email" placeholder="example@email.com" />
-                        </div>
-                    </form>
-                    <h3>Password*</h3>
-                    <form className="login-form">
-                        <div className="text-box">
-                            <input type="password" placeholder="password" />
-                        </div>
-                    </form>
-                    <button type="submit">LOGIN</button>
-                    <a href="">Forgot your credentials?</a>
+        <div className="App">
+            <h1>Are you not registered?</h1>
+        <div className="information">
+            <label>Name:</label>
+            <input
+                type="text"
+                onChange={(event) => {
+                    setName(event.target.value);
+                }}
+            />
+            <label>Phone:</label>
+            <input
+                type="number"
+                onChange={(event) => {
+                    setPhone(event.target.value);
+                }}
+            />
+            <label>Address:</label>
+            <input
+                type="text"
+                onChange={(event) => {
+                    setAddress(event.target.value);
+                }}
+            />
+            <label>Email:</label>
+            <input
+                type="text"
+                onChange={(event) => {
+                    setEmail(event.target.value);
+                }}
+            />
+            <label>Password:</label>
+            <input
+                type="text"
+                onChange={(event) => {
+                    setPassword(event.target.value);
+                }}
+            />
+            <button onClick={addUser}>Create an account</button>
+        </div>
+            <div>
+                <h2>Login</h2>
+                <div className="information">
+                    <label>E-mail address*</label>
+                    <input
+                        type="text"
+                        />
+                    <label>Password*</label>
+                    <input
+                        type="text"
+                    />
+                    <button onClick={addUser}>Login</button>
                 </div>
+
             </div>
+    </div>
 
-
-            <div className="col-2">
-                <h1>Are you not registered?</h1>
-                <div className="reg">
-                    <h2>Full Name*</h2>
-                    <form className="reg-form">
-                        <div className="text-box">
-                            <input type="name" placeholder="fullname" />
-                        </div>
-                    </form>
-
-                    <h3>E-mail address*</h3>
-                    <form className="reg-form">
-                        <div className="text-box">
-                            <input type="email" placeholder="example@email.com" />
-                        </div>
-                    </form>
-
-                    <h4>Phone Number*</h4>
-                    <form className="reg-form">
-                        <div className="text-box">
-                            <input type="phone" placeholder="phone number" />
-                        </div>
-                    </form>
-
-                    <h5>Password*</h5>
-                    <form className="reg-form">
-                        <div className="text-box">
-                            <input type="password" placeholder="password" />
-                        </div>
-                    </form>
-
-
-
-                    <button type="submit">CREATE NEW ACCOUNT</button>
-
-                </div>
-            </div>
-        </section>
-
-
-    );};
+    );
+}
 
 export default Account;
