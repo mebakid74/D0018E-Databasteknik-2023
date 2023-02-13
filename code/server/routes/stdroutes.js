@@ -5,7 +5,7 @@ module.exports = { setPost: function(app, db) {
     // POST request to handle product pages
     app.post("/getproduct", (req, res) => {
         db.query(
-            "SELECT category_id, quantity, price, color, size FROM mydb.products WHERE products.id = ?;", 
+            "SELECT name, imagepath, quantity, price, color, size FROM Products WHERE products.id = ?;", 
             [req.body.pid], 
             (err, sqlres) => {
                 if (err) {
@@ -13,7 +13,7 @@ module.exports = { setPost: function(app, db) {
                 } else {
                     console.log(sqlres);
                     res.setHeader('Content-Type', 'application/json');
-                    res.json(sqlres);
+                    res.json(sqlres[0]);
                  }
         });
     });

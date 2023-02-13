@@ -6,7 +6,7 @@ import Contentlist from "../components/contentlist";
 /////////////////////////////// Route info for debugging:
 // POST path: /getproduct
 // To backend: product id
-// Return: product name, img, desc, quantity, reviews (list)
+// Return: name, imagepath, quantity, price, color, size
 
 // POST path: /addproduct
 // To backend: product id, ammount, user validation
@@ -18,10 +18,12 @@ const ProductView = () => {
     const [amount, setAmount] = useState(0);
     const [uid, setUid] = useState(0);
     const [prodData, setProdData] = useState({
-        name: "",
-        img: "",
-        desc: "",
-        quantity: ""
+        name: "", 
+        imagepath: "", 
+        quantity: "", 
+        price: "", 
+        color: "", 
+        size: ""
     });
     const [els, setEls] = useState([]);
 
@@ -30,11 +32,11 @@ const ProductView = () => {
             pid: pid
         }).then((res) => {
             setProdData(res.data);
-            let l = []
+            /*let l = []
             res.data["reviews"].forEach(el => {
                 l = l.concat([el["score"] + "/5: " + el["text"]]);
             });
-            setEls(l);
+            setEls(l);*/
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
@@ -66,9 +68,12 @@ const ProductView = () => {
             </div>
             <hr/>
                 <p>name: {prodData.name}</p>
-                <p>img src: {prodData.img}</p>
-                <p>description: {prodData.desc}</p>
+                <p>img src: {prodData.imgagepath}</p>
                 <p>quantity: {prodData.quantity}</p>
+                <p>price: {prodData.price}</p>
+                <hr/>
+                <p>color: {prodData.color}</p>
+                <p>size: {prodData.size}</p>
             <hr/>
             <Contentlist elements={els}></Contentlist>
         </div>

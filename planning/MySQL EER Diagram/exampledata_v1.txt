@@ -21,7 +21,7 @@ insert into products (category_id, name, imagepath, quantity, price, color, size
 
 -- cart
 insert into cart values (2, 2, 1);
-insert into cart values (1, 3, 2);
+insert into cart values (1, 2, 2);
 insert into cart values (1, 1, 20);
 
 -- reviews
