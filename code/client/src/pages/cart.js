@@ -20,6 +20,7 @@ const Cart = () => {
         axios.post("http://localhost:3001/getcart", {
             uid: uid
         }).then((res) => {
+            console.log(res.data);
             let l = []
             res.data["cart"].forEach(el => {
                 l = l.concat(["#" + el["pid"] + " " + el["amount"] + "st"]);

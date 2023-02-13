@@ -4,16 +4,17 @@ module.exports = { setPost: function(app, db) {
 
     // POST request to handle product pages
     app.post("/getproduct", (req, res) => {
-        const pid = req.body.pid;
-        res.json({
-            name: `prod-with-id ${pid}`,
-            img:`img/prods/${pid}`,
-            desc: "temporary test description",
-            quantity: 123,
-            reviews: [
-                {score:1, text: "not a good product"},
-                {score:5, text: "very good product"}
-            ]
+        db.query(
+            "SELECT category_id, quantity, price, color, size FROM mydb.products WHERE products.id = ?;", 
+            [req.body.pid], 
+            (err, sqlres) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(sqlres);
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json(sqlres);
+                 }
         });
     });
 
