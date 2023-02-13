@@ -68,7 +68,7 @@ const ProductView = () => {
             </div>
             <hr/>
                 <p>name: {prodData.name}</p>
-                <p>img src: {prodData.imgagepath}</p>
+                <p>img src: {prodData.imagepath}</p>
                 <p>quantity: {prodData.quantity}</p>
                 <p>price: {prodData.price}</p>
                 <hr/>

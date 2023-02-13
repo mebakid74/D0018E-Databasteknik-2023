@@ -1,10 +1,11 @@
 const sqlconfig = require("./sqlconfig.json");
 const express = require ("express");
 const app = express ();
-const mysql =require("mysql");
-const cors = require("cors");
-app.use(cors());
 app.use(express.json());
+
+const mysql = require("mysql");
+const cors = require("cors");
+app.use(cors({origin: true, credentials: true}));
 
 const db = mysql.createConnection(sqlconfig);
 
