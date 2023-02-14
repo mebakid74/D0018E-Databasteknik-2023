@@ -4,10 +4,26 @@ module.exports = { setPost: function(app, db) {
 
     // POST request to confirm an order
     app.post("/setorder", (req, res) => {
-        const uid = req.body.uid;
-        res.json({
-            confirmed: true,
-            error: "No error"
+        // create receipt;
+
+        // insert; final query
+        db.query(
+            `insert into receipts (users_id, orderdate, orderstatus) values (?, NOW(), "Pending");
+            insert into receiptitems 
+            select receipts.id, carts.products_id, carts.amount from receipts
+            inner join carts on carts.users_id = receipts.users_id;
+            delete from carts where users_id = ?;`, 
+            [req.body.uid, req.body.uid],
+            (err, sqlres) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json({
+                        confirmed: true,
+                        error: "No error"
+                    });
+                }
         });
     });
 

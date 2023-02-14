@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Contentlist from "../components/contentlist";
 
+
 /////////////////////////////// Route info for debugging:
 // POST path: /getcart
 // To backend: user validation (userID until login/validation done)
@@ -21,11 +22,19 @@ const Cart = () => {
             uid: uid
         }).then((res) => {
             console.log(res.data);
+
+            if (res.data == null) { return;}
+
             let l = []
-            res.data["cart"].forEach(el => {
-                l = l.concat(["#" + el["pid"] + " " + el["amount"] + "st"]);
-            });
+            for (const [,v] of Object.entries(res.data)) {
+                let s = "#"+ v["products_id"] + ":   " + v["amount"] + "st. ";
+                if (s in l) { console.error("duplicate elements are not allowed"); }
+                l.push(s);
+            }
+
+            console.log(l);
             setEls(l);
+
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);

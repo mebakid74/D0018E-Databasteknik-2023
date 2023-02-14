@@ -2,5 +2,6 @@
     "user":     "root",
     "host":     "localhost",
     "password": "MyNewPass",
-    "database": "mydb_v2"
+    "database": "mydb_v2",
+    "multipleStatements" : "true"
 }
