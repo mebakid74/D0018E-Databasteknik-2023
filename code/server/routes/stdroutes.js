@@ -11,7 +11,6 @@ module.exports = { setPost: function(app, db) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log(sqlres);
                     res.setHeader('Content-Type', 'application/json');
                     res.json(sqlres[0]);
                  }

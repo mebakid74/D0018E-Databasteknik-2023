@@ -8,11 +8,11 @@ module.exports = { setPost: function(app, db) {
 
         // insert; final query
         db.query(
-            `insert into receipts (users_id, orderdate, orderstatus) values (?, NOW(), "Pending");
-            insert into receiptitems 
-            select receipts.id, carts.products_id, carts.amount from receipts
-            inner join carts on carts.users_id = receipts.users_id;
-            delete from carts where users_id = ?;`, 
+            `INSERT INTO Receipts (users_id, orderdate, orderstatus) VALUES (?, NOW(), "Pending");
+            INSERT INTO Receiptitems 
+            SELECT receipts.id, carts.products_id, carts.amount FROM Receipts
+            INNER JOIN Carts ON Carts.users_id = Receipts.users_id;
+            DELETE FROM Carts WHERE Users_id = ?;`, 
             [req.body.uid, req.body.uid],
             (err, sqlres) => {
                 if (err) {
@@ -30,7 +30,7 @@ module.exports = { setPost: function(app, db) {
     // POST request att order to cart
     app.post("/addproduct", (req, res) => {
         db.query(
-            "INSERT INTO Cart VALUES (?, ?, ?);", 
+            "INSERT INTO Carts VALUES (?, ?, ?);", 
             [req.body.pid, req.body.uid, req.body.amount], 
             (err, sqlres) => {
                 if (err) {
