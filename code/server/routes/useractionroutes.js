@@ -45,8 +45,11 @@ module.exports = { setPost: function(app, db) {
         });
     });
 
-    // handle login / registration
-    app.post("/login", (req, res) => {
+    app.post("/validatelogin", (req, res) => {
         
+    });
+
+    app.post("/register", (req, res) => {
+
     });
 }}

@@ -41,7 +41,7 @@ const Cart = () => {
         })
     }
 
-    const setOrder = () => {
+    const requestOrder = () => {
         axios.post("http://localhost:3001/setorder", {
             uid: uid
         }).then((res) => {
@@ -59,7 +59,7 @@ const Cart = () => {
                 <label>Cart</label>
                 <input type="text" onChange={(e) => {setUid(e.target.value);}}></input>
                 <button onClick={getCartInfo}>Get cart info</button>
-                <button onClick={setOrder}>Confirm order</button>
+                <button onClick={requestOrder}>Confirm order</button>
                 <hr/>
                 <Contentlist elements={els}></Contentlist>
             </div>
