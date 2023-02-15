@@ -292,3 +292,68 @@ body {
 .information button:hover{
     cursor: pointer;
 }
+
+
+/* COLLECTION START */
+
+.collection h1{
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #326755;
+    font-weight: lighter;
+}
+
+.collection p {
+    text-align: center;
+    justify-content: center;
+    margin-top: 16px;
+    font-size: 16px;
+    color: #326755;
+    font-weight: bold;
+}
+
+.hr{
+    height: 5px;
+}
+.collection h2{
+    text-align: right;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-right: 12px;
+    color: #326755;
+}
+
+.collection h3,
+.collection h4,
+.collection h5,
+.collection h6
+{
+    font-size: 23px;
+    display:inline;
+    justify-content: space-between;
+    margin: 50px;
+    right: 40px;
+    align-items: center;
+    text-align: center;
+    color: #326755;
+}
+
+.item-1{
+    margin-top: 16px;
+    text-align: center;
+    justify-content: space-between;
+    font-size: 23px;
+    color: #326755;
+}
+
+.item-2,
+.item-3,
+.item-4{
+    margin-top: 16px;
+    color: #326755;
+    font-size: 23px;
+    text-align: center;
+}
+

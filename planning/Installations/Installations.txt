@@ -1,0 +1,4 @@
+npm install mysql express - cd server
+
+
+npm i react-multi-carousel - cd client
