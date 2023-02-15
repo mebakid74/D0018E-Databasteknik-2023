@@ -1,5 +1,5 @@
 // register POST requests for paths that allow the user to (or attempt to) make decisions on the backend
-const { routes } = require("../../client/src/constants");
+const { routes, errcode, constructError, constructSuccess } = require("../../client/src/constants");
 
 
 module.exports = { setPost: function(app, db, bcrypt) {
@@ -12,13 +12,12 @@ module.exports = { setPost: function(app, db, bcrypt) {
             DELETE FROM Carts WHERE Users_id = ?;`, 
             [req.body.uid, req.body.uid],
             (err, sqlres) => {
-                if (err) { console.log(err);
+                if (err) { 
+                    console.log(err);
+                    res.json(constructError(errcode.failed_move_cart_to_order, err));
                 } else {
                     res.setHeader('Content-Type', 'application/json');
-                    res.json({
-                        confirmed: true,
-                        error: "No error"
-                    });
+                    res.json(constructSuccess());
                 }
             }
         );
@@ -29,7 +28,8 @@ module.exports = { setPost: function(app, db, bcrypt) {
             "INSERT INTO Carts VALUES (?, ?, ?);", 
             [req.body.pid, req.body.uid, req.body.amount], 
             (err, sqlres) => {
-                if (err) { console.log(err);
+                if (err) { 
+                    console.log(err);
                 } else {
                     res.setHeader('Content-Type', 'application/json');
                     res.json({
@@ -48,7 +48,7 @@ module.exports = { setPost: function(app, db, bcrypt) {
             (err, sqlres) => {
                 if (err) { console.log(err);
                 } else {
-                    var ret = {error: "No error", uid: sqlres[0]["id"]};
+                    var ret = { uid: sqlres[0]["id"] };
                     if (bcrypt.compareSync(req.body.password, sqlres[0]["password"])) {
                         ret["valid"] = true;
                         ret["validationToken"] = "asd123";
@@ -57,7 +57,7 @@ module.exports = { setPost: function(app, db, bcrypt) {
                         ret["valid"] = false;
                     }
                     res.setHeader('Content-Type', 'application/json');
-                    res.json(ret);
+                    res.json(constructSuccess(ret));
                 }
             }
         )
@@ -82,5 +82,43 @@ module.exports = { setPost: function(app, db, bcrypt) {
                 }
             }
         )
+    });
+
+    app.post(routes.increment_product_in_cart, (req, res) => {
+        db.query(
+            "SELECT quantity FROM Products WHERE Products.id = ?;",
+            [req.body.pid],
+            (err, sqlres) => {
+                if (err) { console.log(err);
+                } else {
+                    var n = sqlres[0]["quantity"];
+                    var inc = req.body.increment;
+                    if (n - inc <= 0) {
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json({
+                            confirmed: false,
+                            error: "Not enough items to increment"
+                        });
+                    }
+                    else {
+                        db.query(
+                            `UPDATE Products SET quantity = quantity-1 WHERE Products.id = ?;
+                            UPDATE Carts SET amount = amount+1 WHERE users_id=? AND products_id=?;`, 
+                            [req.body.pid, req.body.uid, req.body.pid],
+                            (err, sqlres) => {
+                                if (err) { console.log(err);
+                                } else {
+                                    res.setHeader('Content-Type', 'application/json');
+                                    res.json({
+                                        confirmed: true,
+                                        error: "No error"
+                                    });
+                                }
+                            }
+                        );
+                    }
+                }
+            }
+        );
     });
 }}

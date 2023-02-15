@@ -1,5 +1,5 @@
 // register POST routes for pages that don't require specialized data
-const { routes } = require("../../client/src/constants");
+const { routes, errcode, constructError, constructSuccess } = require("../../client/src/constants");
 
 
 module.exports = { setPost: function(app, db) {
@@ -11,30 +11,39 @@ module.exports = { setPost: function(app, db) {
             (err, sqlres) => {
                 if (err) { console.log(err);
                 } else {
+                    var retData;
+                    if (sqlres.length > 0) {
+                        retData = constructSuccess(sqlres[0]);
+                    } else {
+                        retData = constructError(errcode.invalid_products_id, "");
+                    }
                     res.setHeader('Content-Type', 'application/json');
-                    res.json(sqlres[0]);
+                    res.json(retData);
                 }
             }
         );
     });
 
     app.post(routes.get_filtered_product_list, (req, res) => {
-        const sortParse = (v) => {
-            return (v==null) ? "*" : v;
+        var query = "";
+        if (req.body.color != null) {
+            query.concat(" color=", req.body.color);
+        }
+        if (req.body.size != null) {
+            query.concat(" size=", req.body.size);
+        }
+        if (query != "") {
+            query =  "WHERE " + query + ";";
         }
 
-        var sortByColor = sortParse(req.body.color);
-        var sortBySize = sortParse(req.body.size);
-
         db.query(
-            `SELECT name, imagepath, quantity FROM Products
-            WHERE color=? AND size=?`,
-            [sortByColor, sortBySize],
+            "SELECT name, imagepath, quantity FROM Products" + query,
+            [],
             (err, sqlres) => {
                 if (err) { console.log(err);
                 } else {
                     res.setHeader('Content-Type', 'application/json');
-                    res.json(sqlres);
+                    res.json(constructSuccess(sqlres));
                 }
             }
         );
@@ -43,12 +52,8 @@ module.exports = { setPost: function(app, db) {
     // collections not implemented in db yet
     app.post(routes.get_collection_id_list), (req, res) => {
         const cid = req.body.cid;
-        res.json({
-            prodIds: [
-                24,
-                225,
-                189
-            ] 
-        });
+        res.json(constructSuccess({
+            prodIds: [ 24, 225, 189 ] 
+        }));
     };
 }}

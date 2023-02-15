@@ -1,5 +1,5 @@
 // register POST requests for returning user data / pages
-const { routes } = require("../../client/src/constants");
+const { routes, constructError, constructSuccess } = require("../../client/src/constants");
 
 
 module.exports = {  setPost: function(app, db) {
@@ -12,7 +12,7 @@ module.exports = {  setPost: function(app, db) {
                 if (err) { console.log(err);
                 } else {
                     res.setHeader('Content-Type', 'application/json');
-                    res.json(sqlres[0]);
+                    res.json(constructSuccess(sqlres[0]));
                 }
             }
         );
@@ -26,7 +26,7 @@ module.exports = {  setPost: function(app, db) {
                 if (err) { console.log(err);
                 } else {
                     res.setHeader('Content-Type', 'application/json');
-                    res.json(sqlres);
+                    res.json(constructSuccess(sqlres));
                 }
             }
         ); 
