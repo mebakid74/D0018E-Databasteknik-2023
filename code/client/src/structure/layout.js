@@ -10,7 +10,7 @@ return (
             <Link to="/about">ABOUT</Link>
             <Link to="/collection">COLLECTION</Link>
             <div>
-                <h1 className='title'>EVERYTHING'S ATTRIE</h1>
+                <h1 className='title'>EVERYTHING'S ATTIRE</h1>
             </div>
             <Link to="/">HOME</Link>
             <Link to="/cart">CART</Link>

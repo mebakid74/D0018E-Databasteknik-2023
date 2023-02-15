@@ -299,7 +299,7 @@ body {
 .collection h1{
     text-align: center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 26px;
     font-size: 18px;
     color: #326755;
     font-weight: lighter;
@@ -311,7 +311,6 @@ body {
     margin-top: 16px;
     font-size: 16px;
     color: #326755;
-    font-weight: bold;
 }
 
 .hr{
@@ -319,13 +318,14 @@ body {
 }
 .collection h2{
     text-align: right;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 20px;
     margin-right: 12px;
     color: #326755;
+    font-weight: lighter;
 }
 
-.collection h3,
+/*.collection h3,
 .collection h4,
 .collection h5,
 .collection h6
@@ -338,7 +338,7 @@ body {
     align-items: center;
     text-align: center;
     color: #326755;
-}
+}*/
 
 .item-1{
     margin-top: 16px;
@@ -357,3 +357,67 @@ body {
     text-align: center;
 }
 
+/* COLLECTION END */
+
+
+/* ABOUT US START */
+.about h1 {
+    margin-top: 26px;
+    font-size: 18px;
+    color: #326755;
+    font-weight: lighter;
+    text-align: center;
+    justify-content: center;
+}
+
+.p-1 p {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #326755;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.p-2 p{
+    margin-right: 20px;
+    font-size: 16px;
+    color: #326755;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.p-3 p{
+    margin-right: 20px;
+    font-size: 16px;
+    color: #326755;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.about h2 {
+    margin-top: 32px;
+    font-size: 20px;
+    color: #326755;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+}
+
+.cover{
+    margin-top: 16px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.about h3 {
+    margin-top: 32px;
+    font-size: 20px;
+    color: #326755;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+}
