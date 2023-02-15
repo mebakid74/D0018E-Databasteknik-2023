@@ -50,7 +50,8 @@ export default Account;*/
 
 
 function Account() {
-    const [name, setName] = useState("");
+    const [fname, setFname] = useState("");
+    const [lname, setLname] = useState("");
     const [phone, setPhone] = useState(0);
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
@@ -59,15 +60,16 @@ function Account() {
     const addUser = () => {
         getDisplayInfo();
 
-        console.log(name);
+        console.log(fname, lname);
         console.log(phone);
         console.log(address);
         console.log(email);
         console.log(password);
 
-        Axios.post("http://localhost:3001/getaccount", {
-            name: name,
-            phone: phone,
+        Axios.post("http://localhost:3001/register", {
+            fname: fname,
+            lname: lname,
+            phonenumber: phone,
             address: address,
             email: email,
             password: password,
@@ -75,6 +77,19 @@ function Account() {
             console.log("Account creation sucessfully added to database");
         });
     };
+
+    const validateUserLogin = () => {
+        Axios.post("http://localhost:3001/validatelogin", {
+            email: email,
+            password: password
+        }).then((res) => {
+            var b = res.data;
+            console.log(b["uid"], b["valid"]);
+            if (b["valid"]) {
+                console.log(b["validationToken"]);
+            }
+        });
+    }
 
     const getDisplayInfo = () => {
         console.log()
@@ -84,11 +99,18 @@ function Account() {
         <div className="App">
             <h1>Are you not registered?</h1>
         <div className="information">
-            <label>Name:</label>
+            <label>First name:</label>
             <input
                 type="text"
                 onChange={(event) => {
-                    setName(event.target.value);
+                    setFname(event.target.value);
+                }}
+            />
+            <label>Last name:</label>
+            <input
+                type="text"
+                onChange={(event) => {
+                    setLname(event.target.value);
                 }}
             />
             <label>Phone:</label>
@@ -120,6 +142,7 @@ function Account() {
                 }}
             />
             <button onClick={addUser}>Create an account</button>
+            <button onClick={validateUserLogin}>Debug: Validate login)</button>
         </div>
             <div>
                 <h2>Login</h2>
