@@ -7,6 +7,7 @@ const routes = {
     order_products_from_cart: "/ordercart",
     validate_login_details: "/validate",
     register_new_user: "/register",
+    get_filtered_product_list: "/getprodfiltered"
 }
 
 const clientParsedRoutes = {};

@@ -19,14 +19,14 @@ insert into categories (parent_category_id, name) values(1, "Accessories");
 insert into categories (parent_category_id, name) values(2, "T-shirts");
 
 -- products
-insert into products (categories_id, name, imagepath, quantity, price, color, size, dateadded, dateremoved) 
-values (4, "grey t-shirt", "/images/all/greyshirt.png", 53, 199, "grey", "s", CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, quantity, price, color, size, dateadded, dateremoved)
-values (3, "bag", "/images/bags/bag.jpg", 2, 899, "black", NULL, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, quantity, price, color, size, dateadded, dateremoved)
-values (4, "blue t-shirt", "/images/all/blueshirt.png", 53, 199, "blue", "s", CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, quantity, price, color, size, dateadded, dateremoved)
-values (4, "grey t-shirt", "/images/all/greyshirt.png", 1, 199, "grey", "xl", CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, color, size, dateadded, dateremoved) 
+values (4, "grey t-shirt", "/images/all/greyshirt.png", "a cool grey shirt", 53, 199, "grey", "s", CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, color, size, dateadded, dateremoved)
+values (3, "bag", "/images/bags/bag.jpg", "a cool bag", 2, 899, "black", NULL, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, color, size, dateadded, dateremoved)
+values (4, "blue t-shirt", "/images/all/blueshirt.png", "a cool blue shirt", 53, 199, "blue", "s", CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, color, size, dateadded, dateremoved)
+values (4, "grey t-shirt", "/images/all/greyshirt.png", "a cool grey shirt", 1, 199, "grey", "xl", CURDATE(), NULL);
 
 -- cart
 insert into carts values (2, 2, 1);
