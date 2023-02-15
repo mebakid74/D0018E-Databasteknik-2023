@@ -68,8 +68,8 @@ module.exports = { setPost: function(app, db, bcrypt) {
         var salt = bcrypt.genSaltSync(10);
         var hashedPassword = bcrypt.hashSync(b.password, salt);
         db.query(
-            `INSERT INTO Users (fname, lname, email, phonenumber, address, Users.password, registered) 
-            VALUES (?, ?, ?, ?, ?, ?, 1);`,
+            `INSERT INTO Users (fname, lname, email, phonenumber, address, Users.password, DateJoined, registered) 
+            VALUES (?, ?, ?, ?, ?, ?, CURDATE(), 1);`,
             [b.fname, b.lname, b.email, b.phonenumber, b.address, hashedPassword],
             (err, sqlres) => {
                 if (err) { console.log(err);

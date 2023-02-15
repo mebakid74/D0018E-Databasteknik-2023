@@ -9,6 +9,13 @@ const routes = {
     register_new_user: "/register",
 }
 
+const clientParsedRoutes = {};
+
+Object.entries(routes).forEach((e) => {
+    const [k,v] = e;
+    clientParsedRoutes[k] = "http://localhost:3001" + v;
+}); 
+
 module.exports = {
-    routes
+    routes, clientParsedRoutes
 }
