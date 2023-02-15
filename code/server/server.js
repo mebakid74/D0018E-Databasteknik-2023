@@ -11,6 +11,9 @@ const db = mysql.createConnection(sqlconfig);
 
 const bcrypt = require("bcryptjs");
 
+const { routes } = require("../client/src/constants");
+console.log(routes.add_product_to_database);
+
 // initialize routes
 const userroutes = require("./routes/userroutes");
 const stdroutes = require("./routes/stdroutes");

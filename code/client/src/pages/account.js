@@ -2,6 +2,8 @@ import Axios from "axios";
 import React, { useState } from "react";
 
 import "../structure/pages.css";
+import { routes } from "../constants"
+console.log(routes.add_product_to_database);
 
 /////////////////////////////// Route info for debugging:
 // POST path: /getaccount

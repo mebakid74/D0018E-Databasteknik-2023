@@ -89,4 +89,8 @@ module.exports = { setPost: function(app, db, bcrypt) {
             }
         )
     });
+
+    app.post("/increment", (req, res) => {
+        
+    })
 }}
