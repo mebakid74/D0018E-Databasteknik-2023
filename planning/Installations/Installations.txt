@@ -6,4 +6,4 @@ Fully customizable React carousel component
 
 Popular icons which utilizes ES6 - cd client
   $ npm install react-icons --save
-  import { IconName } from 'react-icons/fa';
+  import { IconName } from "react-icons/ai";
