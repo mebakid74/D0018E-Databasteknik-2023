@@ -35,18 +35,24 @@ module.exports = { setPost: function(app, db) {
 
     app.post(routes.get_filtered_product_list, (req, res) => {
         var query = "";
-        if (req.body.color != null) {
-            query.concat(" color=", req.body.color);
+        var filters = req.body.filters;
+        var sortmode = req.body.sortmode;
+        var collections = req.body.collections;
+
+        if (filters.length > 0) {
+            query += " where Products.id in (SELECT products_id from productfilters where '1'='1' "
+            filters.forEach(e => {
+                query += " and " + e["filter"] + "=" + e["filteval"];
+            });
+            query += ")"
         }
-        if (req.body.size != null) {
-            query.concat(" size=", req.body.size);
-        }
-        if (query != "") {
-            query =  "WHERE " + query + ";";
+
+        if (collections.length > 0) {
+            query += ""
         }
 
         db.query(
-            "SELECT name, imagepath, quantity FROM Products" + query,
+            "SELECT id, name, imagepath, quantity FROM Products" + query + ";",
             [],
             (err, sqlres) => {
                 if (err) { console.log(err);

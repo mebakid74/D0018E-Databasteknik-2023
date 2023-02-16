@@ -1,0 +1,48 @@
+-- for db version: v7
+-- customers
+insert into users (fname, lname, email, phonenumber, address, users.password, datetimejoined, registered) 
+values ("john", "doe", "jdoe@somemail.zzz", "+46xxxxxxxxx", "somestreet 29", "password", NOW(), 1);
+insert into users (fname, lname, email, phonenumber, address, users.password, datetimejoined, registered) 
+values ("jane", "doe", "jdoe@someothermail.zzz", "None", "somestreet 30", "password12", NOW(), 1);
+insert into users (fname, lname, email, phonenumber, address, users.password, datetimejoined, registered) 
+values ("temp", "test", "", "", "", "", NOW(), 0);
+insert into users (fname, lname, email, phonenumber, address, users.password, datetimejoined, registered) 
+values ("default", "admin", "da@thissite.se", "+46xxx3xxxxx", "companystreet 2", "pass", NOW(), 1);
+
+-- admins
+insert into admins values (2);
+
+-- categories
+insert into categories (parent_category_id, name) values(NULL, "root node");
+insert into categories (parent_category_id, name) values(1, "Clothes");
+insert into categories (parent_category_id, name) values(1, "Accessories");
+insert into categories (parent_category_id, name) values(2, "T-shirts");
+
+-- products
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved) 
+values (4, "grey t-shirt", "/images/all/greyshirt.png", "a cool grey shirt", 53, 199, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (3, "bag", "/images/bags/bag.jpg", "a cool bag", 2, 899, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (4, "blue t-shirt", "/images/all/blueshirt.png", "a cool blue shirt", 53, 199, CURDATE(), NULL);
+
+-- cart
+insert into carts values (2, 2, 1);
+insert into carts values (1, 2, 2);
+insert into carts values (1, 1, 20);
+
+-- reviews
+insert into reviews (products_id, rating, text, date, users_id) values(1, 5, "grey tshirt :)", CURDATE(), 1);
+insert into reviews (products_id, rating, text, date, users_id) values(2, 1, "low quality", CURDATE(), 2);
+insert into reviews (products_id, rating, text, date, users_id) values(1, 3, "best shirt i ever bought", CURDATE(), 2);
+
+-- collections
+insert into collections (id, name, description, datetimeadded, datetimeremoved) values (0, "Summer collection 2023", "Summer clothes", NOW(), NULL);
+insert into collectionItems values (0, 1);
+insert into collectionItems values (0, 2);
+
+-- product filters
+insert into productfilters values (1, "grey", "s");
+insert into productfilters values (3, "blue", "s");
+insert into productfilters values (1, "grey", "xl");
+insert into productfilters values (1, "grey", "m");
