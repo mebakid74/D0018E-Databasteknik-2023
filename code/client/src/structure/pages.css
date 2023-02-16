@@ -419,13 +419,11 @@ body {
     text-align: center;
     justify-content: center;
 }
-
 /* ABOUT US END */
 
 
 /* PRODUCT VIEW START*/
 .shop{
-    flex-direction: column;
     text-align: center;
     justify-content: center;
     padding: 14px;
@@ -486,7 +484,6 @@ body {
     justify-content: right;
 }
 
-
 .dropdown-2 button{
     font-size: 18px;
     color: #326755;
@@ -495,9 +492,15 @@ body {
     margin-top: 15px;
     cursor: pointer;
 }
+
+.products {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
 .prod-1{
     margin-top: 20px;
-    flex-direction: column;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -519,6 +522,7 @@ body {
 }
 
 .prod-2{
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 .prod-2 h4{
@@ -537,6 +541,7 @@ body {
 }
 
 .prod-3{
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
@@ -554,7 +559,6 @@ body {
     text-align: center;
     justify-content: center;
 }
-
 
 .dropdown h5,h6{
     color: #326755;

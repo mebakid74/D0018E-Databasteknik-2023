@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5672ada4-f828-4a01-9d7f-fd0401b07dbc" name="Changes" comment="Added Login and Reg. UI design + Landing page fixed">
-      <changelist_data name="afy" email="hannes.furhoff@hotmail.com" />
+    <list default="true" id="36d9d16b-9049-407d-bc6a-348bc51f7cf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/productview.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/productview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structure/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structure/layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/structure/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structure/pages.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,15 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProjectId" id="2Lb2JDP8lZUYOKm3rW2dNq0fi00" />
+  <component name="ProjectId" id="2LpASa2YLjzbu3HNF6mpjHJ3mJj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,28 +31,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5672ada4-f828-4a01-9d7f-fd0401b07dbc" name="Changes" comment="" />
-      <created>1676125398621</created>
+      <changelist id="36d9d16b-9049-407d-bc6a-348bc51f7cf9" name="Changes" comment="" />
+      <created>1676557654209</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676125398621</updated>
-      <workItem from="1676125400717" duration="15404000" />
-      <workItem from="1676196652552" duration="490000" />
-      <workItem from="1676290000136" duration="555000" />
-      <workItem from="1676290589285" duration="9106000" />
-      <workItem from="1676377441024" duration="3028000" />
-      <workItem from="1676383418020" duration="6618000" />
-      <workItem from="1676453234643" duration="122000" />
-      <workItem from="1676453421164" duration="33000" />
-      <workItem from="1676453567206" duration="6209000" />
-      <workItem from="1676465538448" duration="7557000" />
+      <updated>1676557654209</updated>
+      <workItem from="1676557655451" duration="2404000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
