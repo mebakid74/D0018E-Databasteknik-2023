@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="36d9d16b-9049-407d-bc6a-348bc51f7cf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/contentlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/contentlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/productview.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/productview.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/structure/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structure/layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/structure/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structure/pages.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/tools/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/tools/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +37,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1676557654209</updated>
-      <workItem from="1676557655451" duration="2404000" />
+      <workItem from="1676557655451" duration="9021000" />
     </task>
     <servers />
   </component>

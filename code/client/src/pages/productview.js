@@ -25,6 +25,7 @@ const ProductView = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     useEffect(() => {
         var p = searchParams.get("prod_id");
+        console.log(p)
         setPid(p);
         getProductInfo(p); // param required here 
     },[]);
