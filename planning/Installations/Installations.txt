@@ -1,4 +1,9 @@
 npm install mysql express - cd server
 
+Fully customizable React carousel component 
+  $ npm install react-multi-carousel --save - cd client
+  import Carousel from 'react-multi-carousel';
 
-npm i react-multi-carousel - cd client
+Popular icons which utilizes ES6 - cd client
+  $ npm install react-icons --save
+  import { icontype } from 'react-icons/fa';
