@@ -40,6 +40,8 @@ This project uses the following development tools;
  
 <br />
 
+<br />
+
 ## Website sample
 
 Showcasing a simple and clean design that is both user-friendly and visually appealing.
