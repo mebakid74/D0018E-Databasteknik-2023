@@ -8,6 +8,7 @@ The purpose of this laboratory session was to create a simple e-commerce website
 
 * [Introduction](#introduction)
 * [Development and other tools](#dev)
+* [Website sample](#web)
 * [Participant](#participant)
 
 
@@ -35,9 +36,18 @@ This project uses the following development tools;
 
 <img align="left" alt="Java" width="60px" style="padding-right:50px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
 
+<br /> 
+ 
 <br />
 
-<br />
+## Website sample
+
+Showcasing a simple and clean design that is both user-friendly and visually appealing.
+
+![home](https://user-images.githubusercontent.com/76616663/219222287-e8f534b5-f709-4cfd-bb86-0b4703486e65.jpg)
+![news](https://user-images.githubusercontent.com/76616663/219222291-865c9231-dd1c-4981-9ac3-f9c9721e982c.jpg)
+![footer](https://user-images.githubusercontent.com/76616663/219222292-cafdb641-9b79-469f-8103-f97e14caf607.jpg)
+
 
 ## Participant
 
