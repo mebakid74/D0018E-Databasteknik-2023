@@ -19,9 +19,11 @@ const bcrypt = require("bcryptjs");
 const userroutes = require("./routes/userroutes");
 const stdroutes = require("./routes/stdroutes");
 const useractionroutes = require("./routes/useractionroutes");
+const adminroutes = require("./routes/adminroutes");
 userroutes.setPost(app, db);
 stdroutes.setPost(app, db);
 useractionroutes.setPost(app, db, bcrypt);
+adminroutes.setPost(app, db);
 
 // start listening
 const port = 3001;

@@ -28,7 +28,7 @@ const Account = () => {
             email:          userdata.email,
             password:       userdata.password,
         }).then((res) => {
-            alert((res.data["error"] === "No error") ? "User has been registered" : "User could not be registered");
+            alert((res.data["status"] === "success") ? "User has been registered" : "User could not be registered");
             setUserdata({
                 fname: "",
                 lname: "",

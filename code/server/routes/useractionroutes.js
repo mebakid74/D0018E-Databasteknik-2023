@@ -23,7 +23,7 @@ module.exports = { setPost: function(app, db, bcrypt) {
         );
     });
 
-    app.post(routes.add_product_to_database, (req, res) => {
+    app.post(routes.add_product_to_cart, (req, res) => {
         db.query(
             "INSERT INTO Carts VALUES (?, ?, ?);", 
             [req.body.pid, req.body.uid, req.body.amount], 

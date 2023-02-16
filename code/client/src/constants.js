@@ -4,12 +4,13 @@ const routes = {
     get_account_page_info: "/getacc",
     get_collection_id_list: "/getcoll",
     get_cart_page_info: "/getcart",
-    add_product_to_database: "/addprod",
+    add_product_to_cart: "/addprod",
     order_products_from_cart: "/ordercart",
     validate_login_details: "/validate",
     register_new_user: "/register",
     get_filtered_product_list: "/getprodfiltered",
-    increment_product_in_cart: "/incrementcart"
+    increment_product_in_cart: "/incrementcart",
+    admin_remove_user: "/"
 }
 
 Object.entries(routes).forEach((e) => {
@@ -17,12 +18,11 @@ Object.entries(routes).forEach((e) => {
     clientParsedRoutes[k] = "http://localhost:3001" + v;
 }); 
 
-// it is preferred to use this instead of a new creation to avoid misspelling 
-const constructError = (text, dets="") => {
-    return { "error": text, "details": dets };
+const constructError = (text, dets=null) => {
+    return { "status": text, "details": dets };
 };
 
-const constructSuccess = (d=null, dets="") => {
+const constructSuccess = (d=null, dets=null) => {
     return {...constructError("success", dets), data:d };
 };
 
