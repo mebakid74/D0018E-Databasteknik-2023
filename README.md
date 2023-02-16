@@ -7,8 +7,8 @@ The purpose of this laboratory session was to create a simple e-commerce website
 ## Table of contents
 
 * [Introduction](#introduction)
-* [Development and other tools](#devlopmentandothertools)
-* [Website sample](#websitesample)
+* [Development and other tools](#dev)
+* [Website sample](#web)
 * [Participant](#participant)
 
 
