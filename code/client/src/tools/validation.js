@@ -1,3 +1,9 @@
 import axios from "axios";
-const getUserValidation = (email, password) => {};
-export default getUserValidation;
+const getUserValidation = (validationToken) => {
+
+};
+
+const isUserAdmin = (validationToken) => {
+
+}
+export default { getUserValidation, isUserAdmin };
