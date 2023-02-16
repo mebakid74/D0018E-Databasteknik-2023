@@ -17,21 +17,15 @@ Object.entries(routes).forEach((e) => {
     clientParsedRoutes[k] = "http://localhost:3001" + v;
 }); 
 
-const errcode = {
-    success: 0,
-    invalid_products_id: 1,
-    failed_move_cart_to_order: 2
-};
-
 // it is preferred to use this instead of a new creation to avoid misspelling 
-const constructError = (errno, dets="") => {
-    return { "error": errno, "details": dets };
+const constructError = (text, dets="") => {
+    return { "error": text, "details": dets };
 };
 
 const constructSuccess = (d=null, dets="") => {
-    return {...constructError(errno.success, dets), data:d };
+    return {...constructError("success", dets), data:d };
 };
 
 module.exports = {
-    routes, clientParsedRoutes, errcode, constructError, constructSuccess
+    routes, clientParsedRoutes, constructError, constructSuccess
 }

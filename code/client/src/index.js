@@ -9,6 +9,8 @@ import ProductView from "./pages/productview";
 import Account from "./pages/account";
 import Collection from "./pages/collection";
 import Cart from "./pages/cart";
+import Search from './pages/search';
+import Admin from "./pages/admin"
 
 export default function App() {
     return (
@@ -22,6 +24,8 @@ export default function App() {
           <Route path="account" element={<Account/>}/>
           <Route path="collection" element={<Collection/>}/>
           <Route path="cart" element={<Cart/>}/>
+          <Route path="search" element={<Search/>}/>
+          <Route path="admin" element={<Admin/>}/>
 
         </Route>
       </Routes>

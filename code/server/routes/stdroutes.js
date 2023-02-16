@@ -1,5 +1,5 @@
 // register POST routes for pages that don't require specialized data
-const { routes, errcode, constructError, constructSuccess } = require("../../client/src/constants");
+const { routes, constructError, constructSuccess } = require("../../client/src/constants");
 
 
 module.exports = { setPost: function(app, db) {
@@ -15,7 +15,7 @@ module.exports = { setPost: function(app, db) {
                     if (sqlres.length > 0) {
                         retData = constructSuccess(sqlres[0]);
                     } else {
-                        retData = constructError(errcode.invalid_products_id, "");
+                        retData = constructError("invalid_product_id", "Length of return list from db was 0");
                     }
                     res.setHeader('Content-Type', 'application/json');
                     res.json(retData);

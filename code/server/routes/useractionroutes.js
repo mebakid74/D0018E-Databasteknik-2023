@@ -1,5 +1,5 @@
 // register POST requests for paths that allow the user to (or attempt to) make decisions on the backend
-const { routes, errcode, constructError, constructSuccess } = require("../../client/src/constants");
+const { routes, constructError, constructSuccess } = require("../../client/src/constants");
 
 
 module.exports = { setPost: function(app, db, bcrypt) {
@@ -14,7 +14,7 @@ module.exports = { setPost: function(app, db, bcrypt) {
             (err, sqlres) => {
                 if (err) { 
                     console.log(err);
-                    res.json(constructError(errcode.failed_move_cart_to_order, err));
+                    res.json(constructError("error_when_moving_from_cart_to_receipt", err));
                 } else {
                     res.setHeader('Content-Type', 'application/json');
                     res.json(constructSuccess());
@@ -32,10 +32,7 @@ module.exports = { setPost: function(app, db, bcrypt) {
                     console.log(err);
                 } else {
                     res.setHeader('Content-Type', 'application/json');
-                    res.json({
-                        confirmed: true,
-                        error: "No error"
-                    });
+                    res.json(constructSuccess());
                 }
             }
         );
@@ -75,10 +72,7 @@ module.exports = { setPost: function(app, db, bcrypt) {
                 if (err) { console.log(err);
                 } else {
                     res.setHeader('Content-Type', 'application/json');
-                    res.json({
-                        confirmed: true,
-                        error: "No error"
-                    });
+                    res.json(constructSuccess());
                 }
             }
         )
@@ -95,10 +89,7 @@ module.exports = { setPost: function(app, db, bcrypt) {
                     var inc = req.body.increment;
                     if (n - inc <= 0) {
                         res.setHeader('Content-Type', 'application/json');
-                        res.json({
-                            confirmed: false,
-                            error: "Not enough items to increment"
-                        });
+                        res.json(constructError("could_not_increment", "Not enought items in cart to increment."));
                     }
                     else {
                         db.query(
@@ -109,10 +100,7 @@ module.exports = { setPost: function(app, db, bcrypt) {
                                 if (err) { console.log(err);
                                 } else {
                                     res.setHeader('Content-Type', 'application/json');
-                                    res.json({
-                                        confirmed: true,
-                                        error: "No error"
-                                    });
+                                    res.json(constructSuccess());
                                 }
                             }
                         );
