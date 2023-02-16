@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     background-color: #DDEEE8;
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 body {

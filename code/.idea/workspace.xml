@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="36d9d16b-9049-407d-bc6a-348bc51f7cf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/contentlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/contentlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/productview.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/productview.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/structure/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structure/pages.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/tools/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/tools/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +28,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -37,7 +38,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1676557654209</updated>
-      <workItem from="1676557655451" duration="9021000" />
+      <workItem from="1676557655451" duration="11015000" />
+      <workItem from="1676587550507" duration="1005000" />
+      <workItem from="1676588591302" duration="2728000" />
     </task>
     <servers />
   </component>

@@ -151,8 +151,6 @@ const Search = () => {
 
             </div>
 
-
-
         </div>
 
     )

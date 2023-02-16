@@ -6,6 +6,8 @@ import "../structure/pages.css"
 import Contentlist from "../components/contentlist";
 import { clientParsedRoutes as routes } from "../constants";
 
+import { AiFillStar,AiOutlineStar } from "react-icons/ai";
+
 const ProductView = () => {
     const [amount, setAmount] = useState(0);
     const [pid, setPid] = useState(0);
@@ -63,6 +65,9 @@ const ProductView = () => {
         })
     };
 
+    /*Reviews*/
+    const [rating, setRating] = useState(0);
+
     return (
         <div>          
             <div className='productlist'>
@@ -83,6 +88,27 @@ const ProductView = () => {
                 <p>size: {prodData.size}</p>
             <hr/>
             <Contentlist elements={revs}></Contentlist>
+
+            <div>
+                <h2>Review</h2>
+                {Array(5)
+                    .fill()
+                    .map((_,index)=>
+                        rating >= index + 1 ? (
+                                <AiFillStar style={{color:'black'}}
+                                            onClick={() => setRating(index + 1)}
+                                />
+                        ) : (
+                                 <AiOutlineStar
+                                     style={{color:'black'}}
+                                     onClick={() => setRating(index + 1)}
+                                 />
+                    ))}
+                <textarea
+                    placeholder="Enter your comment here">
+                </textarea>
+                <button>Submit</button>
+            </div>
         </div>
 
     );};
