@@ -96,8 +96,8 @@ module.exports = { setPost: function(app, db, bcrypt) {
                             `UPDATE Products SET quantity = quantity-1 WHERE Products.id = ?;
                             UPDATE Carts SET amount = amount+1 WHERE users_id=? AND products_id=?;`, 
                             [req.body.pid, req.body.uid, req.body.pid],
-                            (err, sqlres) => {
-                                if (err) { console.log(err);
+                            (err2, sqlres2) => {
+                                if (err2) { console.log(err2);
                                 } else {
                                     res.setHeader('Content-Type', 'application/json');
                                     res.json(constructSuccess());

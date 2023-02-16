@@ -17,8 +17,10 @@ const ProductView = () => {
         quantity: "", 
         price: "", 
         color: "", 
-        size: ""
+        size: "",
+        reviews: []
     });
+    const [revs, setRevs] = useState([]);
 
     const [searchParams, setSearchParams] = useSearchParams();
     useEffect(() => {
@@ -34,6 +36,12 @@ const ProductView = () => {
             console.log(res.data);
             if (res.data["data"] != null) {
                 setProdData(res.data["data"]);
+                var reviews = res.data["data"]["reviews"]
+                var l = []
+                reviews.forEach((e) => {
+                    l.push("#" + e["id"] + "    " + e["rating"] + '/5: "' + e["text"] + '" - ' + e["fname"] + " " + e["lname"] +", " + e["date"]);
+                });
+                setRevs(l);
             }
         }).catch((err) => {
             console.error(err);
@@ -63,7 +71,7 @@ const ProductView = () => {
                 <button onClick={requestProductOrder}>Order</button>
             </div>
             <hr/>
-                <label>Fields</label>
+                <h1>Fields</h1>
                 <p>name: {prodData.name}</p>
                 <p>Description: {prodData.description}</p>
                 <p>img src: {prodData.imagepath}</p>
@@ -73,6 +81,7 @@ const ProductView = () => {
                 <p>color: {prodData.color}</p>
                 <p>size: {prodData.size}</p>
             <hr/>
+            <Contentlist elements={revs}></Contentlist>
         </div>
 
     );};

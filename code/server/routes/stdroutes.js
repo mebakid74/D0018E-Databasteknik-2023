@@ -11,14 +11,23 @@ module.exports = { setPost: function(app, db) {
             (err, sqlres) => {
                 if (err) { console.log(err);
                 } else {
-                    var retData;
-                    if (sqlres.length > 0) {
-                        retData = constructSuccess(sqlres[0]);
-                    } else {
-                        retData = constructError("invalid_product_id", "Length of return list from db was 0");
-                    }
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(retData);
+                    db.query(
+                        `SELECT Reviews.id, Users.fname, Users.lname, Reviews.rating, Reviews.text, Reviews.date FROM Products
+                        INNER JOIN Reviews ON Reviews.products_id = Products.id INNER JOIN Users ON Users.id = Reviews.users_id WHERE Products.id = ?;`, 
+                        [req.body.pid],
+                        (err2, sqlres2) => {
+                            var retData;
+                            if (sqlres.length > 0) {
+                                retData = constructSuccess({...sqlres[0], reviews: sqlres2});
+                                
+                            } else {
+                                retData = constructError("invalid_product_id", "Length of return list from db was 0");
+                            }
+                            res.setHeader('Content-Type', 'application/json');
+                            res.json(retData);
+                        }
+                    )
+
                 }
             }
         );
