@@ -5,10 +5,13 @@ import axios from "axios";
 import "../structure/pages.css"
 import Contentlist from "../components/contentlist";
 import { clientParsedRoutes as routes } from "../constants";
+import { isUserValid } from "../tools/validation";
 
 import { AiFillStar,AiOutlineStar } from "react-icons/ai";
 
 const ProductView = () => {
+    var userValid = isUserValid("");
+
     const [amount, setAmount] = useState(0);
     const [pid, setPid] = useState(0);
     const [uid, setUid] = useState(0);
@@ -24,6 +27,7 @@ const ProductView = () => {
     });
     const [revs, setRevs] = useState([]);
 
+    const [revarea, setRevArea] = useState("");
     const [searchParams, setSearchParams] = useSearchParams();
     useEffect(() => {
         var p = searchParams.get("prod_id");
@@ -65,6 +69,20 @@ const ProductView = () => {
         })
     };
 
+    const requestReviewAdd = () => {
+        axios.post(routes.add_product_review, {
+            pid: pid,
+            uid: uid,
+            text: revarea,
+            rating: rating
+        }).then((res) => {
+          console.log(res.data);  
+        }).catch((err) => {
+            console.error(err);
+            console.error(err.response.data);
+        })
+    };
+
     /*Reviews*/
     const [rating, setRating] = useState(0);
 
@@ -74,7 +92,10 @@ const ProductView = () => {
                 <label>Debug input fields</label>
                 <input type="text" onChange={(e) => {setUid(e.target.value);}}></input>
                 <input type="text" onChange={(e) => {setAmount(e.target.value);}}></input>
-                <button onClick={requestProductOrder}>Order</button>
+
+
+                <button onClick={userValid ? requestProductOrder 
+                                        : ()=>{alert("You must be logged in to order")}}>Order</button>
             </div>
             <hr/>
                 <h1>Fields</h1>
@@ -104,10 +125,12 @@ const ProductView = () => {
                                      onClick={() => setRating(index + 1)}
                                  />
                     ))}
-                <textarea
+                <textarea onChange={(e) => setRevArea(e.target.value)}
                     placeholder="Enter your comment here">
                 </textarea>
-                <button>Submit</button>
+                <button onClick={ userValid ? requestReviewAdd 
+                                            : ()=>{alert("You must be logged in to review")}
+                }>Submit</button>
             </div>
         </div>
 

@@ -1,12 +1,9 @@
 import React from "react";
 import "../structure/pages.css";
 
-/////////////////////////////// Route info for debugging:
-// nothing atm; static page
-/////////////////////////////////////////////////////////
 
 const About = () => {
-
+    const alertNotImplemented = () => {alert("function not implemented")}
 
 return (
     <div className='about'>
@@ -44,7 +41,7 @@ return (
         </div>
         <h3>SUBSCRIBE TO BE NOTIFIED <br/>
             OF ALL LATEST UPDATES</h3>
-
+        <button onClick={alertNotImplemented}>Subscribe</button>
 
     </div>
 

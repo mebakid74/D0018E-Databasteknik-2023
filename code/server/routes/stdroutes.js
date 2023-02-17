@@ -6,7 +6,7 @@ module.exports = { setPost: function(app, db) {
 
     app.post(routes.get_product_page_info, (req, res) => {
         db.query(
-            "SELECT name, imagepath, description, quantity, price, color, size FROM Products WHERE products.id = ?;", 
+            "SELECT name, imagepath, description, quantity, price FROM Products WHERE products.id = ?;", 
             [req.body.pid], 
             (err, sqlres) => {
                 if (err) { console.log(err);
@@ -52,7 +52,7 @@ module.exports = { setPost: function(app, db) {
         }
 
         db.query(
-            "SELECT id, name, imagepath, quantity FROM Products" + query + ";",
+            "SELECT id, name, imagepath, quantity FROM Products;",
             [],
             (err, sqlres) => {
                 if (err) { console.log(err);

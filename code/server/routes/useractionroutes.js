@@ -65,8 +65,8 @@ module.exports = { setPost: function(app, db, bcrypt) {
         var salt = bcrypt.genSaltSync(10);
         var hashedPassword = bcrypt.hashSync(b.password, salt);
         db.query(
-            `INSERT INTO Users (fname, lname, email, phonenumber, address, Users.password, DateJoined, registered) 
-            VALUES (?, ?, ?, ?, ?, ?, CURDATE(), 1);`,
+            `INSERT INTO Users (fname, lname, email, phonenumber, address, Users.password, DatetimeJoined, registered) 
+            VALUES (?, ?, ?, ?, ?, ?, NOW(), 1);`,
             [b.fname, b.lname, b.email, b.phonenumber, b.address, hashedPassword],
             (err, sqlres) => {
                 if (err) { console.log(err);
@@ -108,5 +108,10 @@ module.exports = { setPost: function(app, db, bcrypt) {
                 }
             }
         );
+    });
+
+    app.post(routes.add_product_review, (req, res) => {
+        var b = req.body;
+        console.log(b.pid, b.uid, b.text, b.rating);
     });
 }}

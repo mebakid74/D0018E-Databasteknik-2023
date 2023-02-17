@@ -1,9 +1,13 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { isUserValid, setCookie } from "../tools/validation"
 import "../structure/pages.css";
 import { clientParsedRoutes as routes } from "../constants"
 
 const Account = () => {
+    var userValid = isUserValid();
+    console.log(userValid);
+
     const [userdata, setUserdata] = useState({
         fname: "",
         lname: "",
@@ -18,8 +22,6 @@ const Account = () => {
     });
 
     const addUser = () => {
-        console.log(userdata);
-        console.log(routes);
         axios.post(routes.register_new_user, {
             fname:          userdata.fname,
             lname:          userdata.lname,
@@ -28,6 +30,9 @@ const Account = () => {
             email:          userdata.email,
             password:       userdata.password,
         }).then((res) => {
+            if (res.data["status"]) {
+                setCookie("token", "securitytokenhere")
+            }
             alert((res.data["status"] === "success") ? "User has been registered" : "User could not be registered");
             setUserdata({
                 fname: "",
@@ -48,7 +53,10 @@ const Account = () => {
             email:      logindata.email,
             password:   logindata.password
         }).then((res) => {
-            alert((res.data["valid"]) ? "You have been logged in.\nYour token is " + res.data["validationToken"] : "You could not be logged in");
+            var data = res.data["data"];
+            console.log(res.data);
+            alert((data["valid"]) ? "You have been logged in.\nYour token is " + data["validationToken"] : "You could not be logged in");
+            setCookie("token", data["validationToken"]);
         }).catch((err) => {
             console.log(err);
             console.log(err.response.data);
@@ -56,66 +64,75 @@ const Account = () => {
     }
 
     return (
-        <div className="App">
-            <h1>Are you not registered?</h1>
-        <div className="information">
-            <label>First name:</label>
-            <input type="text"
-                onChange={(event) => {
-                    setUserdata({...userdata, fname: event.target.value});
-                }}
-            />
-            <label>Last name:</label>
-            <input type="text"
-                onChange={(event) => {
-                    setUserdata({...userdata, lname: event.target.value });
-                }}
-            />
-            <label>Phone:</label>
-            <input type="number"
-                onChange={(event) => {
-                    setUserdata({...userdata, phone: event.target.value });
-                }}
-            />
-            <label>Address:</label>
-            <input type="text"
-                onChange={(event) => {
-                    setUserdata({...userdata, addr: event.target.value });
-                }}
-            />
-            <label>Email:</label>
-            <input type="text"
-                onChange={(event) => {
-                    setUserdata({...userdata, email: event.target.value });
-                }}
-            />
-            <label>Password:</label>
-            <input type="text"
-                onChange={(event) => {
-                    setUserdata({...userdata, password: event.target.value });
-                }}
-            />
-            <button onClick={addUser}>Create an account</button>
-        </div>
-
-        <div>
-            <h2>Login</h2>
+        <div> { !userValid ? 
+            <div className="App">
+                <h1>Are you not registered?</h1>
             <div className="information">
-                <label>E-mail address*</label>
+                <label>First name:</label>
                 <input type="text"
                     onChange={(event) => {
-                        setLogindata({...logindata, email: event.target.value })
+                        setUserdata({...userdata, fname: event.target.value});
                     }}
                 />
-                <label>Password*</label>
+                <label>Last name:</label>
                 <input type="text"
                     onChange={(event) => {
-                        setLogindata({...logindata, password: event.target.value });
+                        setUserdata({...userdata, lname: event.target.value });
                     }}
                 />
-                <button onClick={validateUserLogin}>Login</button>
+                <label>Phone:</label>
+                <input type="number"
+                    onChange={(event) => {
+                        setUserdata({...userdata, phone: event.target.value });
+                    }}
+                />
+                <label>Address:</label>
+                <input type="text"
+                    onChange={(event) => {
+                        setUserdata({...userdata, addr: event.target.value });
+                    }}
+                />
+                <label>Email:</label>
+                <input type="text"
+                    onChange={(event) => {
+                        setUserdata({...userdata, email: event.target.value });
+                    }}
+                />
+                <label>Password:</label>
+                <input type="text"
+                    onChange={(event) => {
+                        setUserdata({...userdata, password: event.target.value });
+                    }}
+                />
+                <button onClick={addUser}>Create an account</button>
+            </div>
+
+            <div>
+                <h2>Login</h2>
+                <div className="information">
+                    <label>E-mail address*</label>
+                    <input type="text"
+                        onChange={(event) => {
+                            setLogindata({...logindata, email: event.target.value })
+                        }}
+                    />
+                    <label>Password*</label>
+                    <input type="text"
+                        onChange={(event) => {
+                            setLogindata({...logindata, password: event.target.value });
+                        }}
+                    />
+                    <button onClick={validateUserLogin}>Login</button>
+                </div>
             </div>
         </div>
+
+        :
+
+        <div>
+            <h1>You are logged in</h1>
+        </div>
+        }
     </div>
     );
 }

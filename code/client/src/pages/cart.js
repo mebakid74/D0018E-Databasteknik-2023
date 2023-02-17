@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { isUserValid } from "../tools/validation"
 import Contentlist from "../components/contentlist";
 
-
-/////////////////////////////// Route info for debugging:
-// POST path: /getcart
-// To backend: user validation (userID until login/validation done)
-// Return: cart {prodId, ammount} (list)
-
-// POST path: /setorder
-// To backend: user validation (userID until login/validation done)
-// Return: error/confirmation bool
-/////////////////////////////////////////////////////////
-
 const Cart = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!isUserValid("")) {
+            navigate("/account");
+        }
+    },[]);
+
     const [uid, setUid] = useState(0);
     const [els, setEls] = useState([]);
 

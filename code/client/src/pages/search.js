@@ -124,7 +124,7 @@ const Search = () => {
                     <h3>Red Leather Flip Case</h3>
                     </Link>
                     <p>$ 110</p>
-                    <button onClick={() => onAdd(product)}>Add to cart</button>
+                    {/*<button onClick={() => onAdd(product)}>Add to cart</button>*/}
                 </div>
 
                 <div className="prod-2">
@@ -133,7 +133,7 @@ const Search = () => {
                     <h4>Black and Gold Perfume - CHANEL COCO NOIR</h4>
                     </Link>
                     <p>$ 60</p>
-                    <button onClick={() => onAdd(product)}>Add to cart</button>
+                    {/*<button onClick={() => onAdd(product)}>Add to cart</button>*/}
                 </div>
 
                 <div className="prod-3">
@@ -142,11 +142,11 @@ const Search = () => {
                     <h5>Black Leather - PRADA MILANO Bag</h5>
                     </Link>
                     <p>$ 150</p>
-                    <button onClick={() => onAdd(product)}>Add to cart</button>
+                    {/*<button onClick={() => onAdd(product)}>Add to cart</button>*/}
                 </div>
 
                 <header>
-                    <button>Got to cart ({cartItems.length})</button>
+                    {/*<button>Got to cart ({cartItems.length})</button>*/}
                 </header>
 
             </div>

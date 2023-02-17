@@ -2,6 +2,6 @@
     "user":     "root",
     "host":     "localhost",
     "password": "MyNewPass",
-    "database": "mydb_v6",
+    "database": "mydb_v7",
     "multipleStatements" : "true"
 }
