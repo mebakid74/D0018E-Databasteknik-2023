@@ -2,6 +2,7 @@ const setCookie = (key, value) => {
     document.cookie = key+"="+value+";";
 }
 
+// https://gist.github.com/wpsmith/6cf23551dd140fb72ae7
 const getCookie = (key) => {
 	let value = `; ${document.cookie}`;
 	let parts = value.split(`; ${key}=`);
