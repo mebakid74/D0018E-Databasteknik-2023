@@ -16,7 +16,6 @@ const Search = () => {
         console.log("Item removed from cart");
          setCartItems([...cartItems, products]);
     }*/
-
     /*constant array of product name, details e.t.c */
     const [searchInput, setSearchInput] = useState("");
     const product = [
@@ -123,7 +122,7 @@ const Search = () => {
                     <img src="https://images.unsplash.com/photo-1587467512961-120760940315?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"/>
                     <h3>Red Leather Flip Case</h3>
                     </Link>
-                    <p>$ 110</p>
+                    <p>$110 USD</p>
                     {/*<button onClick={() => onAdd(product)}>Add to cart</button>*/}
                 </div>
 
@@ -132,7 +131,7 @@ const Search = () => {
                     <img src="https://images.unsplash.com/photo-1592842312573-dca0b185d2e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"/>
                     <h4>Black and Gold Perfume - CHANEL COCO NOIR</h4>
                     </Link>
-                    <p>$ 60</p>
+                    <p>$60 USD</p>
                     {/*<button onClick={() => onAdd(product)}>Add to cart</button>*/}
                 </div>
 
@@ -141,7 +140,7 @@ const Search = () => {
                     <img src="https://images.unsplash.com/photo-1590739225287-bd31519780c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=361&q=80"/>
                     <h5>Black Leather - PRADA MILANO Bag</h5>
                     </Link>
-                    <p>$ 150</p>
+                    <p>$150 USD</p>
                     {/*<button onClick={() => onAdd(product)}>Add to cart</button>*/}
                 </div>
 

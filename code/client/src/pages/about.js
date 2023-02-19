@@ -41,7 +41,7 @@ return (
         </div>
         <h3>SUBSCRIBE TO BE NOTIFIED <br/>
             OF ALL LATEST UPDATES</h3>
-        <button onClick={alertNotImplemented}>Subscribe</button>
+        <button onClick={alertNotImplemented}>SUBSCRIBE</button>
 
     </div>
 
