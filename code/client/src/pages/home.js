@@ -1,7 +1,8 @@
 import React from "react";
-import "../structure/pages.css";
-
 import { useState } from "react";
+
+import "../structure/pages.css";
+import home from "../asset/video/home.mp4";
 
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
@@ -112,9 +113,12 @@ return (
         </div>
         <br/>
         <div className="home-5">
-            <h5>COMMING UP..</h5>
-            <p6>VIDEO HERE</p6>
+            <h5>COLLECTION V5 COMING UP SOON</h5>
+            <video loop autoPlay>
+                <source src={home} />
+            </video>
         </div>
+
         <br/>
         <div className="home-6">
             <h6>NEWSLETTER</h6>

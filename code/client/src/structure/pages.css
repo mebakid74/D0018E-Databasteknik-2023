@@ -71,6 +71,19 @@ body {
     justify-content: center;
     cursor: pointer;
 }
+
+.home-5 {
+    text-align: center;
+    justify-items: center;
+}
+.home-5 video {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 30px;
+    width: 50%;
+    height: 50%;
+}
 /* Home End */
 
 /*.productlist{

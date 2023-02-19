@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36d9d16b-9049-407d-bc6a-348bc51f7cf9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/asset/video/home.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/about.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/about.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/structure/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structure/pages.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +28,12 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\DATATEKNIK\A\D0018E-Databasteknik-2023\code\client\src\asset" />
+      <recent name="D:\DATATEKNIK\A\D0018E-Databasteknik-2023\code\client\public\video" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -44,10 +49,22 @@
       <workItem from="1676639432701" duration="3299000" />
       <workItem from="1676665376288" duration="2422000" />
       <workItem from="1676801891450" duration="5347000" />
+      <workItem from="1676815123347" duration="1398000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
