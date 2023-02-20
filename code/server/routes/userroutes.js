@@ -2,7 +2,7 @@
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
 
 
-module.exports = {  setPost: function(app, db) {
+module.exports = {  setPost: function(app, db, bcrypt, creds) {
     
     app.post(routes.get_account_page_info, (req, res) => {
         db.query(
@@ -30,5 +30,39 @@ module.exports = {  setPost: function(app, db) {
                 }
             }
         ); 
+    });
+
+    app.post(routes.login_user, (req, res) => {
+        db.query(
+            "SELECT users.id, password FROM Users WHERE email=?",
+            [req.body.email],
+            (err, sqlres) => {
+                if (err) { console.log(err);
+                } else {
+                    var ret = { uid: sqlres[0]["id"] };
+                    if (bcrypt.compareSync(req.body.password, sqlres[0]["password"]) && !creds.getUidStored(ret["uid"])) {
+                        ret["valid"] = true;
+                        ret["validationToken"] = creds.assignToken(ret["uid"]);
+                    }
+                    else {
+                        ret["valid"] = false;
+                    }
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json(constructSuccess(ret));
+                }
+            }
+        )
+    });
+
+    app.post(routes.validate_user_login, (req, res) => {
+        var ret = { "valid": creds.verifyToken(req.body.token) }
+        res.setHeader('Content-Type', 'application/json');
+        res.json(constructSuccess(ret));
+    });
+
+    app.post(routes.validate_admin_login, (req, res) => {
+        var ret = { "admin": creds.getAdminFromToken(req.body.token) }
+        res.setHeader('Content-Type', 'application/json');
+        res.json(constructSuccess(ret));
     });
 }}

@@ -12,17 +12,18 @@ const mysql = require("mysql");
 const sqlconfig = require("./sqlconfig.json");
 const db = mysql.createConnection(sqlconfig);
 
-// bcrypt
+// security
 const bcrypt = require("bcryptjs");
+const creds = require("./credentialmanager");
 
 // initialize routes
 const userroutes = require("./routes/userroutes");
 const stdroutes = require("./routes/stdroutes");
 const useractionroutes = require("./routes/useractionroutes");
 const adminroutes = require("./routes/adminroutes");
-userroutes.setPost(app, db);
+userroutes.setPost(app, db, bcrypt, creds);
 stdroutes.setPost(app, db);
-useractionroutes.setPost(app, db, bcrypt);
+useractionroutes.setPost(app, db, bcrypt, creds);
 adminroutes.setPost(app, db);
 
 // start listening

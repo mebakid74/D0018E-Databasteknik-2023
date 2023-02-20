@@ -1,3 +1,6 @@
+import axios from "axios";
+import { clientParsedRoutes as routes } from "../constants"
+
 const setCookie = (key, value) => {
     document.cookie = key+"="+value+";";
 }
@@ -10,18 +13,38 @@ const getCookie = (key) => {
 }
 
 const clearCookie = () => {
-
+    //to be implemented (for logout)
 }
 
 const isUserValid = () => {
     var t = getCookie("token");
+    console.log(t);
     if (t != null) {
-        return true;
+        axios.post(routes.validate_user_login, {
+            token: t
+        }).then((res) => {
+            console.log(res.data["data"]["valid"]);
+            return res.data["data"]["valid"];
+        }).catch((err) => {
+            console.log(err);
+            console.log(err.response.data);
+        });
     }
-    return true;
 };
 
 const isUserAdmin = (validationToken) => {
-    return true;
+    var t = getCookie("token");
+    console.log(t);
+    if (t != null) {
+        axios.post(routes.validate_admin_login, {
+            token: t
+        }).then((res) => {
+            console.log(res.data["data"]["admin"]);
+            return res.data["data"]["admin"];
+        }).catch((err) => {
+            console.log(err);
+            console.log(err.response.data);
+        });
+    }
 }
 export { isUserValid, isUserAdmin, setCookie, getCookie, clearCookie };

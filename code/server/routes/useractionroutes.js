@@ -1,8 +1,9 @@
 // register POST requests for paths that allow the user to (or attempt to) make decisions on the backend
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
+const { getUidFromToken } = require("../credentialmanager");
 
 
-module.exports = { setPost: function(app, db, bcrypt) {
+module.exports = { setPost: function(app, db, bcrypt, creds) {
 
     app.post(routes.order_products_from_cart, (req, res) => {
         db.query(
@@ -36,28 +37,6 @@ module.exports = { setPost: function(app, db, bcrypt) {
                 }
             }
         );
-    });
-
-    app.post(routes.validate_login_details, (req, res) => {
-        db.query(
-            "SELECT users.id, password FROM Users WHERE email=?",
-            [req.body.email],
-            (err, sqlres) => {
-                if (err) { console.log(err);
-                } else {
-                    var ret = { uid: sqlres[0]["id"] };
-                    if (bcrypt.compareSync(req.body.password, sqlres[0]["password"])) {
-                        ret["valid"] = true;
-                        ret["validationToken"] = "asd123";
-                    }
-                    else {
-                        ret["valid"] = false;
-                    }
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(constructSuccess(ret));
-                }
-            }
-        )
     });
 
     app.post(routes.register_new_user, (req, res) => {

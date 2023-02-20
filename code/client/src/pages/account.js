@@ -1,12 +1,26 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { isUserValid, setCookie } from "../tools/validation"
 import "../structure/pages.css";
 import { clientParsedRoutes as routes } from "../constants"
 
 const Account = () => {
-    var userValid = isUserValid();
-    console.log(userValid);
+    const [validData, setValidData] = useState({
+        "valid": false,
+        "done": true,
+        "firstrender": true
+    });
+    useMemo(() => {
+        if (validData["firstrender"]) {
+            var v = isUserValid().then((r) => {
+                console.log(r);
+                setValidData({...validData,
+                    "done": true
+                });
+            });
+            setValidData({...validData, "valid": v });
+        }
+    },[]);
 
     const [userdata, setUserdata] = useState({
         fname: "",
@@ -30,10 +44,10 @@ const Account = () => {
             email:          userdata.email,
             password:       userdata.password,
         }).then((res) => {
-            if (res.data["status"]) {
+            if (res.data["data"]["valid"]) {
                 setCookie("token", "securitytokenhere")
             }
-            alert((res.data["status"] === "success") ? "User has been registered" : "User could not be registered");
+            alert((res.data["data"]["valid"]) ? "User has been registered" : "User could not be registered");
             setUserdata({
                 fname: "",
                 lname: "",
@@ -49,14 +63,16 @@ const Account = () => {
     };
 
     const validateUserLogin = () => {
-        axios.post(routes.validate_login_details, {
+        axios.post(routes.login_user, {
             email:      logindata.email,
             password:   logindata.password
         }).then((res) => {
             var data = res.data["data"];
             console.log(res.data);
             alert((data["valid"]) ? "You have been logged in.\nYour token is " + data["validationToken"] : "You could not be logged in");
-            setCookie("token", data["validationToken"]);
+            if (data["valid"]) {
+                setCookie("token", data["validationToken"])
+            }
         }).catch((err) => {
             console.log(err);
             console.log(err.response.data);
@@ -71,7 +87,9 @@ const Account = () => {
     };
 
     return (
-        <div> { !userValid ?
+        <div> { !validData["done"] ? <p1>Loading...</p1>
+
+        : validData["valid"] ?
             <div className="App">
                 <h1>Are you not registered?</h1>
 
@@ -143,16 +161,11 @@ const Account = () => {
                         type={passwordShown ? "text" : "password"}
                         placeholder="Enter your password"
                         onChange={(event) => {
-                               setUserdata({...userdata, password: event.target.value });
+                               setLogindata({...logindata, password: event.target.value });
                            }}
                     />
 
                     <button onClick={togglePassword}>Show Password</button>
-                    {/* <input type="text"
-                        onChange={(event) => {
-                            setLogindata({...logindata, password: event.target.value });
-                        }}
-                    />*/}
                     <button onClick={validateUserLogin}>Login</button>
                 </div>
             </div>
