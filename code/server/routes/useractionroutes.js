@@ -112,6 +112,16 @@ module.exports = { setPost: function(app, db, bcrypt) {
 
     app.post(routes.add_product_review, (req, res) => {
         var b = req.body;
-        console.log(b.pid, b.uid, b.text, b.rating);
+        db.query(
+            `INSERT INTO Reviews(users_id, products_id, rating, text, date) VALUES (?, ?, ?, ?, CURDATE());`, 
+            [b.uid, b.pid, b.rating, b.text], 
+            (err, sqlres) => {
+                if (err) { console.log(err);
+                } else {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json(constructSuccess());
+                }
+            }
+        )
     });
 }}
