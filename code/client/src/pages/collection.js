@@ -2,6 +2,8 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "../structure/pages.css";
 import "react-multi-carousel/lib/styles.css";
+import { Link } from "react-router-dom";
+import Contentlist from "../components/contentlist";
 
 const Collection = () => {
     const responsive = {
@@ -41,29 +43,38 @@ const Collection = () => {
                 </div>
 
                 <Carousel responsive={responsive}>
+                    <Link to="/collection_id?">
                     <div className="item-1"> New Collection
                         <img alt="New collection"
                             src = "https://images.unsplash.com/photo-1587538520952-fafa4eeee7be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
                         </img>
                     </div>
+                    </Link>
 
+                    <Link to="/collection_id?">
                     <div className="item-2"> Spring Summer 2023 Collection
                         <img alt="Spring Summer 2023 Collection"
                             src="https://images.unsplash.com/photo-1596993100471-c3905dafa78e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80">
                         </img>
                     </div>
+                    </Link>
 
+                    <Link to="/collection_id?">
                     <div className="item-3"> Seasonal Highlights
                         <img alt="Seasonal Highlights"
                             src="https://images.unsplash.com/photo-1601597565151-70c4020dc0e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80">
                         </img>
                     </div>
+                    </Link>
 
+                    <Link to="/collection_id?">
                     <div className="item-4"> Best Sellers
                         <img alt="Best Sellers"
                             src="https://images.unsplash.com/photo-1523297467724-f6758d7124c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=419&q=80">
                         </img>
                     </div>
+                    </Link>
+
                 </Carousel>
             </container>
         </div>

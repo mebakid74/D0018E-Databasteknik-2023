@@ -9,6 +9,7 @@ import { isUserValid } from "../tools/validation";
 
 import { AiFillStar,AiOutlineStar } from "react-icons/ai";
 
+
 const ProductView = () => {
     var userValid = isUserValid("");
 
