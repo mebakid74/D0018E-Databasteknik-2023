@@ -661,182 +661,27 @@ body {
 
 /* Account Start */
 
-.col{
-    padding-top: 60px;
-    padding-left: 60px;
-}
-
-.col h1{
-    font-size: 36px;
-    font-weight: bold;
-    margin-top: 60px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.login h2{
-    margin-top: 23px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-}
-
-.login h3{
-    margin-top: 23px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-}
-
-.login form{
-    font-size: 16px;
-    display: flex;
-    text-align: left;
-    justify-content: left;
-}
-
-.textbox{
-    position: relative;
-    width: 100%;
-}
-
-.login form input{
-    width: 100%;
-    height: 60px;
-    outline: none;
-    font-size: 16px;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-    /*background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.1);*/
-    padding: 0 20px 0 50px;
-    border-color: cornflowerblue;
-}
-.login button{
-    cursor: pointer;
-    background: #326755;
-    color: white;
-    border: 0;
-    letter-spacing: 2px;
-    margin-top: 26px;
-    font-weight: 600;
-    font-size: 18px;
-    left: 60px;
-    display: flex;
-    border-radius: 16px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.login a{
-    text-decoration: none;
-    text-align: left;
-    padding-left: 160px;
-    margin-bottom: 100px;
-    font-size: 16px;
-    left: 60px;
-    display: grid;
-}
-
-.col-2{
-    padding-top: 0;
-    padding-left: 960px;
-}
-
-.col-2 h1{
-    text-align: left;
-    justify-content: left;
-    font-size: 36px;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-}
-
-.reg h2{
-    text-align: left;
-    justify-content: left;
-    margin-top: 23px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-}
-
-.reg form{
-    font-size: 16px;
-    display: flex;
-    text-align: left;
-    justify-content: left;
-}
-
-.reg h3,
-.reg h4,
-.reg h5,
-.reg h6{
-    text-align: left;
-    justify-content: left;
-    margin-top: 23px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-}
-
-.reg h7{
-    top: 20px;
-    text-align: left;
-    justify-content: left;
-    margin-top: 23px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-}
-
-.reg form{
-    font-size: 16px;
-    display: flex;
-    text-align: left;
-    justify-content: left;
-}
-
-.textbox{
-    position: relative;
-    width: 100%;
-}
-
-.reg form input{
-    width: 100%;
-    height: 60px;
-    outline: none;
-    font-size: 16px;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-    /*background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.1);*/
-    padding: 0 20px 0 50px;
-    border-color: cornflowerblue;
-    text-align: left;
-    justify-content: left;
-}
-
-.reg button{
-    cursor: pointer;
-    background: #326755;
-    color: white;
-    border: 0;
-    letter-spacing: 2px;
-    margin-top: 26px;
-    font-weight: 600;
-    font-size: 18px;
-    display: flex;
-    border-radius: 16px;
-    font-family: 'Poppins', sans-serif;
-    text-align: left;
-    justify-content: left;
-}
-
-/* Account End */
-
 .App{
-    display: flex;
-    font-size: 23px;
-    font-family: 'Poppins', sans-serif;
+    display: grid;
+    font-family: butlerregular;
     flex-direction: column;
+}
+
+.App h1{
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    margin-top: 26px;
+    font-family: butlerregular;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
 }
 
 .information {
@@ -845,26 +690,89 @@ body {
     justify-content: center;
     width: 100%;
     align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    margin-top: 8px;
+    font-family: butlerregular;
+    font-size: 18px;
+    font-weight: lighter;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
 }
 
 .information input {
     width: 300px;
     height: 50px;
-    font-size: 20px;
     padding-left: 10px;
-    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    margin: 8px;
+    font-family: butlerregular;
+    font-size: 18px;
+    font-weight: lighter;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
 }
 
 .information button {
     width: 320px;
     height: 50px;
     margin-top: 15px;
-}
-
-.information button:hover{
+    display: grid;
     cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    font-size: 18px;
+    font-weight: bold;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    border-color: rgb(74,74,74);
+}
+.login {
+    margin: 50px;
+    line-height: 30px;
 }
 
+.login h2{
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    margin-top: 26px;
+    font-family: butlerregular;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+/* Account End */
 
 /* COLLECTION START */
 

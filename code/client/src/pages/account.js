@@ -63,10 +63,18 @@ const Account = () => {
         });
     }
 
+    // Initialize a boolean state
+    const [passwordShown, setPasswordShown] = useState(false);
+
+    // Password toggle handler
+    const togglePassword = () => { setPasswordShown(!passwordShown);
+    };
+
     return (
-        <div> { !userValid ? 
+        <div> { !userValid ?
             <div className="App">
                 <h1>Are you not registered?</h1>
+
             <div className="information">
                 <label>First name:</label>
                 <input type="text"
@@ -99,29 +107,52 @@ const Account = () => {
                     }}
                 />
                 <label>Password:</label>
-                <input type="text"
+                <input type={passwordShown ? "text" : "password"}
+                       onChange={(event) => {
+                           setUserdata({...userdata, password: event.target.value });
+                }}
+                />
+                <button onClick={togglePassword}>Show Password</button>
+
+                {/*<input type="text"
                     onChange={(event) => {
                         setUserdata({...userdata, password: event.target.value });
                     }}
-                />
+                />*/}
                 <button onClick={addUser}>Create an account</button>
             </div>
 
-            <div>
+            <div className="login">
                 <h2>Login</h2>
                 <div className="information">
-                    <label>E-mail address*</label>
-                    <input type="text"
+                    <label>
+                        <i className="fa fa-envelope"> E-mail address* </i>
+                        </label>
+                    <input
+                        type="text"
+                        placeholder= "Enter your email"
                         onChange={(event) => {
                             setLogindata({...logindata, email: event.target.value })
                         }}
                     />
-                    <label>Password*</label>
-                    <input type="text"
+
+                    <label>
+                        <i className="fa fa-lock">  Password* </i>
+                       </label>
+                    <input
+                        type={passwordShown ? "text" : "password"}
+                        placeholder="Enter your password"
+                        onChange={(event) => {
+                               setUserdata({...userdata, password: event.target.value });
+                           }}
+                    />
+
+                    <button onClick={togglePassword}>Show Password</button>
+                    {/* <input type="text"
                         onChange={(event) => {
                             setLogindata({...logindata, password: event.target.value });
                         }}
-                    />
+                    />*/}
                     <button onClick={validateUserLogin}>Login</button>
                 </div>
             </div>
