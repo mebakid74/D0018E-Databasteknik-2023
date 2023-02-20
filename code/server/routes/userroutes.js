@@ -6,7 +6,7 @@ module.exports = {  setPost: function(app, db) {
     
     app.post(routes.get_account_page_info, (req, res) => {
         db.query(
-            "SELECT fname, lname, email, phonenumber, address FROM Users WHERE Users.id = ?;",
+            "c;",
             [req.body.uid],
             (err, sqlres) => {
                 if (err) { console.log(err);

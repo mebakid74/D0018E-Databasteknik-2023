@@ -22,10 +22,10 @@ const Cart = () => {
         }).then((res) => {
             console.log(res.data);
 
-            if (res.data == null) { return;}
+            if (res.data["data"] == null) { return;}
 
             let l = []
-            for (const [,v] of Object.entries(res.data)) {
+            for (const [,v] of Object.entries(res.data["data"])) {
                 let s = "#"+ v["products_id"] + ":   " + v["amount"] + "st. ";
                 if (s in l) { console.error("duplicate elements are not allowed"); }
                 l.push(s);
@@ -41,7 +41,7 @@ const Cart = () => {
     }
 
     const requestOrder = () => {
-        axios.post(routes.order_products_from_cart {
+        axios.post(routes.order_products_from_cart, {
             uid: uid
         }).then((res) => {
             console.log("order confirmed: " + res.data["confirmed"]);
