@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import "../structure/pages.css";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
-import Contentlist from "../components/contentlist";
+import Collectionlist from "../components/collectionlist";
 
 const Collection = () => {
     const responsive = {
