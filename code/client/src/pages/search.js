@@ -4,6 +4,8 @@ import "../structure/pages.css"
 import Contentlist from "../components/contentlist";
 import ProductView from "./productview";
 
+import Cart from "./cart";
+
 const Search = () => {
 
     const [cartItems, setCartItems] = useState([]);

@@ -52,15 +52,51 @@ const Cart = () => {
         })
     }
 
+    // Cart inc. & dec. system
+    const [Item, setItem] = useState(0);
+    const IncrementItem = () => {
+        if (Item<10) {
+            setItem(Number(Item)+1);
+        }
+    };
+    const DecrementItem = () => {
+        if(Item>0){
+            setItem(Item-1);
+        }
+    };
+    const handelChange = (e) => {
+        setItem(e.target.value);
+    }
+    // Total cost of items in cart
+    const cost = ((total, item) => total + item.amount * item.price, 0);
+
     return (
         <div>
             <div className='cart'>
                 <label>Cart</label>
-                <input type="text" onChange={(e) => {setUid(e.target.value);}}></input>
+                <input
+                    type="text" onChange={(e) => {setUid(e.target.value);}}></input>
                 <button onClick={getCartInfo}>Get cart info</button>
                 <button onClick={requestOrder}>Confirm order</button>
                 <hr/>
                 <Contentlist elements={els}></Contentlist>
+            </div>
+
+            <div className="cartadd">
+                <div className="cartdec">
+                    <button className="btn-1" type = "button" onClick={DecrementItem}> - </button>
+                </div>
+                <input type="text" value={Item} onChange = {handelChange}/>
+
+                <div className="cartinc">
+                    <button className="btn-1" type = "button" onClick={IncrementItem}> + </button>
+                </div>
+                    {/*<input type="text" value={Item} onChange = {handelChange}/>*/}
+            </div>
+
+            <div className="totalitems">
+                <span>Total price of your cart</span> <br/>
+                <span>$ {cost} </span>
             </div>
         </div>
 
