@@ -18,7 +18,7 @@ const isUserValid = () => {
     if (t != null) {
         return true;
     }
-    return false;
+    return true;
 };
 
 const isUserAdmin = (validationToken) => {

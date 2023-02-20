@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { isUserValid } from "../tools/validation"
 import Contentlist from "../components/contentlist";
+import { clientParsedRoutes as routes } from "../constants";
 
 const Cart = () => {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Cart = () => {
     const [els, setEls] = useState([]);
 
     const getCartInfo = () => {
-        axios.post("http://localhost:3001/getcart", {
+        axios.post(routes.get_cart_page_info, {
             uid: uid
         }).then((res) => {
             console.log(res.data);
@@ -40,7 +41,7 @@ const Cart = () => {
     }
 
     const requestOrder = () => {
-        axios.post("http://localhost:3001/setorder", {
+        axios.post(routes.order_products_from_cart {
             uid: uid
         }).then((res) => {
             console.log("order confirmed: " + res.data["confirmed"]);
