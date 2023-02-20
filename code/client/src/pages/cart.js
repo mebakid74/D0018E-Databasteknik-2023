@@ -98,6 +98,11 @@ const Cart = () => {
                 <span>Total price of your cart</span> <br/>
                 <span>$ {cost} </span>
             </div>
+
+            <div className="cartfooter">
+                <button>Empty cart</button> <br/>
+                <button>Proceed to checkout</button>
+            </div>
         </div>
 
     );};
