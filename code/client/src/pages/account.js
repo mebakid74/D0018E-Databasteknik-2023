@@ -1,27 +1,32 @@
 import axios from "axios";
-import React, { useState, useEffect, useMemo } from "react";
-import { isUserValid, setCookie } from "../tools/validation"
+import React, { useState } from "react";
+import { setCookie, getCookie, clearCookie } from "../tools/validation"
 import "../structure/pages.css";
 import { clientParsedRoutes as routes } from "../constants"
+import UserPage  from "../components/userpage"
 
-const Account = () => {
-    const [validData, setValidData] = useState({
-        "valid": false,
-        "done": true,
-        "firstrender": true
-    });
-    useMemo(() => {
-        if (validData["firstrender"]) {
-            var v = isUserValid().then((r) => {
-                console.log(r);
-                setValidData({...validData,
-                    "done": true
-                });
-            });
-            setValidData({...validData, "valid": v });
-        }
-    },[]);
+const LoggedIn = () => {
+    const logOutUser = () => {
+        axios.post(routes.logout_user, {
+            token: getCookie("token")
+        }).then((res) => {
+            clearCookie();
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+            console.log(err.response.data);
+        });
+    }
 
+    return (
+        <div>
+            <h1>You are logged in</h1>
+            <button onClick={logOutUser}>Log out</button>
+        </div>
+    );
+}
+
+const NotLoggedIn = () => {
     const [userdata, setUserdata] = useState({
         fname: "",
         lname: "",
@@ -83,14 +88,10 @@ const Account = () => {
     const [passwordShown, setPasswordShown] = useState(false);
 
     // Password toggle handler
-    const togglePassword = () => { setPasswordShown(!passwordShown);
-    };
+    const togglePassword = () => { setPasswordShown(!passwordShown); };
 
     return (
-        <div> { !validData["done"] ? <p1>Loading...</p1>
-
-        : validData["valid"] ?
-            <div className="App">
+        <div className="App">
                 <h1>Are you not registered?</h1>
 
             <div className="information">
@@ -131,12 +132,6 @@ const Account = () => {
                 }}
                 />
                 <button onClick={togglePassword}>Show Password</button>
-
-                {/*<input type="text"
-                    onChange={(event) => {
-                        setUserdata({...userdata, password: event.target.value });
-                    }}
-                />*/}
                 <button onClick={addUser}>Create an account</button>
             </div>
 
@@ -170,14 +165,15 @@ const Account = () => {
                 </div>
             </div>
         </div>
-
-        :
-
-        <div>
-            <h1>You are logged in</h1>
-        </div>
-        }
-    </div>
     );
 }
+
+const Account = () => {
+    return (
+        <div>
+            <UserPage validRenderComponent={LoggedIn} invalidRenderComponent={NotLoggedIn}></UserPage>
+        </div>
+    );
+}
+    
 export default Account;

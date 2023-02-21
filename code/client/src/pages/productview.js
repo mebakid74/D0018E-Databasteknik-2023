@@ -11,7 +11,7 @@ import { AiFillStar,AiOutlineStar } from "react-icons/ai";
 
 
 const ProductView = () => {
-    var userValid = isUserValid("");
+    var userValid = isUserValid();
 
     const [amount, setAmount] = useState(0);
     const [pid, setPid] = useState(0);

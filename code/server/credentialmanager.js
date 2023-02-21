@@ -16,6 +16,13 @@ const verifyToken = (token) => {
      return (token in stored);
 }
 
+const removeToken = (token) => {
+    if (verifyToken(token)) {
+        delete stored[token];
+    }
+    console.log(stored);
+}
+
 const getUidFromToken = (token) => {
     if (verifyToken(token)) {
         return stored[token["uid"]];
@@ -50,4 +57,4 @@ const assignToken = (uid, admin=false) => {
     return token;
 }
 
-module.exports = { verifyToken, getUidFromToken, assignToken, getUidStored, getAdminFromToken };
+module.exports = { verifyToken, removeToken, getUidFromToken, assignToken, getUidStored, getAdminFromToken };

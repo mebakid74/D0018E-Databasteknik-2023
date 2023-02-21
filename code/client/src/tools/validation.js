@@ -14,12 +14,12 @@ const getCookie = (key) => {
 
 //https://stackoverflow.com/questions/2144386/how-to-delete-a-cookie
 const clearCookie = (key, value) => {
-    if( getCookie( key )) {
+    /*if( getCookie( key )) {
         document.getCookie = value + "="+
             ((path) ? ";path="+path:"")+
             ((domain)?";domain="+domain:"") +
         "   ;expires=Thu, 01 Jan 1970 00:00:01 GMT";
-    }
+    }*/
 }
 
 const isUserValid = () => {
@@ -36,6 +36,7 @@ const isUserValid = () => {
             console.log(err.response.data);
         });
     }
+    return false;
 };
 
 const isUserAdmin = (validationToken) => {

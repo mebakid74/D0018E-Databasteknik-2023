@@ -9,6 +9,7 @@ const routes = {
     validate_user_login: "/validate",
     validate_admin_login: "/validateadmin",
     login_user: "/login",
+    logout_user: "/logout",
     register_new_user: "/register",
     get_filtered_product_list: "/getprodfiltered",
     increment_product_in_cart: "/incrementcart",

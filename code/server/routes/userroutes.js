@@ -54,6 +54,12 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
         )
     });
 
+    app.post(routes.logout_user, (req, res) => {
+        creds.removeToken(req.body.token);
+        res.setHeader('Content-Type', 'application/json');
+        res.json(constructSuccess());
+    });
+
     app.post(routes.validate_user_login, (req, res) => {
         var ret = { "valid": creds.verifyToken(req.body.token) }
         res.setHeader('Content-Type', 'application/json');
