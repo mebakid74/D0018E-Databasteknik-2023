@@ -4,14 +4,18 @@ import { setCookie, getCookie, clearCookie } from "../tools/validation"
 import "../structure/pages.css";
 import { clientParsedRoutes as routes } from "../constants"
 import UserPage  from "../components/userpage"
+import { useNavigate } from "react-router-dom";
 
 const LoggedIn = () => {
+    const navigate = useNavigate();
+
     const logOutUser = () => {
         axios.post(routes.logout_user, {
             token: getCookie("token")
         }).then((res) => {
             clearCookie();
             console.log(res);
+            navigate(0);
         }).catch((err) => {
             console.log(err);
             console.log(err.response.data);
@@ -39,6 +43,7 @@ const NotLoggedIn = () => {
         email: "",
         password: ""
     });
+    const navigate = useNavigate();
 
     const addUser = () => {
         axios.post(routes.register_new_user, {
@@ -49,34 +54,26 @@ const NotLoggedIn = () => {
             email:          userdata.email,
             password:       userdata.password,
         }).then((res) => {
-            if (res.data["data"]["valid"]) {
-                setCookie("token", "securitytokenhere")
+            alert((res.data["status"]) ? "User has been registered" : "User could not be registered");
+            if (res.data["status"]) {
+                loginUser(userdata.email, userdata.password);
             }
-            alert((res.data["data"]["valid"]) ? "User has been registered" : "User could not be registered");
-            setUserdata({
-                fname: "",
-                lname: "",
-                phone: "",
-                addr: "",
-                email: "",
-                password: ""
-            });
         }).catch((err) => {
             console.log(err);
             console.log(err.response.data);
         });
     };
 
-    const validateUserLogin = () => {
+    const loginUser = (email, pass) => {
         axios.post(routes.login_user, {
-            email:      logindata.email,
-            password:   logindata.password
+            email:      email,
+            password:   pass
         }).then((res) => {
             var data = res.data["data"];
-            console.log(res.data);
             alert((data["valid"]) ? "You have been logged in.\nYour token is " + data["validationToken"] : "You could not be logged in");
             if (data["valid"]) {
                 setCookie("token", data["validationToken"])
+                navigate(0);
             }
         }).catch((err) => {
             console.log(err);
@@ -161,7 +158,7 @@ const NotLoggedIn = () => {
                     />
 
                     <button onClick={togglePassword}>Show Password</button>
-                    <button onClick={validateUserLogin}>Login</button>
+                    <button onClick={() => {loginUser(logindata.email, logindata.password)}}>Login</button>
                 </div>
             </div>
         </div>

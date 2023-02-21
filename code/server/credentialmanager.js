@@ -19,8 +19,10 @@ const verifyToken = (token) => {
 const removeToken = (token) => {
     if (verifyToken(token)) {
         delete stored[token];
+        console.log(stored);
+        return;
     }
-    console.log(stored);
+    console.log("invalid token");
 }
 
 const getUidFromToken = (token) => {

@@ -51,7 +51,7 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
                 if (err) { console.log(err);
                 } else {
                     res.setHeader('Content-Type', 'application/json');
-                    res.json(constructSuccess());
+                    res.json(constructSuccess({}));
                 }
             }
         )
