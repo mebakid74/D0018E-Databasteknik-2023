@@ -3,129 +3,57 @@ import { Link } from "react-router-dom";
 import "../structure/pages.css"
 import Contentlist from "../components/contentlist";
 import ProductView from "./productview";
-
 import Cart from "./cart";
+import data from "../other/dummydata.json";
+
 
 const Search = () => {
 
-    const [cartItems, setCartItems] = useState([]);
-    const { products } = Contentlist;
-    const onAdd = (product) => {
-        console.log("Item added to cart");
-        setCartItems([...cartItems, products]);
-    }
-    /*const onRemove = (product) => {
-        console.log("Item removed from cart");
-         setCartItems([...cartItems, products]);
-    }*/
-    /*constant array of product name, details e.t.c */
-    const [searchInput, setSearchInput] = useState("");
-    const product = [
-        { name: "Bag", content: "Accessory", color: "Black" },
-    ];
-
-    /*Handler function that will read changes in the search bar and return the product.*/
-    const handleChange = (e) => {
-        e.preventDefault();
-        setSearchInput(e.target.value);
-    };
-
-    if (searchInput.length > 0) {
-        product.filter((content) => {
-            return content.name.match(searchInput);
-        });
-    }
-
-    /*Sorting and Filter */
-    const [agreement, setAgreement] = useState(false);
-    const handleChanger = (event) => {
-        setAgreement(event.target.checked);
-    };
+    const [searchTerm, setSearchTerm] = useState('');
+    const onChange = (event) => {
+        setSearchTerm(event.target.value);}
+    const onSearch = (searchTerm) => {
+        console.log('search', searchTerm);}
 
     return (
         <div className="shop">
             <h1>Shop</h1>
-            <input
-                type="search"
-                placeholder="Search here"
-                onChange={handleChange}
-                value={searchInput} />
+            <div className="search-wrap">
+                    <input id="search" type="text" placeholder="Search here" onChange={onChange}/>
+                {/*<button onClick={() => onSearch(value)}> Search </button>*/}
+            </div>
+
             <div className="show">
                 <h2>Showing 1-6 of 10 items</h2>
             </div>
 
-            {/* /<div className="dropdown-1">
-                <h3>Shop by color</h3>
-                <input
-                    type="checkbox"
-                    name="agreement"
-                    onChange={handleChanger}
-                />
-                <label>Black</label>
-
-                <input
-                    type="checkbox"
-                    name="agreement"
-                    onChange={handleChanger}
-                />
-                <label>Red</label>
-
-                <input
-                    type="checkbox"
-                    name="agreement"
-                    onChange={handleChanger}
-                />
-                <label>Green</label>
-
-                <br /><br/>
+            <div className="product-cont">{
+                    data
+                        .filter((val) => {
+                            if(searchTerm == "") {
+                                return val;
+                            } else if(val.product_name.toLowerCase().includes(searchTerm.toLowerCase())){
+                                return val;
+                            }
+                        })
+                        .map((val) => {
+                            return(
+                                <Link to ="/product?prod_id=?">
+                                <div key={val.id}>
+                                    <img src = {val.image} alt="" />
+                                    <h3>{val.product_name}</h3>
+                                    <p className="product_price">{val.product_price}</p>
+                                </div>
+                                </Link>
+                            )})}
             </div>
-
-            <div className="dropdown-2">
-
-            <h4>Shop by sizes</h4>
-                <input
-                    type="checkbox"
-                    name="agreement"
-                    onChange={handleChanger}
-                />
-                <label>XL</label>
-                <input
-                    type="checkbox"
-                    name="agreement"
-                    onChange={handleChanger}
-                />
-                <label>
-     L
-                </label>
-
-                <input
-                    type="checkbox"
-                    name="agreement"
-                    onChange={handleChanger}
-                />
-                <label>
-                    M
-                </label>
-
-                <br /><br/>
-
-                <button disabled={!agreement}>FILTER</button>
-
-            </div> */}
-
-            {/*<div className="dropdown-3">
-                <h5>Popular products</h5>
-            </div>*/}
-
-            <div className="products">
-
+            {/* <div className="products">
                 <div className="prod-1">
                     <Link to="/product?prod_id=2">
                     <img src="https://images.unsplash.com/photo-1587467512961-120760940315?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"/>
                     <h3>Red Leather Flip Case</h3>
                     </Link>
                     <p>$110 USD</p>
-                    {/*<button onClick={() => onAdd(product)}>Add to cart</button>*/}
                 </div>
 
                 <div className="prod-2">
@@ -134,7 +62,6 @@ const Search = () => {
                     <h4>Black and Gold Perfume - CHANEL COCO NOIR</h4>
                     </Link>
                     <p>$60 USD</p>
-                    {/*<button onClick={() => onAdd(product)}>Add to cart</button>*/}
                 </div>
 
                 <div className="prod-3">
@@ -143,14 +70,12 @@ const Search = () => {
                     <h5>Black Leather - PRADA MILANO Bag</h5>
                     </Link>
                     <p>$150 USD</p>
-                    {/*<button onClick={() => onAdd(product)}>Add to cart</button>*/}
                 </div>
 
                 <header>
-                    {/*<button>Got to cart ({cartItems.length})</button>*/}
+                    {/*<button>Got to cart ({cartItems.length})</button>
                 </header>
-
-            </div>
+            </div>*/}
 
         </div>
 

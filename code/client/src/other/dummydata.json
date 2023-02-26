@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "image": "https://images.unsplash.com/photo-1587467512961-120760940315?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+    "product_name": "Red Leather Flip Case",
+    "product_price": "$100 USD"
+  },
+  {
+    "id": 2,
+    "image": "https://images.unsplash.com/photo-1592842312573-dca0b185d2e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80",
+    "product_name": "Black and Gold Perfume - CHANEL COCO NOIR",
+    "product_price": "$60 USD"
+  },
+  {
+    "id": 3,
+    "image": "https://images.unsplash.com/photo-1590739225287-bd31519780c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=361&q=80",
+    "product_name": "Black Leather - PRADA MILANO Bag",
+    "product_price": "$100 USD"
+  }
+]

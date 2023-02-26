@@ -1031,8 +1031,6 @@ body {
     white-space: nowrap;
     -webkit-font-smoothing: antialiased;
     margin-right: 12px;
-
-
 }
 
 .shop input{
@@ -1055,6 +1053,21 @@ body {
     border-radius: 8px;
 }
 
+.search-wrap button{
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    margin: 12px;
+    font-size: 14px;
+    outline-color: rgb(74,74,74);
+    color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+
 .show h2{
     box-sizing: border-box;
     color: rgb(74,74,74);
@@ -1075,14 +1088,14 @@ body {
     font-size: 18px;
 }
 
-.products {
+.product-cont {
     display: grid;
+    margin: 20px;
     padding-right: 200px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.prod-1,
-.prod-2,
-.prod-3{
+
+.product-cont{
     box-sizing: border-box;
     color: rgb(74,74,74);
     font-family: butlerregular;
@@ -1094,11 +1107,9 @@ body {
     justify-content: space-between;
     font-size: 23px;
     margin-bottom: 40px;
-    padding: 50px;
+    padding: 60px;
 }
-.prod-1 h3,
-.prod-2 h4,
-.prod-3 h5{
+.product-cont h3{
     box-sizing: border-box;
     color: rgb(74,74,74);
     font-family: butlerregular;
@@ -1118,9 +1129,7 @@ body {
     font-weight: 200;
 }
 
-.prod-1 p,
-.prod-2 p,
-.prod-3 p{
+.product-cont p{
     box-sizing: border-box;
     color: rgb(74,74,74);
     font-family: butlerregular;
