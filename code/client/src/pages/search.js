@@ -47,7 +47,11 @@ const Search = () => {
                                 </Link>
                             )})}
             </div>
-            {/* <div className="products">
+        </div>
+    )
+}
+export default Search;
+{/* <div className="products">
                 <div className="prod-1">
                     <Link to="/product?prod_id=2">
                     <img src="https://images.unsplash.com/photo-1587467512961-120760940315?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"/>
@@ -76,9 +80,3 @@ const Search = () => {
                     {/*<button>Got to cart ({cartItems.length})</button>
                 </header>
             </div>*/}
-
-        </div>
-
-    )
-}
-export default Search;

@@ -54,33 +54,43 @@ return (
         </div>
 
         <div className="home-1">
+
             <h1>LEATHER SHARP 2023 </h1>
             <p>$28.00 USD</p>
 
             <h2>NEW COLLECTION</h2>
+
             <p2>Elevate your style with our metallic finished bovine leather accessory. </p2> <br/>
             <p3>Expertly crafted in Spain, it features a metal buckle closure and a leather </p3> <br/>
             <p4>belt loop for added convenience. </p4>
 
             <br />
-            <button>ADD TO CART ></button>
+            <Link to="/collection_id/New_Collection?">
+                <button>VIEW ALL ></button>
+            </Link>
         </div>
 
         <div className="home-2">
+
             <h2>OVERSIZE CIRCLES BELT</h2>
+
             <p4>
                 Metal belt with different sized circles and lobster clasp closure.
             </p4>
             <br/>
             <p5>$58.00 USD</p5>
             <br />
+            <Link to="/collection_id/Best_Sellers?">
             <button>VIEW ALL ></button>
+            </Link>
         </div>
 
         <div className="home-3">
             <h3>SPRING SUMMER <br/>
                 2023 COLLECTION</h3>
+            <Link to="/collection_id/Spring_Summer2023_Collection?">
             <button>VIEW COLLECTION ></button>
+            </Link>
         </div>
 
         <div className="home-4">
@@ -111,7 +121,9 @@ return (
             </div>
             </div>
             <div className="homeprod">
-                <button>VIEW ALL ></button>
+                <Link to="/collection_id/Seasonal_Highlights?">
+                    <button>VIEW ALL ></button>
+                </Link>
             </div>
         </div>
 
