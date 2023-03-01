@@ -1,20 +1,24 @@
 // register POST routes for pages that don't require specialized data
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
+const { isValidId } = require("../tools/parsing")
 
 
 module.exports = { setPost: function(app, db) {
 
     app.post(routes.get_product_page_info, (req, res) => {
+        var pid = req.body.pid;
+        if (!isValidId(pid)) { res.json(constructError("Cannot get product", "ID is not in a valid format")) }
+
         db.query(
             "SELECT name, imagepath, description, quantity, price FROM Products WHERE products.id = ?;", 
-            [req.body.pid], 
+            [pid], 
             (err, sqlres) => {
                 if (err) { console.log(err);
                 } else {
                     db.query(
                         `SELECT Reviews.id, Users.fname, Users.lname, Reviews.rating, Reviews.text, Reviews.date FROM Products
                         INNER JOIN Reviews ON Reviews.products_id = Products.id INNER JOIN Users ON Users.id = Reviews.users_id WHERE Products.id = ?;`, 
-                        [req.body.pid],
+                        [pid],
                         (err2, sqlres2) => {
                             var retData;
                             if (sqlres.length > 0) {
@@ -66,7 +70,8 @@ module.exports = { setPost: function(app, db) {
 
     // collections not implemented in db yet
     app.post(routes.get_collection_id_list), (req, res) => {
-        const cid = req.body.cid;
+        var input = {};
+        input.cid = parsing.parseNumber(req.body.cid);
         res.json(constructSuccess({
             prodIds: [ 24, 225, 189 ] 
         }));

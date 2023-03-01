@@ -1,21 +1,25 @@
 // register POST requests for paths that allow the user to (or attempt to) make decisions on the backend
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
 const { getUidFromToken } = require("../credentialmanager");
+const { isValidId } = require("../tools/parsing");
 
 
 module.exports = { setPost: function(app, db, bcrypt, creds) {
 
     app.post(routes.order_products_from_cart, (req, res) => {
+        var uid = req.body.uid;
+        if (!isValidId(uid)) { res.json(constructError("Cannot get product lists from cart", "ID is not in a valid format")) }
+
         db.query(
             `INSERT INTO Receipts (users_id, orderdate, orderstatus) VALUES (?, CURDATE(), "Pending");
             INSERT INTO Receiptitems SELECT receipts.id, carts.products_id, carts.amount FROM Receipts
             INNER JOIN Carts ON Carts.users_id = Receipts.users_id;
             DELETE FROM Carts WHERE Users_id = ?;`, 
-            [req.body.uid, req.body.uid],
+            [uid, uid],
             (err, sqlres) => {
                 if (err) { 
                     console.log(err);
-                    res.json(constructError("error_when_moving_from_cart_to_receipt", err));
+                    res.json(constructError("Error when placing order", err));
                 } else {
                     res.setHeader('Content-Type', 'application/json');
                     res.json(constructSuccess());
@@ -25,9 +29,13 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
     });
 
     app.post(routes.add_product_to_cart, (req, res) => {
+        var pid = req.body.pid;
+        var uid = req.body.uid;
+        var amount = req.body.amount;
+
         db.query(
             "INSERT INTO Carts VALUES (?, ?, ?);", 
-            [req.body.pid, req.body.uid, req.body.amount], 
+            [pid, uid, amount], 
             (err, sqlres) => {
                 if (err) { 
                     console.log(err);
@@ -40,13 +48,18 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
     });
 
     app.post(routes.register_new_user, (req, res) => {
-        let b = req.body;
+        var fname = req.body.fname;
+        var lname = req.body.lname;
+        var email = req.body.email;
+        var phone = req.body.phonenumber;
+        var addr = req.body.address;
+
         var salt = bcrypt.genSaltSync(10);
         var hashedPassword = bcrypt.hashSync(b.password, salt);
         db.query(
             `INSERT INTO Users (fname, lname, email, phonenumber, address, Users.password, DatetimeJoined, registered) 
             VALUES (?, ?, ?, ?, ?, ?, NOW(), 1);`,
-            [b.fname, b.lname, b.email, b.phonenumber, b.address, hashedPassword],
+            [fname, lname, email, phone, addr, hashedPassword],
             (err, sqlres) => {
                 if (err) { console.log(err);
                 } else {
@@ -58,9 +71,12 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
     });
 
     app.post(routes.increment_product_in_cart, (req, res) => {
+        var pid = req.body.pid;
+        var uid = req.body.uid;
+
         db.query(
             "SELECT quantity FROM Products WHERE Products.id = ?;",
-            [req.body.pid],
+            [pid],
             (err, sqlres) => {
                 if (err) { console.log(err);
                 } else {
@@ -68,13 +84,13 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
                     var inc = req.body.increment;
                     if (n - inc <= 0) {
                         res.setHeader('Content-Type', 'application/json');
-                        res.json(constructError("could_not_increment", "Not enought items in cart to increment."));
+                        res.json(constructError("Could not add product to cart", "Not enought items in cart to increment."));
                     }
                     else {
                         db.query(
                             `UPDATE Products SET quantity = quantity-1 WHERE Products.id = ?;
                             UPDATE Carts SET amount = amount+1 WHERE users_id=? AND products_id=?;`, 
-                            [req.body.pid, req.body.uid, req.body.pid],
+                            [pid, uid, pid],
                             (err2, sqlres2) => {
                                 if (err2) { console.log(err2);
                                 } else {
@@ -90,10 +106,14 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
     });
 
     app.post(routes.add_product_review, (req, res) => {
-        var b = req.body;
+        var uid = req.body.uid;
+        var pid = req.body.pid;
+        var rating = req.body.rating;
+        var text = req.body.text;
+
         db.query(
             `INSERT INTO Reviews(users_id, products_id, rating, text, date) VALUES (?, ?, ?, ?, CURDATE());`, 
-            [b.uid, b.pid, b.rating, b.text], 
+            [uid, pid, rating, text], 
             (err, sqlres) => {
                 if (err) { console.log(err);
                 } else {
