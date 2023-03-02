@@ -14,7 +14,7 @@ const db = mysql.createConnection(sqlconfig);
 
 // security
 const bcrypt = require("bcryptjs");
-const creds = require("./credentialmanager");
+const creds = require("./tools/credentialmanager");
 
 // initialize routes
 const userroutes = require("./routes/userroutes");

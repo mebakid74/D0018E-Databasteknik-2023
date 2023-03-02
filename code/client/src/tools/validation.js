@@ -24,12 +24,10 @@ const clearCookie = (key, value) => {
 
 const isUserValid = () => {
     var t = getCookie("token");
-    console.log(t);
     if (t != null) {
         axios.post(routes.validate_user_login, {
             token: t
         }).then((res) => {
-            console.log(res.data["data"]["valid"]);
             return res.data["data"]["valid"];
         }).catch((err) => {
             console.log(err);

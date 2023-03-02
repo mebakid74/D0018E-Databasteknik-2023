@@ -1,6 +1,6 @@
 // register POST requests for paths that allow the user to (or attempt to) make decisions on the backend
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
-const { getUidFromToken } = require("../credentialmanager");
+const { getUidFromToken } = require("../tools/credentialmanager");
 const { isValidId } = require("../tools/parsing");
 
 

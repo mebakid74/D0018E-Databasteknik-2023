@@ -54,8 +54,8 @@ const NotLoggedIn = () => {
             email:          userdata.email,
             password:       userdata.password,
         }).then((res) => {
-            alert((res.data["status"]) ? "User has been registered" : "User could not be registered");
-            if (res.data["status"]) {
+            alert((res.data["status"] == "success") ? "User has been registered" : "User could not be registered");
+            if (res.data["status"] == "success") {
                 loginUser(userdata.email, userdata.password);
             }
         }).catch((err) => {

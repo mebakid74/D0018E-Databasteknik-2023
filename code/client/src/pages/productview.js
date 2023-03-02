@@ -6,16 +6,18 @@ import "../structure/pages.css"
 import Contentlist from "../components/contentlist";
 import { clientParsedRoutes as routes } from "../constants";
 import { isUserValid } from "../tools/validation";
+import PartialUserPage from "../components/partialuserpage";
 
 import { AiFillStar,AiOutlineStar } from "react-icons/ai";
 
 
-const ProductView = () => {
-    var userValid = isUserValid();
-
+const Page = (props) => {
     const [amount, setAmount] = useState(0);
     const [pid, setPid] = useState(0);
     const [uid, setUid] = useState(0);
+    const [revs, setRevs] = useState([]);
+    const [revarea, setRevArea] = useState("");
+    const [searchParams,] = useSearchParams();
     const [prodData, setProdData] = useState({
         name: "",
         description: "",
@@ -26,22 +28,17 @@ const ProductView = () => {
         size: "",
         reviews: []
     });
-    const [revs, setRevs] = useState([]);
 
-    const [revarea, setRevArea] = useState("");
-    const [searchParams, setSearchParams] = useSearchParams();
     useEffect(() => {
         var p = searchParams.get("prod_id");
-        console.log(p)
         setPid(p);
-        getProductInfo(p); // param required here 
+        getProductInfo(p);
     },[]);
     
     const getProductInfo = (pid) => {
         axios.post(routes.get_product_page_info, {
             pid: pid
         }).then((res) => {
-            console.log(res.data);
             if (res.data["data"] != null) {
                 setProdData(res.data["data"]);
                 var reviews = res.data["data"]["reviews"]
@@ -86,16 +83,13 @@ const ProductView = () => {
 
     /*Reviews*/
     const [rating, setRating] = useState(0);
-
     return (
         <div>          
             <div className='productlist'>
                 <label>Debug input fields</label>
                 <input type="text" onChange={(e) => {setUid(e.target.value);}}></input>
                 <input type="text" onChange={(e) => {setAmount(e.target.value);}}></input>
-
-
-                <button onClick={userValid ? requestProductOrder 
+                <button onClick={props.userValid ? requestProductOrder 
                                         : ()=>{alert("You must be logged in to order")}}>Order</button>
             </div>
             <hr/>
@@ -129,12 +123,21 @@ const ProductView = () => {
                 <textarea onChange={(e) => setRevArea(e.target.value)}
                     placeholder="Enter your comment here">
                 </textarea>
-                <button onClick={ userValid ? requestReviewAdd 
+                <button onClick={props.userValid ? requestReviewAdd 
                                             : ()=>{alert("You must be logged in to review")}
                 }>Submit</button>
             </div>
         </div>
 
-    );};
+    );
+};
+
+const ProductView = () => {
+    return (
+        <div>
+            <PartialUserPage pageComponent={Page}/>
+        </div>
+    );
+}
 
 export default ProductView;

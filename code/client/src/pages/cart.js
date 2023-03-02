@@ -4,15 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { isUserValid } from "../tools/validation"
 import Contentlist from "../components/contentlist";
 import { clientParsedRoutes as routes } from "../constants";
+import RedirectUserPage from "../components/redirectuserpage"
 
-const Cart = () => {
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (!isUserValid("")) {
-            navigate("/account");
-        }
-    },[]);
-
+const Page = (props) => {
     const [uid, setUid] = useState(0);
     const [els, setEls] = useState([]);
 
@@ -107,4 +101,20 @@ const Cart = () => {
 
     );};
 
+
+const PageE = (props) => {
+    return (
+        <div>
+            <h1>Hola</h1>
+        </div>
+    );
+}
+
+const Cart = () => {
+    return (
+        <div>
+            <RedirectUserPage link="/" pageComponent={Page}/>
+        </div>
+    );
+}
 export default Cart;
