@@ -1,11 +1,13 @@
-export const isValidId = (v) => {
+const isValidId = (v) => {
     return (typeof v == "number");
 }
 
-export const isValidEmail = (v) => {
+const isValidEmail = (v) => {
 
 }
 
-export const isValidPassword = (v) => {
+const isValidPassword = (v) => {
     
 }
+
+module.exports = {isValidEmail, isValidId, isValidPassword}
