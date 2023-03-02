@@ -1,20 +1,17 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom"
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../structure/pages.css"
 import Contentlist from "../components/contentlist";
-import { clientParsedRoutes as routes } from "../constants";
-import { isUserValid } from "../tools/validation";
+import { clientParsedRoutes as routes, checkSuccess } from "../constants";
+import { getToken } from "../tools/validation";
 import PartialUserPage from "../components/partialuserpage";
-
 import { AiFillStar,AiOutlineStar } from "react-icons/ai";
 
-
 const Page = (props) => {
+    const navigate = useNavigate();
     const [amount, setAmount] = useState(0);
     const [pid, setPid] = useState(0);
-    const [uid, setUid] = useState(0);
     const [revs, setRevs] = useState([]);
     const [revarea, setRevArea] = useState("");
     const [searchParams,] = useSearchParams();
@@ -28,6 +25,7 @@ const Page = (props) => {
         size: "",
         reviews: []
     });
+    const [rating, setRating] = useState(0);
 
     useEffect(() => {
         var p = searchParams.get("prod_id");
@@ -36,10 +34,9 @@ const Page = (props) => {
     },[]);
     
     const getProductInfo = (pid) => {
-        axios.post(routes.get_product_page_info, {
-            pid: pid
+        axios.post(routes.get_product_page_info, { pid: pid
         }).then((res) => {
-            if (res.data["data"] != null) {
+            if (checkSuccess(res)) {
                 setProdData(res.data["data"]);
                 var reviews = res.data["data"]["reviews"]
                 var l = []
@@ -58,9 +55,11 @@ const Page = (props) => {
         axios.post(routes.add_product_to_cart, {
             pid: pid,
             amount: amount,
-            uid: uid
+            token: getToken()
         }).then((res) => {
-            console.log(res.data);
+            if (checkSuccess(res)) {
+                alert("Product has been added to cart");
+            }
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
@@ -70,24 +69,24 @@ const Page = (props) => {
     const requestReviewAdd = () => {
         axios.post(routes.add_product_review, {
             pid: pid,
-            uid: uid,
+            token: getToken(),
             text: revarea,
             rating: rating
         }).then((res) => {
-          console.log(res.data);  
+            if (checkSuccess(res)) {
+                alert("review has been placed");
+                navigate(0);
+            }
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
         })
     };
 
-    /*Reviews*/
-    const [rating, setRating] = useState(0);
     return (
         <div>          
             <div className='productlist'>
-                <label>Debug input fields</label>
-                <input type="text" onChange={(e) => {setUid(e.target.value);}}></input>
+                <label>Order amount: </label>
                 <input type="text" onChange={(e) => {setAmount(e.target.value);}}></input>
                 <button onClick={props.userValid ? requestProductOrder 
                                         : ()=>{alert("You must be logged in to order")}}>Order</button>

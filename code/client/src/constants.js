@@ -25,6 +25,12 @@ Object.entries(routes).forEach((e) => {
     clientParsedRoutes[k] = "http://localhost:3001" + v;
 }); 
 
+// return struct:
+// status: text indicating what went wrong, "success" if no problem, something else if error
+// dets: text with extra details, optional print information
+// data: on success, requested information
+
+// server side
 const constructError = (text, dets=null) => {
     return { "status": text, "details": dets };
 };
@@ -32,6 +38,13 @@ const constructError = (text, dets=null) => {
 const constructSuccess = (d=null, dets=null) => {
     return {...constructError("success", dets), data:d };
 };
+
+// client side
+const checkSuccess = (res) => {
+    var v = res.data["status"] == "success";
+    if (!v) { alert(res.data["status"] + "\nDetails:\n" + res.data["dets"]); }
+    return v;
+}
 
 module.exports = {
     routes, clientParsedRoutes, constructError, constructSuccess

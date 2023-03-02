@@ -8,10 +8,6 @@ import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
 import {Link} from "react-router-dom";
 
-/////////////////////////////// Route info for debugging:
-// nothing atm; static page
-/////////////////////////////////////////////////////////
-
 const Home = () => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -66,7 +62,7 @@ return (
 
             <br />
             <Link to="/collection_id/New_Collection?">
-                <button>VIEW ALL ></button>
+                <button>VIEW ALL</button>
             </Link>
         </div>
 
@@ -81,7 +77,7 @@ return (
             <p5>$58.00 USD</p5>
             <br />
             <Link to="/collection_id/Best_Sellers?">
-            <button>VIEW ALL ></button>
+            <button>VIEW ALL</button>
             </Link>
         </div>
 
@@ -89,7 +85,7 @@ return (
             <h3>SPRING SUMMER <br/>
                 2023 COLLECTION</h3>
             <Link to="/collection_id/Spring_Summer2023_Collection?">
-            <button>VIEW COLLECTION ></button>
+            <button>VIEW COLLECTION</button>
             </Link>
         </div>
 
@@ -122,7 +118,7 @@ return (
             </div>
             <div className="homeprod">
                 <Link to="/collection_id/Seasonal_Highlights?">
-                    <button>VIEW ALL ></button>
+                    <button>VIEW ALL</button>
                 </Link>
             </div>
         </div>
@@ -147,7 +143,7 @@ return (
                 type="text"
                 placeholder="Enter your email here"
             />
-            <button>SUBSCRIBE ></button>
+            <button>SUBSCRIBE</button>
         </div>
 
         <div className="home-7">

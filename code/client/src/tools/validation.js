@@ -22,34 +22,8 @@ const clearCookie = (key, value) => {
     }*/
 }
 
-const isUserValid = () => {
-    var t = getCookie("token");
-    if (t != null) {
-        axios.post(routes.validate_user_login, {
-            token: t
-        }).then((res) => {
-            return res.data["data"]["valid"];
-        }).catch((err) => {
-            console.log(err);
-            console.log(err.response.data);
-        });
-    }
-    return false;
-};
+const setToken = (v) => {setCookie("token", v);} 
+const getToken = () => {return getCookie("token");}
+const clearToken = () => {clearCookie("token")}
 
-const isUserAdmin = (validationToken) => {
-    var t = getCookie("token");
-    console.log(t);
-    if (t != null) {
-        axios.post(routes.validate_admin_login, {
-            token: t
-        }).then((res) => {
-            console.log(res.data["data"]["admin"]);
-            return res.data["data"]["admin"];
-        }).catch((err) => {
-            console.log(err);
-            console.log(err.response.data);
-        });
-    }
-}
-export { isUserValid, isUserAdmin, setCookie, getCookie, clearCookie };
+export { setToken, getToken, clearToken };

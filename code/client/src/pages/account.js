@@ -1,21 +1,22 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { setCookie, getCookie, clearCookie } from "../tools/validation"
+import { setToken, getToken, clearToken} from "../tools/validation"
 import "../structure/pages.css";
-import { clientParsedRoutes as routes } from "../constants"
+import { clientParsedRoutes as routes, checkSuccess } from "../constants"
 import UserPage  from "../components/userpage"
 import { useNavigate } from "react-router-dom";
 
-const LoggedIn = () => {
+const LoggedIn = (props) => {
     const navigate = useNavigate();
 
     const logOutUser = () => {
-        axios.post(routes.logout_user, {
-            token: getCookie("token")
+        axios.post(routes.logout_user, { token: getToken()
         }).then((res) => {
-            clearCookie();
-            console.log(res);
-            navigate(0);
+            if (checkSuccess(res)) {
+                clearToken();
+                alert("You have been logged out");
+                navigate(0);
+            }
         }).catch((err) => {
             console.log(err);
             console.log(err.response.data);
@@ -54,8 +55,7 @@ const NotLoggedIn = () => {
             email:          userdata.email,
             password:       userdata.password,
         }).then((res) => {
-            alert((res.data["status"] == "success") ? "User has been registered" : "User could not be registered");
-            if (res.data["status"] == "success") {
+            if (checkSuccess(res)) {
                 loginUser(userdata.email, userdata.password);
             }
         }).catch((err) => {
@@ -69,10 +69,10 @@ const NotLoggedIn = () => {
             email:      email,
             password:   pass
         }).then((res) => {
-            var data = res.data["data"];
-            alert((data["valid"]) ? "You have been logged in.\nYour token is " + data["validationToken"] : "You could not be logged in");
-            if (data["valid"]) {
-                setCookie("token", data["validationToken"])
+            if (checkSuccess(res)) {
+                var data = res.data["data"];
+                alert("You have been logged in.\nYour token is " + data["validationToken"]);
+                setToken(data["validationToken"]);
                 navigate(0);
             }
         }).catch((err) => {
@@ -168,7 +168,7 @@ const NotLoggedIn = () => {
 const Account = () => {
     return (
         <div>
-            <UserPage validRenderComponent={LoggedIn} invalidRenderComponent={NotLoggedIn}></UserPage>
+            <UserPage validPageFunc={LoggedIn} invalidPageFunc={NotLoggedIn}></UserPage>
         </div>
     );
 }

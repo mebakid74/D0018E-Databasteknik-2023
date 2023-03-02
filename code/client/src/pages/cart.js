@@ -1,33 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { isUserValid } from "../tools/validation"
 import Contentlist from "../components/contentlist";
-import { clientParsedRoutes as routes } from "../constants";
+import { clientParsedRoutes as routes, checkSuccess } from "../constants";
 import RedirectUserPage from "../components/redirectuserpage"
+import { getToken } from "../tools/validation"
 
 const Page = (props) => {
-    const [uid, setUid] = useState(0);
     const [els, setEls] = useState([]);
 
     const getCartInfo = () => {
-        axios.post(routes.get_cart_page_info, {
-            uid: uid
+        axios.post(routes.get_cart_page_info, { token: getToken()
         }).then((res) => {
-            console.log(res.data);
-
-            if (res.data["data"] == null) { return;}
-
-            let l = []
-            for (const [,v] of Object.entries(res.data["data"])) {
-                let s = "#"+ v["products_id"] + ":   " + v["amount"] + "st. ";
-                if (s in l) { console.error("duplicate elements are not allowed"); }
-                l.push(s);
+            if (checkSuccess(res)) {
+                let l = []
+                for (const [,v] of Object.entries(res.data["data"])) {
+                    let s = "#"+ v["products_id"] + ":   " + v["amount"] + "st. ";
+                    if (s in l) { console.error("duplicate elements are not allowed"); }
+                    l.push(s);
+                }
+                setEls(l);
             }
-
-            console.log(l);
-            setEls(l);
-
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
@@ -35,11 +27,11 @@ const Page = (props) => {
     }
 
     const requestOrder = () => {
-        axios.post(routes.order_products_from_cart, {
-            uid: uid
+        axios.post(routes.order_products_from_cart, { token: getToken()
         }).then((res) => {
-            console.log("order confirmed: " + res.data["confirmed"]);
-            console.log("error: " + res.data["error"]);
+            if (checkSuccess(res)) {
+                alert("Order has been placed");
+            }
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
@@ -68,8 +60,6 @@ const Page = (props) => {
         <div>
             <div className='cart'>
                 <label>Cart</label>
-                <input
-                    type="text" onChange={(e) => {setUid(e.target.value);}}></input>
                 <button onClick={getCartInfo}>Get cart info</button>
                 <button onClick={requestOrder}>Confirm order</button>
                 <hr/>
@@ -99,16 +89,8 @@ const Page = (props) => {
             </div>
         </div>
 
-    );};
-
-
-const PageE = (props) => {
-    return (
-        <div>
-            <h1>Hola</h1>
-        </div>
     );
-}
+};
 
 const Cart = () => {
     return (

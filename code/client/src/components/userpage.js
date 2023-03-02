@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { clientParsedRoutes as routes } from "../constants"
-import { getCookie} from "../tools/validation"
+import { getToken } from "../tools/validation"
 
 class UserPage extends React.Component {
     constructor(props) {
@@ -10,7 +10,7 @@ class UserPage extends React.Component {
     }
 
     componentDidMount() {
-        var t = getCookie("token");
+        var t = getToken();
         if (t == null) {  this.setState({ loading: false, valid: false }); }
         else {            
             axios.post(routes.validate_user_login, { token: t
@@ -28,7 +28,7 @@ class UserPage extends React.Component {
         if (loading) {
             return <h1>Loading...</h1>
         } else {
-            return (valid) ? <this.props.validRenderComponent/>: <this.props.invalidRenderComponent/>;
+            return (valid) ? <this.props.validPageFunc/>: <this.props.invalidPageFunc/>;
         }
     }
 }
