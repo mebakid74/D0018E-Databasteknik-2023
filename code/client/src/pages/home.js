@@ -1,8 +1,15 @@
 import React from "react";
 import { useState } from "react";
-
 import "../structure/pages.css";
+
 import home from "../asset/video/home.mp4";
+import img4 from "../asset/image/img4.jpg";
+import img6 from "../asset/image/img6.jpg";
+import img10 from "../asset/image/img10.jpg";
+import img11 from "../asset/image/img11.jpg";
+import img12 from "../asset/image/img12.jpg";
+import img13 from "../asset/image/img13.jpg";
+import img14 from "../asset/image/img14.jpg";
 
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
@@ -19,25 +26,21 @@ const Home = () => {
         "https://images.unsplash.com/photo-1546536133-d1b07a9c768e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80",
         "https://images.unsplash.com/photo-1603189343302-e603f7add05a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     ];
-
     const prevSlide = () => {
-        setCurrentSlide(currentSlide === 0 ? 2 : (prev) => prev - 1
-    )};
+        setCurrentSlide(currentSlide === 0 ? 4 : prevSlide => prevSlide - 1);
+    };
     const nextSlide = () => {
-        setCurrentSlide(currentSlide === 2 ? 0 : (prev) => prev + 1
-    )};
+        setCurrentSlide(currentSlide === 4 ? 0 : prevSlide => prevSlide + 1);
+    };
 
 
-return (
-    <div className="home">
-        <div className="container" style={{transform:
-        `translateX(-${currentSlide * 100}vw)`}} >
-            <img src={data[0]} alt="" />
-            <img src={data[1]} alt="" />
-            <img src={data[2]} alt="" />
-            <img src={data[3]} alt="" />
-            <img src={data[4]} alt="" />
+    return (
+        <div className="home">
 
+        <div className="container" style={{transform: `translateX(-${currentSlide * 100}vw)`}}>
+             {data.map((image, index) => (
+                <img key={index} src={image} alt="" />
+            ))}
         </div>
 
         <div className="icons">
@@ -50,16 +53,13 @@ return (
         </div>
 
         <div className="home-1">
-
             <h1>LEATHER SHARP 2023 </h1>
+            <img src={img4} className="img4" alt=""/>
             <p>$28.00 USD</p>
-
             <h2>NEW COLLECTION</h2>
-
             <p2>Elevate your style with our metallic finished bovine leather accessory. </p2> <br/>
             <p3>Expertly crafted in Spain, it features a metal buckle closure and a leather </p3> <br/>
             <p4>belt loop for added convenience. </p4>
-
             <br />
             <Link to="/collection_id/New_Collection?">
                 <button>VIEW ALL</button>
@@ -67,11 +67,11 @@ return (
         </div>
 
         <div className="home-2">
-
             <h2>OVERSIZE CIRCLES BELT</h2>
-
+            <img src={img6} className="img6" alt=""/>
             <p4>
-                Metal belt with different sized circles and lobster clasp closure.
+                Metal belt with different sized circles and lobster clasp
+                closure.
             </p4>
             <br/>
             <p5>$58.00 USD</p5>
@@ -82,41 +82,43 @@ return (
         </div>
 
         <div className="home-3">
-            <h3>SPRING SUMMER <br/>
+            <h3>SPRING SUMMER
                 2023 COLLECTION</h3>
+            <img src={img14} className="img14" alt=""/>
             <Link to="/collection_id/Spring_Summer2023_Collection?">
+                <br/>
             <button>VIEW COLLECTION</button>
             </Link>
         </div>
 
         <div className="home-4">
             <h4>SEASONAL HIGHLIGHTS</h4>
-            <div className="homeprod-w">
-            <div className="homeprod-1">
+            <div className="home-prod-w">
+            <div className="home-prod-1">
                 <Link to="/product">
-                    <img src=""/>
+                    <img src={img10} className="img10"/>
                     <h1>Off-white Dreamy</h1>
                 </Link>
                 <p>$95.00 USD</p>
             </div>
 
-            <div className="homeprod-2">
+            <div className="home-prod-2">
                 <Link to="/product">
-                    <img src=""/>
+                    <img src={img11} className="img11" alt=""/>
                     <h1>Off-white classics </h1>
                 </Link>
                 <p>$110.00 USD</p>
             </div>
 
-            <div className="homeprod-3">
+            <div className="home-prod-3">
                 <Link to="/product">
-                    <img src=""/>
+                    <img src={img13} className="img13" alt=""/>
                     <h1>Off-white limited edition </h1>
                 </Link>
                 <p>$180.00 USD</p>
             </div>
             </div>
-            <div className="homeprod">
+            <div className="home-prod">
                 <Link to="/collection_id/Seasonal_Highlights?">
                     <button>VIEW ALL</button>
                 </Link>
@@ -133,9 +135,9 @@ return (
         <div className="home-6">
             <h6>NEWSLETTER</h6>
             <div className="cover">
-                <img src="https://images.unsplash.com/photo-1601597676886-2761d9b330bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"/>
+                <img src={img12} className="img12" alt=""/>
             </div>
-            <div className="newsle">
+            <div className="news-1">
                 <h1>SUBSCRIBE TO BE NOTIFIED <br/>
                     OF ALL LATEST UPDATES</h1>
             </div>

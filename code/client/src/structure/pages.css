@@ -167,6 +167,12 @@ body {
     margin-bottom: 18px;
     border-color: rgb(74,74,74);
 }
+.img4{
+    margin-left: 60px;
+    width: 350px;
+    height: 400px;
+}
+
 
 .home-2 h2{
     margin-left: 1100px;
@@ -243,6 +249,13 @@ body {
     margin-bottom: 60px;
     border-color: rgb(74,74,74);
 }
+
+.img6{
+    margin-left: 1100px;
+    width: 350px;
+    height: 500px;
+}
+
 .home-3{
     margin-left: 60px;
     box-sizing: border-box;
@@ -283,6 +296,13 @@ body {
     border-color: rgb(74,74,74);
 }
 
+.img10, .img11, .img13{
+    margin-top: 40px;
+    width: 250px;
+    height: 350px;
+}
+
+
 .home-4 h4{
     align-items: center;
     justify-items: center;
@@ -303,13 +323,13 @@ body {
     margin-bottom: 12px;
 }
 
-.homeprod-w{
+.home-prod-w{
     display: grid;
     padding-left: 150px;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
 }
-.homeprod-1 h1 {
+.home-prod-1 h1 {
     box-sizing: border-box;
     color: rgb(74,74,74);
     margin-top: 80px;
@@ -323,9 +343,10 @@ body {
     transform-origin: 0px 0px;
     white-space: nowrap;
     -webkit-font-smoothing: antialiased;
+    margin-top: -1px;
 }
 
-.homeprod-1 p{
+.home-prod-1 p{
     box-sizing: border-box;
     color: rgb(74,74,74);
     line-height: 20px;
@@ -342,7 +363,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.homeprod-2 h1{
+.home-prod-2 h1{
     box-sizing: border-box;
     color: rgb(74,74,74);
     margin-top: 80px;
@@ -356,9 +377,10 @@ body {
     transform-origin: 0px 0px;
     white-space: nowrap;
     -webkit-font-smoothing: antialiased;
+    margin-top: -1px;
 }
 
-.homeprod-2 p{
+.home-prod-2 p{
     box-sizing: border-box;
     color: rgb(74,74,74);
     line-height: 20px;
@@ -376,7 +398,15 @@ body {
     margin-bottom: 30px;
 }
 
-.homeprod-3 h1{
+.img14{
+    margin-top: 20px;
+    width: 800px;
+    height: 500px;
+    align-content: center;
+    text-align: center;
+    justify-items: center;
+}
+.home-prod-3 h1{
     box-sizing: border-box;
     color: rgb(74,74,74);
     margin-top: 80px;
@@ -390,9 +420,10 @@ body {
     transform-origin: 0px 0px;
     white-space: nowrap;
     -webkit-font-smoothing: antialiased;
+    margin-top: -1px;
 }
 
-.homeprod-3 p{
+.home-prod-3 p{
     box-sizing: border-box;
     color: rgb(74,74,74);
     line-height: 20px;
@@ -410,7 +441,7 @@ body {
     margin-bottom: 60px;
 }
 
-.homeprod button{
+.home-prod button{
     margin-left: 1250px;
     cursor: pointer;
     text-align: center;
@@ -418,7 +449,6 @@ body {
     padding: 10px;
     box-sizing: border-box;
     color: rgb(74,74,74);
-    margin-top: 20px;
     font-family: butlerregular;
     font-size: 12px;
     font-weight: 400;
@@ -487,7 +517,7 @@ body {
     justify-content: center;
 }
 
-.newsle h1 {
+.news-1 h1 {
     box-sizing: border-box;
     color: rgb(74,74,74);
     text-align: center;
@@ -506,6 +536,12 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+.img12{
+    width: 350px;
+    height: 550px;
+    text-align: center;
+    justify-content: center;
+}
 .home-6 input {
     padding: 20px;
     margin-top: 30px;

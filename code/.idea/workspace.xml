@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="36d9d16b-9049-407d-bc6a-348bc51f7cf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/collection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structure/pages.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structure/pages.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/useractionroutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/useractionroutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/sqlconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/sqlconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +33,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/DATATEKNIK/A/D0018E-Databasteknik-2023/code&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -70,6 +74,8 @@
       <workItem from="1677419229936" duration="2548000" />
       <workItem from="1677423632732" duration="20000" />
       <workItem from="1677579523106" duration="977000" />
+      <workItem from="1677944015481" duration="1944000" />
+      <workItem from="1677946182683" duration="6421000" />
     </task>
     <servers />
   </component>

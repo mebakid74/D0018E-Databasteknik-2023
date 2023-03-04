@@ -2,6 +2,7 @@
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
 const { getUidFromToken } = require("../tools/credentialmanager");
 const { isValidId } = require("../tools/parsing");
+const b = require("mysql/lib/ConnectionConfig");
 
 
 module.exports = { setPost: function(app, db, bcrypt, creds) {
