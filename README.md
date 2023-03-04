@@ -2,7 +2,7 @@
 
 ### The Lab project in the course D0018E E-commerce Lp3, V23
 
-The purpose of this laboratory session was to create a simple e-commerce website by using a SQL database $\textcolor{blue}{\text{Luleå University of Technology}}$ under the supervision of Olov Schelén.
+The purpose of this laboratory session was to create a simple e-commerce website by using a SQL database Luleå University of Technology under the supervision of Olov Schelén.
 
 ## Table of contents
 
