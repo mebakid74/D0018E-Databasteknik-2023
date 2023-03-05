@@ -87,9 +87,75 @@ const Page = (props) => {
                 <button>Empty cart</button> <br/>
                 <button>Proceed to checkout</button>
             </div>
+
+            <div className="container">
+                <form>
+                    <div className="row">
+                        <div className="col">
+                            <h1 className="title">Billing address</h1>
+
+                            <div className="input-box">
+                                <span>Address : </span>
+                                    <input type="text" placeholder="city - street" />
+                            </div>
+
+                            <div className="flex">
+                                <div className="input-box">
+                                    <span>Country :</span>
+                                    <input type="text" placeholder="Sweden"/>
+                                </div>
+
+                                 <div className="input-box">
+                                    <span>Zip code :</span>
+                                    <input type="text" placeholder="973 55"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col">
+                            <h1 className="title">Payment</h1>
+
+                            <div className="input-box">
+                                <span>Accepted cards :</span>
+                                <img src="" alt=""/>
+                            </div>
+
+                            <div className="input-box">
+                                <span>Card holder : </span>
+                                    <input type="text" placeholder="Mr. X" />
+                            </div>
+
+                            <div className="input-box">
+                                <span>Credit Card Number :</span>
+                                <input type="number" placeholder="1111-2222-0000-8888"/>
+                            </div>
+
+                            <div className="input-box">
+                                <span>Exp month :</span>
+                                <input type="text" placeholder="973 55"/>
+                            </div>
+
+                            <div className="flex">
+                                <div className="input-box">
+                                    <span>Exp Year :</span>
+                                    <input type="number" placeholder="2026"/>
+                                </div>
+                                 <div className="input-box">
+                                    <span>CVV :</span>
+                                    <input type="number" placeholder="026"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Continue to checkout" className="submit-btn"/>
+
+                </form>
+                
+            </div>
         </div>
 
-    );
+   );
 };
 
 const Cart = () => {

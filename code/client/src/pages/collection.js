@@ -78,6 +78,7 @@ const Collection = () => {
                 </Carousel>
             </container>
         </div>
-    )
+
+   )
 };
 export default Collection;
