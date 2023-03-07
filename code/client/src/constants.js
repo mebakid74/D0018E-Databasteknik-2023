@@ -47,5 +47,5 @@ const checkSuccess = (res) => {
 }
 
 module.exports = {
-    routes, clientParsedRoutes, constructError, constructSuccess
+    routes, clientParsedRoutes, constructError, constructSuccess, checkSuccess
 }

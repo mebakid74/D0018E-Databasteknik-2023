@@ -36,9 +36,9 @@ const Search = () => {
                                 return val;
                             }
                         })
-                        .map((val) => {
+                        .map((val, i) => {
                             return(
-                                <Link to ="/product?prod_id=?">
+                                <Link key={i} to = {"/product?prod_id=" + val.id}>
                                 <div key={val.id}>
                                     <img src = {val.image} alt="" />
                                     <h3>{val.product_name}</h3>

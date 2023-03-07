@@ -161,7 +161,7 @@ const Page = (props) => {
 const Cart = () => {
     return (
         <div>
-            <RedirectUserPage link="/" pageComponent={Page}/>
+            <RedirectUserPage link="/account" pageFunc={Page}/>
         </div>
     );
 }

@@ -110,11 +110,11 @@ const Page = (props) => {
                     .fill()
                     .map((_,index)=>
                         rating >= index + 1 ? (
-                                <AiFillStar style={{color:'black'}}
+                                <AiFillStar key={index} style={{color:'black'}}
                                             onClick={() => setRating(index + 1)}
                                 />
                         ) : (
-                                 <AiOutlineStar
+                                 <AiOutlineStar  key={index} 
                                      style={{color:'black'}}
                                      onClick={() => setRating(index + 1)}
                                  />
@@ -134,7 +134,7 @@ const Page = (props) => {
 const ProductView = () => {
     return (
         <div>
-            <PartialUserPage pageComponent={Page}/>
+            <PartialUserPage pageFunc={Page}/>
         </div>
     );
 }
