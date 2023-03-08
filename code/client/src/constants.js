@@ -2,7 +2,7 @@ const clientParsedRoutes = {};
 const routes = {   
     get_product_page_info: "/getprod",
     get_account_page_info: "/getacc",
-    get_collection_id_list: "/getcoll",
+    get_collection_list: "/getcoll",
     get_cart_page_info: "/getcart",
     add_product_to_cart: "/addprod",
     order_products_from_cart: "/ordercart",

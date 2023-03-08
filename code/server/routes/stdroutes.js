@@ -50,8 +50,9 @@ module.exports = { setPost: function(app, db) {
         var filters = req.body.filters;
         var sortmode = req.body.sortmode;
         var collections = req.body.collections;
+        var page = req.body.page;
 
-        if (filters.length > 0) {
+        if (-1 > 0) {
             query += " where Products.id in (SELECT products_id from productfilters where '1'='1' "
             filters.forEach(e => {
                 query += " and " + e["filter"] + "=" + e["filteval"];
@@ -59,12 +60,12 @@ module.exports = { setPost: function(app, db) {
             query += ")"
         }
 
-        if (collections.length > 0) {
+        if (-1 > 0) {
             query += ""
         }
 
         db.query(
-            "SELECT id, name, imagepath, quantity FROM Products;",
+            "SELECT id, name, imagepath, price, quantity FROM Products;",
             [],
             (err, sqlres) => {
                 if (err) {
@@ -78,14 +79,10 @@ module.exports = { setPost: function(app, db) {
         );
     });
 
-    // collections not implemented in db yet
-    app.post(routes.get_collection_id_list), (req, res) => {
-        var cid = req.body.cid;
-        if (!isValidId(cid)) { res.json(constructError("Cannot get collection", "ID is not in a valid format")); }
-
+    app.post(routes.get_collection_list, (req, res) => {
         db.query(
-            "SELECT id, name, description FROM Collections WHERE id=?;",
-            [cid],
+            "SELECT id, name, description FROM Collections;",
+            [],
             (err, sqlres) => {
                 if (err) { 
                     console.log(err);
@@ -96,5 +93,5 @@ module.exports = { setPost: function(app, db) {
                 }
             }
         );
-    };
+    });
 }}

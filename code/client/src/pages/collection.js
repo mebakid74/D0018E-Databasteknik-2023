@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import Carousel from "react-multi-carousel";
+import axios from "axios";
 import "../structure/pages.css";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
-import Collectionlist from "../components/collectionlist";
+import { clientParsedRoutes as routes, checkSuccess } from "../constants";
 
 const Collection = () => {
     const responsive = {
@@ -24,6 +25,20 @@ const Collection = () => {
         }
     };
 
+    const [collections, setCollections] = useState([]);
+    useEffect(()=>{getCollections();},[]);
+    const getCollections = () => {
+        axios.post(routes.get_collection_list, { id: 1
+        }).then((res) => {
+            if (checkSuccess(res)) {
+                setCollections(res.data["data"]);
+            }
+        }).catch((err) => {
+            console.error(err);
+            console.error(err.response.data);
+        })
+    }
+
     return (
         <div className="collection">
             <h1>Collection</h1>
@@ -43,7 +58,21 @@ const Collection = () => {
                 </div>
 
                 <Carousel responsive={responsive}>
-                    <Link to="/collection_id/New_Collection?">
+
+                { collections.map((val, i) => {  
+                    return (
+                    <Link key={i} to={"/search?collection=" + val.id}>
+                    <div className="item-1"> {val.name}
+                        <img alt="New collection"
+                            src = {"/images/placeholder.png"}>
+                        </img>
+                    </div>
+                    </Link>
+                )})}
+
+
+                    {/*
+                    <Link to={"/search?collection=" + 0}>
                     <div className="item-1"> New Collection
                         <img alt="New collection"
                             src = "https://images.unsplash.com/photo-1587538520952-fafa4eeee7be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
@@ -73,7 +102,7 @@ const Collection = () => {
                             src="https://images.unsplash.com/photo-1523297467724-f6758d7124c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=419&q=80">
                         </img>
                     </div>
-                    </Link>
+                </Link>*/}
 
                 </Carousel>
             </container>

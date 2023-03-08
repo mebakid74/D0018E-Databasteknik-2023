@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Contentlist from "../components/contentlist";
 import { clientParsedRoutes as routes, checkSuccess } from "../constants";
 import RedirectUserPage from "../components/redirectuserpage"
 import { getToken } from "../tools/validation"
@@ -8,17 +7,12 @@ import { getToken } from "../tools/validation"
 const Page = (props) => {
     const [els, setEls] = useState([]);
 
+    useEffect(()=>{getCartInfo();},[]);
     const getCartInfo = () => {
         axios.post(routes.get_cart_page_info, { token: getToken()
         }).then((res) => {
             if (checkSuccess(res)) {
-                let l = []
-                for (const [,v] of Object.entries(res.data["data"])) {
-                    let s = "#"+ v["products_id"] + ":   " + v["amount"] + "st. ";
-                    if (s in l) { console.error("duplicate elements are not allowed"); }
-                    l.push(s);
-                }
-                setEls(l);
+                console.log(res);
             }
         }).catch((err) => {
             console.error(err);
@@ -60,10 +54,8 @@ const Page = (props) => {
         <div>
             <div className='cart'>
                 <label>Cart</label>
-                <button onClick={getCartInfo}>Get cart info</button>
                 <button onClick={requestOrder}>Confirm order</button>
                 <hr/>
-                <Contentlist elements={els}></Contentlist>
             </div>
 
             <div className="cartadd">
