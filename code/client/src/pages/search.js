@@ -37,7 +37,6 @@ const Search = () => {
             page: p
         }).then((res) => {
             if (checkSuccess(res)) {
-                console.log(res.data);
                 setResultData(res.data["data"]);
             }
         }).catch((err) => {
@@ -72,7 +71,7 @@ const Search = () => {
                             return(
                                 <Link key={i} to = {"/product?prod_id=" + val.id}>
                                 <div key={val.id}>
-                                    <img src = {val.imagepath} alt="" />
+                                    <img src = {"/images/placeholder"+i+".png"} alt="" />
                                     <h3>{val.name}</h3>
                                     <p className="product_price">{val.price}</p>
                                 </div>

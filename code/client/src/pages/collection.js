@@ -63,9 +63,10 @@ const Collection = () => {
                     return (
                     <Link key={i} to={"/search?collection=" + val.id}>
                     <div className="item-1"> {val.name}
-                        <img alt="New collection"
-                            src = {"/images/placeholder.png"}>
+                        <img alt= "missing image"
+                            src = {"/images/placeholder0.png"}>
                         </img>
+                        {val.description}
                     </div>
                     </Link>
                 )})}
