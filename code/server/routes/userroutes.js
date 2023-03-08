@@ -40,7 +40,7 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
 
     app.post(routes.login_user, (req, res) => {
         var email = req.body.email;
-        var pass = req.body.pass;
+        pass = req.body.password;
         if (!isValidEmail(email)) { res.json(constructError("Cannot login", "email is not in valid format")); }
         if (!isValidPassword(pass)) { res.json(constructError("Cannot login", "password is not in valid format")); }
 

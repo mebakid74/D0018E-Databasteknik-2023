@@ -127,7 +127,7 @@ const Home = () => {
 
         <div className="home-5">
             <h5>COLLECTION V5 COMING UP SOON</h5>
-            <video loop autoPlay>
+            <video loop autoPlay muted>
                 <source src={home} />
             </video>
         </div>
