@@ -19,23 +19,22 @@ const verifyToken = (token) => {
 const removeToken = (token) => {
     if (verifyToken(token)) {
         delete stored[token];
-        console.log(stored);
         return true;
     }
-    console.log("invalid token");
+    console.log("invalid token "+token);
     return false;
 }
 
 const getUidFromToken = (token) => {
     if (verifyToken(token)) {
-        return stored[token["uid"]];
+        return stored[token]["uid"];
     }
-    console.error("invalid token");
+    console.error("invalid token "+token);
 }
 
 const getAdminFromToken = (token) => {
     if (verifyToken(token)) {
-        return stored[token["admin"]];
+        return stored[token]["admin"];
     }
     console.error("invalid token");
 }

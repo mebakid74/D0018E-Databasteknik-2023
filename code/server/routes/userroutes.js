@@ -1,6 +1,6 @@
 // register POST requests for returning user data / pages
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
-const { isValidEmail, isValidAddress, isValidPassword } = require("../tools/parsing");
+const { isValidEmail, isValidId, isValidPassword } = require("../tools/parsing");
  
 
 module.exports = {  setPost: function(app, db, bcrypt, creds) {
@@ -20,11 +20,11 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
     });
 
     app.post(routes.get_cart_page_info, (req, res) => {
-        var uid = creds.getUidFromToken(req.body.uid);
+        var uid = creds.getUidFromToken(req.body.token);
         if (!isValidId(uid)) { res.json(constructError("Cannot get cart", "uid from token is not related to a logged in user")); }
 
         db.query(
-            "SELECT products_id, amount FROM Carts WHERE users_id = ?;", 
+            "SELECT products.name, products_id, amount, price FROM Carts INNER JOIN Products on carts.products_id = products.id WHERE users_id = ?;", 
             [uid], 
             (err, sqlres) => {
                 if (err) { 
@@ -40,7 +40,7 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
 
     app.post(routes.login_user, (req, res) => {
         var email = req.body.email;
-        pass = req.body.password;
+        var pass = req.body.password;
         if (!isValidEmail(email)) { res.json(constructError("Cannot login", "email is not in valid format")); }
         if (!isValidPassword(pass)) { res.json(constructError("Cannot login", "password is not in valid format")); }
 

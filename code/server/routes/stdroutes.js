@@ -49,7 +49,7 @@ module.exports = { setPost: function(app, db) {
         var query = "";
         var filters = req.body.filters;
         var sortmode = req.body.sortmode;
-        var collections = req.body.collections;
+        var collection = req.body.collection;
         var page = req.body.page;
 
         if (-1 > 0) {

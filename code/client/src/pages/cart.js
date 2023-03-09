@@ -13,7 +13,8 @@ const Page = (props) => {
         axios.post(routes.get_cart_page_info, { token: getToken()
         }).then((res) => {
             if (checkSuccess(res)) {
-                console.log(res);
+                setEls(res.data["data"]);
+                console.log(els, res.data);
             }
         }).catch((err) => {
             console.error(err);
@@ -92,6 +93,13 @@ const Page = (props) => {
                 <hr/>
             </div>
 
+            { els.map((v,i) => { return (
+                <div key={i}>
+                    <a>{v.name}, {v.amount}</a>
+                </div>
+            )})}
+
+            {/*
             <div className="cartadd">
                 <div className="cartdec">
                     <button className="btn-1" type = "button" onClick={DecrementItem}> - </button>
@@ -101,7 +109,6 @@ const Page = (props) => {
                 <div className="cartinc">
                     <button className="btn-1" type = "button" onClick={IncrementItem}> + </button>
                 </div>
-                    {/*<input type="text" value={Item} onChange = {handelChange}/>*/}
             </div>
 
             <div className="totalitems">
@@ -111,8 +118,8 @@ const Page = (props) => {
 
             <div className="cartfooter">
                 <button>Empty cart</button> <br/>
-                {/*<button>Proceed to checkout</button>*/}
             </div>
+            */}
 
             <div className="container-cart">
                 <form>

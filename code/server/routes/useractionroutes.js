@@ -6,11 +6,11 @@ const { isValidId, isValidNumber, isValidEmail, isValidPassword, isValidAddress,
 module.exports = { setPost: function(app, db, bcrypt, creds) {
 
     app.post(routes.order_products_from_cart, (req, res) => {
-        var uid = req.body.uid;
+        var uid = creds.getUidFromToken(req.body.token);
         if (!isValidId(uid)) { res.json(constructError("Cannot get product lists from cart", "ID is not in a valid format")); }
 
         db.query(
-            `INSERT INTO Receipts (users_id, orderdate, orderstatus) VALUES (?, CURDATE(), "Pending");
+            `INSERT INTO Receipts (users_id, orderdatetime, orderstatus) VALUES (?, CURDATE(), "Pending");
             INSERT INTO Receiptitems SELECT receipts.id, carts.products_id, carts.amount FROM Receipts
             INNER JOIN Carts ON Carts.users_id = Receipts.users_id;
             DELETE FROM Carts WHERE Users_id = ?;`, 
