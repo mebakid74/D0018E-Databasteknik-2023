@@ -42,7 +42,7 @@ const constructSuccess = (d=null, dets=null) => {
 // client side
 const checkSuccess = (res) => {
     var v = res.data["status"] == "success";
-    if (!v) { alert(res.data["status"] + "\nDetails:\n" + res.data["dets"]); }
+    if (!v) { alert(res.data["status"] + "\nDetails:\n" + res.data["details"]); }
     return v;
 }
 

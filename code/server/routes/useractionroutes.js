@@ -1,6 +1,6 @@
 // register POST requests for paths that allow the user to (or attempt to) make decisions on the backend
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
-const { isValidId, isValidNumber, isValidEmail, isValidPassword, isValidAddress, isValidName } = require("../tools/parsing");
+const { isValidId, isValidNumber, isValidEmail, isValidPassword, isValidAddress, isValidName, isValidRating, isValidReviewText } = require("../tools/parsing");
 
 
 module.exports = { setPost: function(app, db, bcrypt, creds) {
@@ -10,10 +10,12 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
         if (!isValidId(uid)) { res.json(constructError("Cannot get product lists from cart", "ID is not in a valid format")); }
 
         db.query(
-            `INSERT INTO Receipts (users_id, orderdatetime, orderstatus) VALUES (?, CURDATE(), "Pending");
+            `START TRANSACTION; 
+            INSERT INTO Receipts (users_id, orderdatetime, orderstatus) VALUES (?, CURDATE(), "Pending");
             INSERT INTO Receiptitems SELECT receipts.id, carts.products_id, carts.amount FROM Receipts
             INNER JOIN Carts ON Carts.users_id = Receipts.users_id;
-            DELETE FROM Carts WHERE Users_id = ?;`, 
+            DELETE FROM Carts WHERE Users_id = ?;
+            COMMIT;`, 
             [uid, uid],
             (err, sqlres) => {
                 if (err) { 
@@ -36,17 +38,39 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
         if (!isValidId(uid)) { res.json(constructError("Cannot add product(s) to cart", "uid from token is not erlated to a logged in user")); }
 
         db.query(
-            "INSERT INTO Carts VALUES (?, ?, ?);", 
-            [pid, uid, amount], 
+            "SELECT quantity FROM Products WHERE Products.id = ?;",
+            [pid],
             (err, sqlres) => {
                 if (err) { 
                     console.log(err);
-                    res.json(constructError("Cannot add products(s) to cart", "SQL error; please contact server admin"));
+                    res.json(constructError("Cannot get product quantity", "SQL error; please contact server admin"));
                 } else {
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(constructSuccess());
+                    var n = sqlres[0]["quantity"];
+                    if (n - amount <= 0) {
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(constructError("Cannot add product to cart", "Not enought items in cart to increment."));
+                    }
+                    else {
+                        db.query(            
+                            `START TRANSACTION;
+                            INSERT INTO Carts VALUES (?, ?, ?);
+                            UPDATE Products SET quantity = quantity-? WHERE Products.id = ?;
+                            COMMIT;`, 
+                            [pid, uid, amount, amount, pid], 
+                            (err, sqlres) => {
+                                if (err) { 
+                                    console.log(err);
+                                    res.json(constructError("Cannot add products(s) to cart", "SQL error; please contact server admin"));
+                                } else {
+                                    res.setHeader('Content-Type', 'application/json');
+                                    res.json(constructSuccess());
+                                }
+                            }
+                        );
+                    }
                 }
             }
+
         );
     });
 
@@ -84,8 +108,10 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
 
     app.post(routes.increment_product_in_cart, (req, res) => {
         var pid = req.body.pid;
+        var inc = req.body.inc;
         var uid = creds.getUidFromToken(req.uid.token);
         if (!isValidId(pid)) { res.json(constructError("Cannot add product to cart", "product ID is not in a valid format")); }
+        if (!isValidId(inc)) { res.json(constructError("Cannot add product to cart", "increment number is not in a valid format")); }
         if (!isValidId(uid)) { res.json(constructError("Cannot add product to cart", "uid from token is not related to a logged in user")); }
 
         db.query(
@@ -97,15 +123,16 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
                     res.json(constructError("Cannot get product quantity", "SQL error; please contact server admin"));
                 } else {
                     var n = sqlres[0]["quantity"];
-                    var inc = req.body.increment;
                     if (n - inc <= 0) {
                         res.setHeader('Content-Type', 'application/json');
                         res.json(constructError("Cannot add product to cart", "Not enought items in cart to increment."));
                     }
                     else {
                         db.query(
-                            `UPDATE Products SET quantity = quantity-1 WHERE Products.id = ?;
-                            UPDATE Carts SET amount = amount+1 WHERE users_id=? AND products_id=?;`, 
+                            `START TRANSACTION;
+                            UPDATE Products SET quantity = quantity-1 WHERE Products.id = ?;
+                            UPDATE Carts SET amount = amount+1 WHERE users_id=? AND products_id=?;
+                            COMMIT;`, 
                             [pid, uid, pid],
                             (err2, sqlres2) => {
                                 if (err2) {

@@ -59,6 +59,7 @@ const Page = (props) => {
         }).then((res) => {
             if (checkSuccess(res)) {
                 alert("Product has been added to cart");
+                navigate(0);
             }
         }).catch((err) => {
             console.error(err);

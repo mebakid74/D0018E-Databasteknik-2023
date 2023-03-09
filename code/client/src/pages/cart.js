@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { clientParsedRoutes as routes, checkSuccess } from "../constants";
 import RedirectUserPage from "../components/redirectuserpage"
@@ -6,6 +7,7 @@ import { getToken } from "../tools/validation"
 import card from "../asset/image/card.png";
 import img4 from "../asset/image/img4.jpg";
 const Page = (props) => {
+    const navigate = useNavigate();
     const [els, setEls] = useState([]);
 
     useEffect(()=>{getCartInfo();},[]);
@@ -27,6 +29,7 @@ const Page = (props) => {
         }).then((res) => {
             if (checkSuccess(res)) {
                 alert("Order has been placed");
+                navigate(0);
             }
         }).catch((err) => {
             console.error(err);
