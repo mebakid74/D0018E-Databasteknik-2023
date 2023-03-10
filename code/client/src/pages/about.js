@@ -38,8 +38,9 @@ const About = () => {
             </div>
             <h3>SUBSCRIBE TO BE NOTIFIED <br/>
                 OF ALL LATEST UPDATES</h3>
-            <button onClick={() => {alert("function not implemented")}}>SUBSCRIBE</button>
-
+            <div className="about-btn">
+                <button onClick={() => {alert("function not implemented")}}>SUBSCRIBE</button>
+            </div>
         </div>
     );
 }

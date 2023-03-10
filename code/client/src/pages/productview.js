@@ -20,7 +20,7 @@ const Page = (props) => {
         description: "",
         imagepath: "", 
         quantity: "", 
-        price: "", 
+        price: "",
         color: "", 
         size: "",
         reviews: []
@@ -66,7 +66,6 @@ const Page = (props) => {
             console.error(err.response.data);
         })
     };
-
     const requestReviewAdd = () => {
         axios.post(routes.add_product_review, {
             pid: pid,
@@ -85,28 +84,46 @@ const Page = (props) => {
     };
 
     return (
-        <div>          
+        <div>
+            <div className="product-head">
+                <div className="phead-1">
+                    <p>img src: {prodData.imagepath}</p>
+                </div>
+                {/*<h1>Fields</h1>*/}
+                <p1>Name: {prodData.name}</p1>
+                <p1>Description: {prodData.description}</p1>
+                <p1>Quantity: {prodData.quantity}</p1>
+                <p1>Price: {prodData.price}</p1>
+
+                <p2>color: {prodData.color}</p2>
+                <p2>size: {prodData.size}</p2>
+                <hr/>
+            </div>
+
+            <br/>
+
             <div className='productlist'>
                 <label>Order amount: </label>
-                <input type="text" onChange={(e) => {setAmount(e.target.value);}}></input>
-                <button onClick={props.userValid ? requestProductOrder 
-                                        : ()=>{alert("You must be logged in to order")}}>Order</button>
+                <input type="number" onChange={(e) => {setAmount(e.target.value);}}></input>
+                <br/>
+                <button onClick={props.userValid ? requestProductOrder
+                    : ()=>{alert("You must be logged in to order")}}>Add to cart</button>
             </div>
-            <hr/>
-                <h1>Fields</h1>
-                <p>name: {prodData.name}</p>
-                <p>Description: {prodData.description}</p>
-                <p>img src: {prodData.imagepath}</p>
-                <p>quantity: {prodData.quantity}</p>
-                <p>price: {prodData.price}</p>
-                <hr/>
-                <p>color: {prodData.color}</p>
-                <p>size: {prodData.size}</p>
-            <hr/>
-            <Contentlist elements={revs}></Contentlist>
 
-            <div>
-                <h2>Review</h2>
+            <div className="review">
+                <h1>Customer Reviews</h1>
+                <div className="review-list">
+                    <Contentlist  elements={revs}></Contentlist>
+                </div>
+
+            </div>
+
+            <div className="review-2">
+                <h2>Tells us what you think about our product</h2>
+                <textarea onChange={(e) => setRevArea(e.target.value)}
+                          placeholder="Enter your comment here">
+                </textarea>
+                <br/>
                 {Array(5)
                     .fill()
                     .map((_,index)=>
@@ -120,11 +137,9 @@ const Page = (props) => {
                                      onClick={() => setRating(index + 1)}
                                  />
                     ))}
-                <textarea onChange={(e) => setRevArea(e.target.value)}
-                    placeholder="Enter your comment here">
-                </textarea>
-                <button onClick={props.userValid ? requestReviewAdd 
-                                            : ()=>{alert("You must be logged in to review")}
+                <br/>
+                <button onClick={props.userValid ? requestReviewAdd
+                    : ()=>{alert("You must be logged in to review")}
                 }>Submit</button>
             </div>
         </div>

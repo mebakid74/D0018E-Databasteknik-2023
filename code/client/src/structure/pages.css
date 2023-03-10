@@ -1041,6 +1041,32 @@ body {
     white-space: nowrap;
     -webkit-font-smoothing: antialiased;
 }
+
+.about-btn button {
+    display: grid;
+    margin-left: 720px;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    margin-top: 30px;
+    font-family: butlerregular;
+    font-size: 12px;
+    font-weight: 400;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 80px;
+    border-color: rgb(74,74,74);
+}
+
 /* ABOUT US END */
 
 
@@ -1182,6 +1208,228 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 /* PRODUCT VIEW END*/
+
+/* PRODUCT DETAILS & REVIEWS */
+.product-head p1 {
+    margin-left: 800px;
+    display: flex;
+    flex-direction: column-reverse;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    text-align: center;
+    justify-content: center;
+    margin-top: 32px;
+    font-size: 16px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+
+.product-head p2 {
+    margin-right: 950px;
+    display: flex;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    text-align: center;
+    justify-content: center;
+    margin-top: 16px;
+    font-size: 16px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 30px;
+}
+
+.phead-1 p{
+    margin-right: 450px;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    text-align: center;
+    justify-content: center;
+    margin-top: 16px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+
+.productlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+.productlist label {
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    text-align: center;
+    justify-content: center;
+    margin-top: 16px;
+    font-size: 32px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+.productlist input {
+    width: 100px;
+    height: 50px;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    margin-top: 16px;
+    font-size: 18px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+
+.productlist button {
+    width: 120px;
+    height: 40px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    font-size: 14px;
+    font-weight: bold;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    border-color: rgb(74,74,74);
+}
+.review {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review h1 {
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    line-height: 25px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    font-weight: 200;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.review Contentlist {
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    line-height: 25px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    font-weight: 200;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.review-list {
+    justify-content: space-between;
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.review-2 {
+    margin-top: 40px;
+    text-align: center;
+    justify-content: center;
+    /*display: flex;
+    flex-direction: column;
+    align-items: center;*/
+}
+.review-2 h2 {
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    line-height: 25px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    font-weight: 200;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.review-2 textarea {
+    width: 400px;
+    height: 100px;
+}
+.review-2 button {
+    width: 80px;
+    height: 40px;
+    margin-top: 15px;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    font-size: 18px;
+    font-weight: bold;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    border-color: rgb(74,74,74);
+}
 
 
 /* CART START */

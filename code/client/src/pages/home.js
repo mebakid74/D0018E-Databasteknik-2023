@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useState } from "react";
 import "../structure/pages.css";
 
@@ -13,7 +13,7 @@ import img14 from "../asset/image/img14.jpg";
 
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
-import {Link} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 
 const Home = () => {
 
@@ -52,7 +52,7 @@ const Home = () => {
             </div>
         </div>
 
-        <div className="home-1">
+            <div className="home-1">
             <h1>LEATHER SHARP 2023 </h1>
             <img src={img4} className="img4" alt=""/>
             <p>$28.00 USD</p>
@@ -61,7 +61,7 @@ const Home = () => {
             <p3>Expertly crafted in Spain, it features a metal buckle closure and a leather </p3> <br/>
             <p4>belt loop for added convenience. </p4>
             <br />
-            <Link to="/collection_id/New_Collection?">
+            <Link to="/collection">
                 <button>VIEW ALL</button>
             </Link>
         </div>
@@ -76,7 +76,7 @@ const Home = () => {
             <br/>
             <p5>$58.00 USD</p5>
             <br />
-            <Link to="/collection_id/Best_Sellers?">
+            <Link to="search?collection=0">
             <button>VIEW ALL</button>
             </Link>
         </div>
@@ -85,7 +85,7 @@ const Home = () => {
             <h3>SPRING SUMMER
                 2023 COLLECTION</h3>
             <img src={img14} className="img14" alt=""/>
-            <Link to="/collection_id/Spring_Summer2023_Collection?">
+            <Link to="/collection">
                 <br/>
             <button>VIEW COLLECTION</button>
             </Link>
@@ -119,7 +119,7 @@ const Home = () => {
             </div>
             </div>
             <div className="home-prod">
-                <Link to="/collection_id/Seasonal_Highlights?">
+                <Link to="search?collection=0">
                     <button>VIEW ALL</button>
                 </Link>
             </div>
@@ -145,7 +145,7 @@ const Home = () => {
                 type="text"
                 placeholder="Enter your email here"
             />
-            <button>SUBSCRIBE</button>
+            <button onClick={() => {alert("Newletter and subscription success")}}>SUBSCRIBE</button>
         </div>
 
         <div className="home-7">
