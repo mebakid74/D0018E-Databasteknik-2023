@@ -14,6 +14,8 @@ const routes = {
     get_filtered_product_list: "/getprodfiltered",
     increment_product_in_cart: "/incrementcart",
     add_product_review: "/addreview",
+    admin_register: "/ad_reg",
+    admin_login: "/ad_login",
     admin_remove_user: "/ad_rmuser",
     admin_add_product: "/ad_addprod",
     admin_update_user_data: "/ad_updateuser",
