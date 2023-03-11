@@ -2,12 +2,32 @@
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
 
 
+
 module.exports = { setPost: function(app, db, creds) {
+    const checkAdmin = (req, onDone) => {
+        var admin = (creds.getAdminFromToken(req.body.token) === true);
+        if (admin) {
+            onDone();
+        }
+    }
 
     app.post(routes.admin_remove_user, (req, res) => {
-        var aid = creds.
-        var uid = req.body.uid;
-        console.log("remove product with id ", req.body.uid);
+        var uid = req.body.uid_to_remove;
+        checkAdmin(req, () => {
+            db.query(
+                `DELETE FROM Users WHERE id=?;`, 
+                [uid],
+                (err, sqlres) => {
+                    if (err) { 
+                        console.log(err);
+                        res.json(constructError("Admin - Cannot delete user", "SQL error; please contact server admin"));
+                    } else {
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(constructSuccess());
+                    }
+                }
+            );
+        });
     });
 
     app.post(routes.admin_add_product, (req, res) => {

@@ -36,7 +36,8 @@ const getAdminFromToken = (token) => {
     if (verifyToken(token)) {
         return stored[token]["admin"];
     }
-    console.error("invalid token");
+    console.error("invalid token for admin "+token);
+    return false;
 }
 
 const getUidStored = (uid) => {
@@ -55,6 +56,7 @@ const assignToken = (uid, admin=false) => {
         "uid": uid,
         "admin": admin
     }
+    console.log(stored);
     return token;
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import {checkSuccess, clientParsedRoutes as routes} from "../constants";
 import AdminPage from "../components/adminpage";
+import { getToken } from "../tools/validation";
 
 const Page = (props) => {
 
@@ -12,7 +13,8 @@ const Page = (props) => {
     
     const deleteUser = () => {
         axios.post(routes.admin_remove_user, {
-            uid: inputData.deleteUser
+            token: getToken(),
+            uid_to_remove: inputData.deleteUser
         }).then((res) => {
             console.log(res.data);
         }).catch((err) => {
@@ -23,6 +25,7 @@ const Page = (props) => {
 
     const getReceipts = () => {
         axios.post(routes.admin_view_receipts, {
+            token: getToken(),
             uid: inputData.deleteUser
         }).then((res) => {
             console.log(res.data);
@@ -57,7 +60,7 @@ const Page = (props) => {
 
                 <hr/>
                 <label>Modify product stock</label>
-                
+
             </div> 
     );
 }
