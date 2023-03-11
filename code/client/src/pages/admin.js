@@ -36,21 +36,28 @@ const Page = (props) => {
         <div>
             <h1>Welcome to the admin page</h1>
 
-                <hr></hr>
+                <hr/>
                 <label>Remove user by UID</label><br/>
                 <input type="text" onChange={(e) => {setInputData({...inputData, deleteUser: e.target.value})}}/>
                 <button onClick={deleteUser}>Delete user</button>
 
-                <hr></hr>
-                <label>Add product - To be implemented</label><br/>
+                <hr/>
+                <label>Add product</label><br/>
 
-                <hr></hr>
-                <label>Change user data by UID - To be impemented</label><br/>
+                <hr/>
+                <label>Change user data by UID</label><br/>
 
-                <hr></hr>
+                <hr/>
                 <label>View receipts by UID</label><br/>
                 <input type="text" onChange={(e) => {setInputData({...inputData, receiptUser: e.target.value})}}/>
                 <button onClick={getReceipts}>Get receipts</button>
+
+                <hr/>
+                <label>Modify product price</label>
+
+                <hr/>
+                <label>Modify product stock</label>
+                
             </div> 
     );
 }

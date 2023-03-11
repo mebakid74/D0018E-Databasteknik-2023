@@ -24,7 +24,7 @@ const adminroutes = require("./routes/adminroutes");
 userroutes.setPost(app, db, bcrypt, creds);
 stdroutes.setPost(app, db);
 useractionroutes.setPost(app, db, bcrypt, creds);
-adminroutes.setPost(app, db);
+adminroutes.setPost(app, db, creds);
 
 // start listening
 const port = 3001;

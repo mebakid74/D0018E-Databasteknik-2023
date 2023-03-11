@@ -2,9 +2,11 @@
 const { routes, constructError, constructSuccess } = require("../../client/src/constants");
 
 
-module.exports = { setPost: function(app, db) {
+module.exports = { setPost: function(app, db, creds) {
 
     app.post(routes.admin_remove_user, (req, res) => {
+        var aid = creds.
+        var uid = req.body.uid;
         console.log("remove product with id ", req.body.uid);
     });
 
