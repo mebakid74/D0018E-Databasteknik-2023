@@ -55,7 +55,6 @@ const assignToken = (uid, admin=false) => {
         "uid": uid,
         "admin": admin
     }
-    console.log(stored);
     return token;
 }
 

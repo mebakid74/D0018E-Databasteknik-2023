@@ -41,7 +41,7 @@ const Page = (props) => {
                 var reviews = res.data["data"]["reviews"]
                 var l = []
                 reviews.forEach((e) => {
-                    l.push("#" + e["id"] + "    " + e["rating"] + '/5: "' + e["text"] + '" - ' + e["fname"] + " " + e["lname"] +", " + e["date"]);
+                    l.push(e["rating"] + '/5: "' + e["text"] + '" - ' + e["fname"] + " " + e["lname"] +", " + e["date"]);
                 });
                 setRevs(l);
             }

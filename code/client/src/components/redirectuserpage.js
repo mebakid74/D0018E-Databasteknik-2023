@@ -16,7 +16,7 @@ class RedirectUserPage extends React.Component {
         else {            
             axios.post(routes.validate_user_login, { token: t
             }).then((res) => {
-                this.setState({ loading: false, valid: res.data["data"]["valid"]});
+                this.setState({ loading: false, valid: res.data["status"] === "success"});
             }).catch((err) => {
                 console.log(err);
                 console.log(err.response.data);

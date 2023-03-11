@@ -14,12 +14,15 @@ const routes = {
     get_filtered_product_list: "/getprodfiltered",
     increment_product_in_cart: "/incrementcart",
     add_product_review: "/addreview",
+    
     admin_register: "/ad_reg",
     admin_login: "/ad_login",
     admin_remove_user: "/ad_rmuser",
     admin_add_product: "/ad_addprod",
     admin_update_user_data: "/ad_updateuser",
-    admin_view_receipts: "/ad_getreceipts"
+    admin_view_receipts: "/ad_getreceipts",
+    admin_modify_price: "/ad_modifyp",
+    admin_modify_stock: "/ad_modifys"
 }
 
 Object.entries(routes).forEach((e) => {

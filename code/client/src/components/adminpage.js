@@ -2,8 +2,10 @@ import React from "react";
 import axios from "axios";
 import { clientParsedRoutes as routes } from "../constants"
 import { getToken } from "../tools/validation"
+import { Navigate } from "react-router-dom";
 
-class PartialUserPage extends React.Component {
+
+class AdminPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = { loading: true, valid: false };
@@ -11,11 +13,11 @@ class PartialUserPage extends React.Component {
 
     componentDidMount() {
         var t = getToken();
-        if (t == null) {this.setState({ loading: false, valid: false }); }
+        if (t == null) {  this.setState({ loading: false, valid: false }); }
         else {            
-            axios.post(routes.validate_user_login, { token: t
+            axios.post(routes.validate_admin_login, { token: t
             }).then((res) => {
-                this.setState({ loading: false, valid:res.data["status"] === "success"});
+                this.setState({ loading: false, valid: res.data["status"] === "success" });
             }).catch((err) => {
                 console.log(err);
                 console.log(err.response.data);
@@ -28,8 +30,12 @@ class PartialUserPage extends React.Component {
         if (loading) {
             return <h1>Loading...</h1>
         } else {
-            return <this.props.pageFunc userValid={valid}/>
+            if (!valid) {
+                return <Navigate to={this.props.link}/>;
+            } else {
+                return <this.props.pageFunc userValid={valid}/>
+            }
         }
     }
 }
-export default PartialUserPage;
+export default AdminPage ;

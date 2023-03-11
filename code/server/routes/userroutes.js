@@ -5,20 +5,6 @@ const { isValidEmail, isValidId, isValidPassword } = require("../tools/parsing")
 
 module.exports = {  setPost: function(app, db, bcrypt, creds) {
     
-    app.post(routes.get_account_page_info, (req, res) => {
-        db.query(
-            "c;",
-            [req.body.uid],
-            (err, sqlres) => {
-                if (err) { console.log(err);
-                } else {
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(constructSuccess(sqlres[0]));
-                }
-            }
-        );
-    });
-
     app.post(routes.get_cart_page_info, (req, res) => {
         var uid = creds.getUidFromToken(req.body.token);
         if (!isValidId(uid)) { res.json(constructError("Cannot get cart", "uid from token is not related to a logged in user")); }
@@ -52,19 +38,41 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
                     console.log(err);
                     res.constructError("Cannot login", "SQL error; please contact server admin");
                 } else {
-                    var ret = { uid: sqlres[0]["id"] };
-                    if (bcrypt.compareSync(pass, sqlres[0]["password"]) && !creds.getUidStored(ret["uid"])) {
-                        ret["valid"] = true;
-                        ret["validationToken"] = creds.assignToken(ret["uid"]);
+                    var uid = sqlres[0]["id"];
+                    if (uid == null) {
+                        res.json(constructError("Cannot login", "Email is not assigned"));
                     }
                     else {
-                        ret["valid"] = false;
+                        db.query(
+                            "select users_id from admins where users_id =?",
+                            [uid],
+                            (err2, sqlres2) => {
+                                if (err2) { 
+                                    console.log(err2);
+                                    res.constructError("Cannot login", "SQL error; please contact server admin");
+                                } else {
+                                    var ret = {};
+                                    var a = (sqlres2.length > 0);
+                                    if (bcrypt.compareSync(pass, sqlres[0]["password"]) && !creds.getUidStored(uid)) {
+                                        ret["valid"] = true;
+                                        ret["validationToken"] = creds.assignToken(uid, a);
+                                    }
+                                    else {
+                                        ret["valid"] = false;
+                                    }
+                                    res.setHeader('Content-Type', 'application/json');
+                                    res.json(constructSuccess(ret));
+                                }
+                            }
+                        )
                     }
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(constructSuccess(ret));
+
                 }
             }
         )
+
+        
+
     });
 
     app.post(routes.logout_user, (req, res) => {
@@ -74,14 +82,14 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
     });
 
     app.post(routes.validate_user_login, (req, res) => {
-        var ret = { "valid": creds.verifyToken(req.body.token) }
+        var r = creds.verifyToken(req.body.token);
         res.setHeader('Content-Type', 'application/json');
-        res.json(constructSuccess(ret));
+        res.json((r) ? constructSuccess() : constructError("Cannot login", "invalid token"));
     });
 
     app.post(routes.validate_admin_login, (req, res) => {
-        var ret = { "admin": creds.getAdminFromToken(req.body.token) }
+        var r = creds.getAdminFromToken(req.body.token);
         res.setHeader('Content-Type', 'application/json');
-        res.json(constructSuccess(ret));
+        res.json((r) ? constructSuccess() : constructError("Cannot login", "invalid token"));
     });
 }}

@@ -46,7 +46,7 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
                     res.json(constructError("Cannot get product quantity", "SQL error; please contact server admin"));
                 } else {
                     var n = sqlres[0]["quantity"];
-                    if (n - amount <= 0) {
+                    if (n - amount < 0) {
                         res.setHeader('Content-Type', 'application/json');
                         res.json(constructError("Cannot add product to cart", "Not enought items in cart to increment."));
                     }
@@ -123,7 +123,7 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
                     res.json(constructError("Cannot get product quantity", "SQL error; please contact server admin"));
                 } else {
                     var n = sqlres[0]["quantity"];
-                    if (n - inc <= 0) {
+                    if (n - inc < 0) {
                         res.setHeader('Content-Type', 'application/json');
                         res.json(constructError("Cannot add product to cart", "Not enought items in cart to increment."));
                     }
@@ -160,18 +160,42 @@ module.exports = { setPost: function(app, db, bcrypt, creds) {
         if (!isValidRating(rating)) { res.json(constructError("Cannot add review", "rating is not in a valid format")); }
         if (!isValidReviewText(text)) { res.json(constructError("Cannot add review", "text field is not in a valid format")); }
 
-        db.query(
-            `INSERT INTO Reviews(users_id, products_id, rating, text, date) VALUES (?, ?, ?, ?, CURDATE());`, 
-            [uid, pid, rating, text], 
-            (err, sqlres) => {
-                if (err) {
-                    console.log(err);
-                    res.constructError("Cannot add review", "SQL error; please contact server admin") 
+        db.query("select id from reviews where products_id=? and users_id=?", 
+            [pid, uid], (err, sqlres) => {
+            if (err) {
+                console.log(err);
+                res.json(constructError("Cannot add review", "SQL error; please contact server admin"));
+            } else {
+                if(sqlres.length === 0) {
+                    db.query("select id from receiptitems INNER JOIN receipts ON receipts_id=receipts.id where products_id=? and receipts.Users_ID=?", 
+                    [pid, uid], (err, sqlres) => {
+                    if (err) {
+                        console.log(err);
+                        res.json(constructError("Cannot add review", "SQL error; please contact server admin"));
+                    } else {
+                        if(!(sqlres.length === 0)) {
+                            db.query(
+                                `INSERT INTO Reviews(users_id, products_id, rating, text, date) VALUES (?, ?, ?, ?, CURDATE());`, 
+                                [uid, pid, rating, text], 
+                                (err, sqlres) => {
+                                    if (err) {
+                                        console.log(err);
+                                        res.json(constructError("Cannot add review", "SQL error; please contact server admin"));
+                                    } else {
+                                        res.setHeader('Content-Type', 'application/json');
+                                        res.json(constructSuccess());
+                                    }
+                                }
+                            )
+                        } else {
+                            res.json(constructError("Cannot add review", "You have not bought this product"));
+                        }
+                    }
+                });
                 } else {
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(constructSuccess());
+                    res.json(constructError("Cannot add review", "You have already reviewed this product"));
                 }
             }
-        )
+        });
     });
 }}

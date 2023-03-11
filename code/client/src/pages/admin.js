@@ -1,30 +1,14 @@
 import React, { useState } from "react";
-import axios, {Axios} from "axios";
-import { isUserAdmin } from "../tools/validation"
+import axios from "axios";
 import {checkSuccess, clientParsedRoutes as routes} from "../constants";
+import AdminPage from "../components/adminpage";
 
-// stuff that admin can do uniquely:
-// (DONE) remove users
-// add product
-// (LATER) add category
-// (LATER) edit all carts
-// change all user data
-// view all receipts
-// 
-
-const LoggedIn = () => {};
-const NotLoggedIn = () => {};
-
-const Admin = () => {
+const Page = (props) => {
 
     const [inputData, setInputData] = useState({
         deleteUser: 0,
         receiptUser: 0,
     });
-
-    var token = "";
-    //var isAdmin = isUserAdmin(token);
-    var isAdmin = true;
     
     const deleteUser = () => {
         axios.post(routes.admin_remove_user, {
@@ -90,9 +74,7 @@ const Admin = () => {
 
     return (
         <div>
-            {isAdmin
-            ? <div>
-                <h1>Welcome to the admin page</h1>
+            <h1>Welcome to the admin page</h1>
 
                     <div className="admin-panel">
                         <form>
@@ -157,11 +139,15 @@ const Admin = () => {
                 <input type="text" onChange={(e) => {setInputData({...inputData, receiptUser: e.target.value})}}/>
                 <button onClick={getReceipts}>Get receipts</button>
             </div> 
+    );
+}
 
-            : <div>
-                <h1>You are not logged in as admin</h1>
-            </div>}
+const Admin = () => {
+    return (
+        <div>
+            <AdminPage link="/" pageFunc={Page}/>
         </div>
     );
 }
+
 export default Admin;
