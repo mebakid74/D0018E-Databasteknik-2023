@@ -1607,3 +1607,104 @@ body {
     background: #2ecc71;
 }
 
+/*ADMIN START*/
+.admin {
+    padding: 14px;
+}
+
+.admin-2 {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+
+}
+.admin h1 {
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 26px;
+    font-family: butlerregular;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 75px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    margin-right: 12px;
+}
+
+.admin label {
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    font-size: 22px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+
+.admin input {
+    padding: 3px;
+}
+.admin button {
+    cursor: pointer;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    margin-top: 20px;
+    font-family: butlerregular;
+    font-size: 12px;
+    font-weight: 400;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    border-color: rgb(74,74,74);
+    text-transform: uppercase;
+}
+
+.user,
+.add-p,
+.change-u {
+    float: right;
+    display: grid;
+    padding: 30px;
+    margin: 30px;
+    margin-left: 210px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.receipts,
+.stock,
+.price {
+    float: right;
+    display: grid;
+    padding: 30px;
+    margin: 30px;
+    margin-left: 210px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}

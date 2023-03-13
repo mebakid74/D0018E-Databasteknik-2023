@@ -4,8 +4,6 @@ import "../structure/pages.css"
 import axios from "axios";
 import { clientParsedRoutes as routes, checkSuccess } from "../constants";
 import { getToken } from "../tools/validation"
-
-
 const Search = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const onChange = (event) => {
