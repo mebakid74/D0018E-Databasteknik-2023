@@ -92,15 +92,22 @@ const Page = (props) => {
         <div>
             <div className='cart'>
                 <label>Cart</label>
-                <button onClick={requestOrder}>Confirm order</button>
-                <hr/>
             </div>
 
+            <div className="carrt">
             { els.map((v,i) => { return (
                 <div key={i}>
                     <a>{v.name}, {v.amount}</a>
                 </div>
             )})}
+            </div>
+
+            <hr/>
+
+            <div className="cartt">
+                <button onClick={requestOrder}>Confirm order</button>
+            </div>
+
 
             {/*
             <div className="cartadd">

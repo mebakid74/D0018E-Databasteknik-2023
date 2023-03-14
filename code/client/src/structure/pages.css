@@ -1434,6 +1434,65 @@ body {
 
 /* CART START */
 
+.cart {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 14px;
+}
+
+.cart label {
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 26px;
+    font-family: butlerregular;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 75px;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    margin-right: 12px;
+}
+
+.cartt button {
+    cursor: pointer;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    margin-top: 20px;
+    font-family: butlerregular;
+    font-size: 12px;
+    font-weight: 400;
+    outline-color: rgb(74,74,74);
+    outline-style: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    transform-origin: 0px 0px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    border-color: rgb(74,74,74);
+    text-transform: uppercase;
+    margin-bottom: 90px;
+    margin-left: 50px;
+}
+
+.carrt{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 90px;
+}
+
 .cartadd {
     box-sizing: border-box;
     color: rgb(74,74,74);
