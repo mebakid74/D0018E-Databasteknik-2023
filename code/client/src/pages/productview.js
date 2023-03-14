@@ -87,7 +87,7 @@ const Page = (props) => {
         <div>
             <div className="product-head">
                 <div className="phead-1">
-                    <p>img src: {prodData.imagepath}</p>
+                    <img src= {prodData.imagepath}></img><br></br>
                 </div>
                 {/*<h1>Fields</h1>*/}
                 <p1>Name: {prodData.name}</p1>

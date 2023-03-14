@@ -75,7 +75,7 @@ module.exports = { setPost: function(app, db) {
 
     app.post(routes.get_collection_list, (req, res) => {
         db.query(
-            "SELECT id, name, description FROM Collections;",
+            "SELECT id, name, description, imagepath FROM Collections;",
             [],
             (err, sqlres) => {
                 if (err) { 
