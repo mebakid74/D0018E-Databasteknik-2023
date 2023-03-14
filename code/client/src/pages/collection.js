@@ -58,10 +58,12 @@ const Collection = () => {
                 </div>
 
                 <Carousel responsive={responsive}>
-
+                    <div className="coolll">
                 { collections.map((val, i) => {  
                     return (
+                        <div className="coool">
                     <Link key={i} to={"/search?collection=" + val.id}>
+                        <br/>
                     <div className="item-1"> {val.name}
                         <img alt= "missing image"
                             src = {val.imagepath}>
@@ -69,8 +71,9 @@ const Collection = () => {
                         {val.description}
                     </div>
                     </Link>
+                        </div>
                 )})}
-
+                    </div>
 
                     {/*
                     <Link to={"/search?collection=" + 0}>

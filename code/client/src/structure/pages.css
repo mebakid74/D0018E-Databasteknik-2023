@@ -895,18 +895,7 @@ body {
     color: #326755;
 }*/
 
-.item-1{
-    box-sizing: border-box;
-    color: rgb(74,74,74);
-    font-family: butlerregular;
-    line-height: 75px;
-    outline-color: rgb(74,74,74);
-    -webkit-font-smoothing: antialiased;
-    margin-top: 16px;
-    text-align: center;
-    justify-content: space-between;
-    font-size: 23px;
-}
+
 
 .item-2,
 .item-3,
@@ -921,6 +910,29 @@ body {
     text-align: center;
     justify-content: space-between;
     font-size: 23px;
+}
+.coolll {
+    display: grid;
+   grid-template-columns: 1fr;
+
+
+}
+.coool{
+    display: flex;
+    flex-direction: column;
+    border: 11px solid black;
+    padding: 50px;
+    margin: 20px;
+    width: 950px;
+    box-sizing: border-box;
+    color: rgb(74,74,74);
+    font-family: butlerregular;
+    line-height: 75px;
+    outline-color: rgb(74,74,74);
+    -webkit-font-smoothing: antialiased;
+    font-size: 23px;
+    text-align: center;
+    justify-content: space-between;
 }
 
 /* COLLECTION END */
@@ -1152,10 +1164,8 @@ body {
 }
 
 .product-cont {
-    display: grid;
-    margin: 20px;
-    padding-right: 200px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: inline-block;
+    /*grid-template-columns: 1fr 1fr;*/
 }
 
 .product-cont{
@@ -1210,10 +1220,22 @@ body {
 /* PRODUCT VIEW END*/
 
 /* PRODUCT DETAILS & REVIEWS */
-.product-head p1 {
-    margin-left: 800px;
+.product-head{
     display: flex;
-    flex-direction: column-reverse;
+}
+
+.img-11 img{
+    float: left;
+}
+.dess {
+    padding-left: 120px;
+    margin-right: 250px;
+    margin-top: 120px;
+}
+.product-head p1 {
+    float: top;
+    margin-left: 560px;
+    display: flex;
     box-sizing: border-box;
     color: rgb(74,74,74);
     font-family: butlerregular;
@@ -1230,7 +1252,7 @@ body {
 }
 
 .product-head p2 {
-    margin-right: 950px;
+    margin-left: 560px;
     display: flex;
     box-sizing: border-box;
     color: rgb(74,74,74);
@@ -1248,21 +1270,6 @@ body {
     margin-bottom: 30px;
 }
 
-.phead-1 p{
-    margin-right: 450px;
-    box-sizing: border-box;
-    color: rgb(74,74,74);
-    font-family: butlerregular;
-    text-align: center;
-    justify-content: center;
-    margin-top: 16px;
-    outline-color: rgb(74,74,74);
-    outline-style: none;
-    text-rendering: optimizeLegibility;
-    text-size-adjust: 100%;
-    white-space: nowrap;
-    -webkit-font-smoothing: antialiased;
-}
 
 .productlist {
     display: flex;

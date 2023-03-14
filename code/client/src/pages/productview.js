@@ -86,18 +86,22 @@ const Page = (props) => {
     return (
         <div>
             <div className="product-head">
-                <div className="phead-1">
-                    <img src= {prodData.imagepath}></img><br></br>
+                <div className="img-11">
+                    <img src= {prodData.imagepath}></img>
                 </div>
-                {/*<h1>Fields</h1>*/}
-                <p1>Name: {prodData.name}</p1>
-                <p1>Description: {prodData.description}</p1>
-                <p1>Quantity: {prodData.quantity}</p1>
-                <p1>Price: {prodData.price}</p1>
 
-                <p2>color: {prodData.color}</p2>
-                <p2>size: {prodData.size}</p2>
-                <hr/>
+                <div className="dess">
+                    {/*<h1>Fields</h1>*/}
+                    <p>Name: {prodData.name}</p> <br/>
+                    <p>Description: {prodData.description}</p> <br/>
+                    <p>Quantity: {prodData.quantity}</p> <br/>
+                    <p>Price: {prodData.price}</p> <br/>
+            <hr/>
+                    <p>color: {prodData.color}</p>
+                    <p>size: {prodData.size}</p>
+                    <hr/>
+                </div>
+
             </div>
 
             <br/>
