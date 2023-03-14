@@ -49,24 +49,18 @@ module.exports = { setPost: function(app, db) {
         var query = "";
         var filters = req.body.filters;
         var sortmode = req.body.sortmode;
-        var collection = req.body.collection;
+        var coll = req.body.collection;
         var page = req.body.page;
-
-        if (-1 > 0) {
-            query += " where Products.id in (SELECT products_id from productfilters where '1'='1' "
-            filters.forEach(e => {
-                query += " and " + e["filter"] + "=" + e["filteval"];
-            });
-            query += ")"
-        }
-
-        if (-1 > 0) {
-            query += ""
+        
+        var args = [];
+        if (coll != "" && coll != null) {
+            query = "where products.id in (select products_id from collectionitems where collections_id = ?)";
+            args = [coll];
         }
 
         db.query(
-            "SELECT id, name, imagepath, price, quantity FROM Products;",
-            [],
+            "SELECT id, name, imagepath, price, quantity FROM Products " + query + ";",
+            args,
             (err, sqlres) => {
                 if (err) {
                     console.log(err);

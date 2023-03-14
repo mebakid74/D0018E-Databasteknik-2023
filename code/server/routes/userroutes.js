@@ -56,12 +56,14 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
                                     if (bcrypt.compareSync(pass, sqlres[0]["password"]) && !creds.getUidStored(uid)) {
                                         ret["valid"] = true;
                                         ret["validationToken"] = creds.assignToken(uid, a);
+                                        res.setHeader('Content-Type', 'application/json');
+                                        res.json(constructSuccess(ret));
                                     }
                                     else {
-                                        ret["valid"] = false;
+                                        res.setHeader('Content-Type', 'application/json');
+                                        res.json(constructError("Cannot login", "Invalid login"));
                                     }
-                                    res.setHeader('Content-Type', 'application/json');
-                                    res.json(constructSuccess(ret));
+
                                 }
                             }
                         )
