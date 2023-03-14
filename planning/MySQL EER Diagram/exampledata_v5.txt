@@ -25,6 +25,46 @@ insert into products (categories_id, name, imagepath, description, quantity, pri
 values (3, "bag", "/images/bags/bag.jpg", "a cool bag", 2, 899, CURDATE(), NULL);
 insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (4, "blue t-shirt", "/images/all/blueshirt.png", "a cool blue shirt", 53, 199, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "red pullover", "/images/all/img15.png", "a cute red pullover", 90, 299, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "orange tree cutey", "/images/all/img16.png", "a light brown shirt with citrus fruits", 40, 179, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "style watch", "/images/all/img17.png", "a cool skin coloured watch", 20, 1299, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "Hair clips", "/images/all/img18.png", "gold plated hair clip", 70, 599, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "blue bracelets", "/images/all/img19.png", "a light blue bracelet", 100, 149, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "orange skirt", "/images/all/impg20.png", "orange skirt light fit", 40, 299, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "hair rope", "/images/all/img21.png", "rusical hair rope", 100, 29, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "Hair bracelet", "/images/all/img22.png", "beige cute hair bracelet", 70, 199, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "stylish hair bracelet", "/images/all/img23.png", "interesting design", 45, 299, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+
+values (1, "summer glasses", "/images/all/img24.png", "summer theme tanned glasses", 53, 499, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "heart pendandt", "/images/all/img25.png", "a cute heart pendant", 25, 1169, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "top bra", "/images/all/img26.png", "a sports or beach bra", 100, 699, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "fresh perfume", "/images/all/img27.png", "a summer scented perfume", 45, 199, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "sun hat", "/images/all/img28.png", "a cute summer shade hat", 53, 599, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "rainy weather sweather", "/images/all/img29.png", "rainy weather sweather", 53, 799, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "beige pullover", "/images/all/img30.png", "a swagger sweather", 53, 599, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "blue jeans", "/images/all/img32.png", "léger jeans", 40, 1199, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "green backbag", "/images/all/img32.png", "a light green backbag", 45, 899, CURDATE(), NULL);
+insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+values (1, "accessoires with shoes set", "/images/all/img33.png", "a light green portemonnaie with green shoes and cute watch", 25, 2499, CURDATE(), NULL);
+
 
 -- cart
 insert into carts values (2, 2, 1);
