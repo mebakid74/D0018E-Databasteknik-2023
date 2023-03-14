@@ -15,8 +15,17 @@ module.exports = { setPost: function(app, db, creds) {
         var uid = req.body.uid_to_remove;
         checkAdmin(req, () => {
             db.query(
-                `DELETE FROM Users WHERE id=?;`, 
-                [uid],
+                `
+                START TRANSACTION;
+                SET SQL_SAFE_UPDATES = 0;
+                delete from receiptitems where receipts_id in (select receipts.id from receipts where users_id=?);
+                delete from receipts where users_id = ?;
+                delete from reviews where users_id=?;
+                delete from users where id=?;
+                SET SQL_SAFE_UPDATES = 1;
+                COMMIT;
+                `, 
+                [uid, uid, uid, uid],
                 (err, sqlres) => {
                     if (err) { 
                         console.log(err);

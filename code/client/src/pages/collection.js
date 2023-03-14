@@ -61,7 +61,7 @@ const Collection = () => {
                     <div className="coolll">
                 { collections.map((val, i) => {  
                     return (
-                        <div className="coool">
+                        <div key={i} className="coool">
                     <Link key={i} to={"/search?collection=" + val.id}>
                         <br/>
                     <div className="item-1"> {val.name}
