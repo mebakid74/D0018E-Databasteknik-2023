@@ -1,7 +1,7 @@
 {
     "user":     "root",
     "host":     "localhost",
-    "password": "6%guUk!4muBk^B",
-    "database": "mydb_v7",
+    "password": "MyNewPass",
+    "database": "mydb_v8",
     "multipleStatements" : "true"
 }
