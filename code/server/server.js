@@ -5,7 +5,7 @@ app.use(express.json());
 
 // CORS
 const cors = require("cors");
-app.use(cors({origin: true, credentials: true}));
+app.use(cors());
 
 // mysql
 const mysql = require("mysql");

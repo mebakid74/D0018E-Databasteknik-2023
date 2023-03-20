@@ -35,7 +35,9 @@ const Page = (props) => {
             phone: inputDataU.phone,
             address: inputDataU.address
         }).then((res) => {
-            console.log(res.data, "Successfully updated user details");
+            if (checkSuccess(res)) {
+                console.log(res.data, "Successfully updated user details");
+            }
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
@@ -47,7 +49,9 @@ const Page = (props) => {
             token: getToken(),
             uid_to_remove: inputDataD.uid
         }).then((res) => {
-            console.log(res.data, "Successfully removed user");
+            if (checkSuccess(res)) {
+                console.log(res.data, "Successfully removed user");
+            }
         }).catch((err) => {
             console.error(err); 
             console.error(err.response.data);
@@ -56,9 +60,11 @@ const Page = (props) => {
     const getReceipts = () => {
         axios.post(routes.admin_view_receipts, {
             token: getToken(),
-            uid: inputDataGR.uid
+            uid_to_view: inputDataGR.uid
         }).then((res) => {
-            console.log(res.data, "Successfully received user receipts");
+            if (checkSuccess(res)) {
+                console.log(res.data, "Successfully received user receipts");
+            }
         }).catch((err) => {
             console.error(err); 
             console.error(err.response.data);
@@ -72,7 +78,9 @@ const Page = (props) => {
             desc: inputDataAP.desc,
             image: inputDataAP.img
         }).then((res) => {
-            console.log(res.data, "Successfully added new products");
+            if (checkSuccess(res)) {
+                console.log(res.data, "Successfully added new products");   
+            }
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
@@ -84,7 +92,9 @@ const Page = (props) => {
             pid: inputDataMP.pid,
             newprice: inputDataMP.n
         }).then((res) => {
-            console.log(res.data, "Successfully modified product price");
+            if (checkSuccess(res)) {
+                console.log(res.data, "Successfully modified product price");
+            }
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);
@@ -97,7 +107,9 @@ const Page = (props) => {
             pid: inputDataMQ.pid,
             newstock: inputDataMQ.n
         }).then((res) => {
-            console.log(res.data, "Successfully modified product stock");
+            if (checkSuccess(res)) {
+                console.log(res.data, "Successfully modified product stock");
+            }
         }).catch((err) => {
             console.error(err);
             console.error(err.response.data);

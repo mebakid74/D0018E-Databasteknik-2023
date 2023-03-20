@@ -108,41 +108,46 @@ module.exports = { setPost: function(app, db, creds) {
     app.post(routes.admin_modify_price, (req, res) => {
         var pid = req.body.pid;
         var newPrice = req.body.newprice;
-        checkAdmin(req, () => {
-            db.query(
-                `UPDATE Products SET price=? WHERE id=?;`, 
-                [newPrice, pid],
-                (err, sqlres) => {
-                    if (err) { 
-                        console.log(err);
-                        res.json(constructError("Admin - Cannot modify price", "SQL error; please contact server admin"));
-                    } else {
-                        res.setHeader('Content-Type', 'application/json');
-                        res.json(constructSuccess());
+        if (newPrice < 0) {res.json(constructError("Admin - Cannot modify price", "new price is < 0"));}
+        else {
+            checkAdmin(req, () => {
+                db.query(
+                    `UPDATE Products SET price=? WHERE id=?;`, 
+                    [newPrice, pid],
+                    (err, sqlres) => {
+                        if (err) { 
+                            console.log(err);
+                            res.json(constructError("Admin - Cannot modify price", "SQL error; please contact server admin"));
+                        } else {
+                            res.setHeader('Content-Type', 'application/json');
+                            res.json(constructSuccess());
+                        }
                     }
-                }
-            );
-        });
+                );
+            });
+        }
     });
 
     app.post(routes.admin_modify_stock, (req, res) => {
         var pid = req.body.pid;
         var newStock = req.body.newstock;
-        checkAdmin(req, () => {
-            db.query(
-                `UPDATE Products SET quantity=? WHERE ID=?;`, 
-                [newStock, pid],
-                (err, sqlres) => {
-                    if (err) { 
-                        console.log(err);
-                        res.json(constructError("Admin - Cannot modify stock", "SQL error; please contact server admin"));
-                    } else {
-                        res.setHeader('Content-Type', 'application/json');
-                        res.json(constructSuccess());
+        if (newStock < 0) {res.json(constructError("Admin - Cannot modify stock", "new stock is < 0"));}
+        else {
+            checkAdmin(req, () => {
+                db.query(
+                    `UPDATE Products SET quantity=? WHERE ID=?;`, 
+                    [newStock, pid],
+                    (err, sqlres) => {
+                        if (err) { 
+                            console.log(err);
+                            res.json(constructError("Admin - Cannot modify stock", "SQL error; please contact server admin"));
+                        } else {
+                            res.setHeader('Content-Type', 'application/json');
+                            res.json(constructSuccess());
+                        }
                     }
-                }
-            );
-        });
+                );
+            });
+        }
     });
-
 }};
