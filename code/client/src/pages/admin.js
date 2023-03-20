@@ -56,7 +56,7 @@ const Page = (props) => {
     const getReceipts = () => {
         axios.post(routes.admin_view_receipts, {
             token: getToken(),
-            uid: inputDataGR.uid
+            uid_to_view: inputDataGR.uid
         }).then((res) => {
             console.log(res.data, "Successfully received user receipts");
         }).catch((err) => {
