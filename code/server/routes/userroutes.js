@@ -15,7 +15,7 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
             (err, sqlres) => {
                 if (err) { 
                     console.log(err);
-                    res.constructError("Cannot get cart", "SQL error; please contact server admin");
+                    res.json(constructError("Cannot get cart", "SQL error; please contact server admin"));
                 } else {
                     res.setHeader('Content-Type', 'application/json');
                     res.json(constructSuccess(sqlres));
@@ -36,7 +36,7 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
             (err, sqlres) => {
                 if (err) { 
                     console.log(err);
-                    res.constructError("Cannot login", "SQL error; please contact server admin");
+                    res.json(constructError("Cannot login", "SQL error; please contact server admin"));
                 } else {
                     var uid = sqlres[0]["id"];
                     if (uid == null) {
@@ -49,7 +49,7 @@ module.exports = {  setPost: function(app, db, bcrypt, creds) {
                             (err2, sqlres2) => {
                                 if (err2) { 
                                     console.log(err2);
-                                    res.constructError("Cannot login", "SQL error; please contact server admin");
+                                    res.json(constructError("Cannot login", "SQL error; please contact server admin"));
                                 } else {
                                     var ret = {};
                                     var a = (sqlres2.length > 0);
