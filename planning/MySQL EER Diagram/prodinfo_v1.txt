@@ -1,65 +1,65 @@
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "red pullover", "/images/products/img15.jpg", "a cute red pullover", 90, 299, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "orange tree cutey", "/images/products/img16.png", "a light brown shirt with citrus fruits", 40, 179, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "style watch", "/images/products/img17.png", "a cool skin coloured watch", 20, 1299, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "Hair clips", "/images/products/img18.png", "gold plated hair clip", 70, 599, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "blue bracelets", "/images/products/img19.png", "a light blue bracelet", 100, 149, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "orange skirt", "/images/products/img20.png", "orange skirt light fit", 40, 299, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "hair rope", "/images/products/img21.png", "rusical hair rope", 100, 29, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "Hair bracelet", "/images/products/img22.png", "beige cute hair bracelet", 70, 199, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "stylish hair bracelet", "/images/products/img23.png", "interesting design", 45, 299, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 
 values (1, "summer glasses", "/images/products/img24.png", "summer theme tanned glasses", 53, 499, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "heart pendandt", "/images/products/img25.png", "a cute heart pendant", 25, 1169, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "top bra", "/images/products/img26.png", "a sports or beach bra", 100, 699, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "fresh perfume", "/images/products/img27.png", "a summer scented perfume", 45, 199, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "sun hat", "/images/products/img28.png", "a cute summer shade hat", 53, 599, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "rainy weather sweather", "/images/products/img29.png", "rainy weather sweather", 53, 799, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "beige pullover", "/images/products/img30.png", "a swagger sweather", 53, 599, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "blue jeans", "/images/products/img32.png", "lÃ©ger jeans", 40, 1199, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "green backbag", "/images/products/img32.png", "a light green backbag", 45, 899, CURDATE(), NULL);
-insert into products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
+insert into Products (categories_id, name, imagepath, description, quantity, price, dateadded, dateremoved)
 values (1, "accessoires with shoes set", "/images/products/img33.png", "a light green portemonnaie with green shoes and cute watch", 25, 2499, CURDATE(), NULL);
 
-insert into collections (id, name, imagepath, description, datetimeadded, datetimeremoved) 
+insert into Collections (id, name, imagepath, description, datetimeadded, datetimeremoved) 
 values (1, "Summer - orange", "/images/collections/img34.jpg", "Works also in autumn", NOW(), NULL);
-insert into collections (id, name, imagepath, description, datetimeadded, datetimeremoved) 
+insert into Collections (id, name, imagepath, description, datetimeadded, datetimeremoved) 
 values (2, "Summer - green", "/images/collections/img35.jpg", "Wearable to the beach", NOW(), NULL);
 
-insert into collectionitems values (1, 1);
-insert into collectionitems values (1, 2);
-insert into collectionitems values (1, 3);
-insert into collectionitems values (1, 4);
-insert into collectionitems values (1, 5);
-insert into collectionitems values (1, 6);
-insert into collectionitems values (1, 7);
-insert into collectionitems values (1, 8);
-insert into collectionitems values (1, 9);
-insert into collectionitems values (2, 10);
-insert into collectionitems values (2, 11);
-insert into collectionitems values (2, 12);
-insert into collectionitems values (2, 13);
-insert into collectionitems values (2, 14);
-insert into collectionitems values (2, 15);
-insert into collectionitems values (2, 16);
-insert into collectionitems values (2, 17);
-insert into collectionitems values (2, 18);
-insert into collectionitems values (2, 19);
+insert into CollectionItems values (1, 1);
+insert into CollectionItems values (1, 2);
+insert into CollectionItems values (1, 3);
+insert into CollectionItems values (1, 4);
+insert into CollectionItems values (1, 5);
+insert into CollectionItems values (1, 6);
+insert into CollectionItems values (1, 7);
+insert into collectionItems values (1, 8);
+insert into CollectionItems values (1, 9);
+insert into CollectionItems values (2, 10);
+insert into CollectionItems values (2, 11);
+insert into CollectionItems values (2, 12);
+insert into CollectionItems values (2, 13);
+insert into CollectionItems values (2, 14);
+insert into CollectionItems values (2, 15);
+insert into CollectionItems values (2, 16);
+insert into CollectionItems values (2, 17);
+insert into CollectionItems values (2, 18);
+insert into CollectionItems values (2, 19);
 
